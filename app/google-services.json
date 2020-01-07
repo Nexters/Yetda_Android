@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "220467588781",
+    "firebase_url": "https://yetda-d4506.firebaseio.com",
+    "project_id": "yetda-d4506",
+    "storage_bucket": "yetda-d4506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220467588781:android:2ed6096245888af599e024",
+        "android_client_info": {
+          "package_name": "com.nexters.yetda.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220467588781-piipsfht6983gutibqag940ftehesv3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMiINjDuPNawLSlk6iaCBWGGXDZ0h0KeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220467588781-piipsfht6983gutibqag940ftehesv3v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "220467588781-142ojibnmcrm0h3mcht4t6rtvn1gsedu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nexters.yetda.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
