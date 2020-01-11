@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import com.crashlytics.android.Crashlytics
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,5 +27,9 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
             }
+
+
+//        Crashlytics.getInstance().crash() // Force a crash
+
     }
 }
