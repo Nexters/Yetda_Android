@@ -3,31 +3,28 @@ package com.nexters.yetda.android
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.firestore.FirebaseFirestore
 import com.crashlytics.android.Crashlytics
+import com.nexters.yetda.android.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainContact.View {
 
     private val TAG = "MainActivity"
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Access a Cloud Firestore instance from your Activity
-        val db = FirebaseFirestore.getInstance()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this
 
-        db.collection("presents")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
+        var vm = ViewModelProviders.of(this)[MainViewModel::class.java]
+        binding.setVariable(BR.vm, vm)
 
+        vm.getFirebaseSampleData()
 
 //        Crashlytics.getInstance().crash() // Force a crash
 
