@@ -3,6 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 29
@@ -29,6 +30,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -37,6 +42,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
     // 빠이야베이스
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
