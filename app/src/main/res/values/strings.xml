@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">YetdaAndroid</string>
+    <string name="start">선물 준비하러 가볼까요?</string>
+    <string name="name_q">선물 받을 분의 이름이\n어떻게 되시나요?</string>
+    <string name="name_a">이름</string>
+    <string name="birthday_q">그 분의 생일은 언제인가요?</string>
+    <string name="birthday_a">생일</string>
+    <string name="price_q">가격대를 설정해주세요</string>
+    <string name="price_a">0,000원</string>
+
+
+    <string name="idontknow">잘 모르겠어요</string>
+    <string name="next">다음</string>
+    <string name="restart">처음으로 돌아가기</string>
+
 </resources>

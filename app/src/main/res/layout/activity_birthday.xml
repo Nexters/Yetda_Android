@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.name.NameViewModel" />
+                type="com.nexters.yetda.android.birthday.BirthdayViewModel" />
     </data>
 
     <LinearLayout
@@ -25,19 +25,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/txt_medium"
-                    android:text="@string/name_q"/>
+                    android:text="@string/birthday_q"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/txt_big"
-                    android:text="@={vm.name}"
-                    android:afterTextChanged="@{vm::afterTextChanged}"
-                    android:hint="@string/name_a"/>
+                    android:hint="@string/birthday_a"/>
         </LinearLayout>
-
         <TextView
                 style="@style/btn"
-                android:selected="@{vm.btnActivated}"
                 android:onClick="@{()->vm.clickNextButton()}"
                 android:text="@string/next" />
     </LinearLayout>

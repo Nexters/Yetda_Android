@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="side_margin">35dp</dimen>
+    <dimen name="bottom_height">60dp</dimen>
+    <dimen name="btn_height">46dp</dimen>
+
+    <dimen name="txt_big">43sp</dimen>
+    <dimen name="txt_medium">24sp</dimen>
+    <dimen name="txt_small">18sp</dimen>
+
+    <dimen name="radius">28dp</dimen>
+    <dimen name="click_padding">5dp</dimen>
+
+</resources>
