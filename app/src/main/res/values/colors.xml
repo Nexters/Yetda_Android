@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#324148</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#324148</color>
+    <color name="grey">#7a7a7a</color>
+    <color name="light_grey">#ababab</color>
+
+    <!--ripple-->
+    <color name="color_control_highlight">#0a000000</color>
 </resources>
