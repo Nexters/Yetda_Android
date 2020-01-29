@@ -7,6 +7,7 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseKotlinActivity
 import com.nexters.yetda.android.databinding.ActivityStartBinding
 import com.nexters.yetda.android.name.NameActivity
+import com.nexters.yetda.android.question.QuestionActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -26,9 +27,16 @@ class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>()
     override fun initDataBinding() {
         binding.setVariable(BR.vm, viewModel)
 
-        viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, NameActivity::class.java))
-        })
+        /**
+         * Kook
+         * - Question 개발을 위해 임의로 수정
+         */
+
+        startActivity(Intent(applicationContext, QuestionActivity::class.java))
+
+//        viewModel.startNextActivityEvent.observe(this, Observer {
+//            startActivity(Intent(applicationContext, NameActivity::class.java))
+//        })
     }
     override fun initViewFinal() {
     }

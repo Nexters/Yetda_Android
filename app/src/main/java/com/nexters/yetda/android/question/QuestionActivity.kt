@@ -1,6 +1,8 @@
 package com.nexters.yetda.android.question
 
 import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
@@ -16,9 +18,17 @@ class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionVie
 
     private val TAG = javaClass.simpleName
 
+    private val fragment = QuestionFragment.newInstance()
+    private val fragmentManager = supportFragmentManager
+    private val fragmentTransaction = fragmentManager.beginTransaction()
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
+
+        val bundle = Bundle()
+        bundle.putString("KEY_TEST", "test test 123")
+//        val bundle = intent.extras
+        addQuestionFragment(bundle)
     }
 
     override fun initDataBinding() {
@@ -28,6 +38,14 @@ class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionVie
     }
 
     override fun initViewFinal() {
+        //
+    }
+
+    fun addQuestionFragment(bundle: Bundle) {
+        Log.d(TAG, "* * * addQuestionFragment")
+        fragment.arguments = bundle
+        fragmentTransaction.add(R.id.layout_question_container, fragment)
+        fragmentTransaction.commit()
     }
 
 }
