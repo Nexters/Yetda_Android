@@ -19,8 +19,7 @@ class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionVie
     private val TAG = javaClass.simpleName
 
     private val fragment = QuestionFragment.newInstance()
-    private val fragmentManager = supportFragmentManager
-    private val fragmentTransaction = fragmentManager.beginTransaction()
+    private val fragmentTransaction = supportFragmentManager.beginTransaction()
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
@@ -32,9 +31,9 @@ class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionVie
     }
 
     override fun initDataBinding() {
-        viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, ResultActivity::class.java))
-        })
+//        viewModel.startNextActivityEvent.observe(this, Observer {
+//            startActivity(Intent(applicationContext, ResultActivity::class.java))
+//        })
     }
 
     override fun initViewFinal() {

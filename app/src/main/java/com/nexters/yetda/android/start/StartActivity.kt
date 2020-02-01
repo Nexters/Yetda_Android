@@ -17,7 +17,6 @@ class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>()
 
     private val TAG = javaClass.simpleName
 
-
     override fun initViewStart() {
 //        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm

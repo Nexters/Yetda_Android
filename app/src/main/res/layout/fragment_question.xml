@@ -4,7 +4,6 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
                 name="vm"
                 type="com.nexters.yetda.android.question.QuestionViewModel" />
@@ -13,6 +12,7 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#03A9F4"
             tools:context=".question.QuestionFragment">
 
         <LinearLayout
@@ -52,6 +52,7 @@
             </RelativeLayout>
 
             <TextView
+                    android:id="@+id/text_idontknow"
                     style="@style/btn"
                     android:onClick="@{()->vm.clickNextButton()}"
                     android:text="@string/idontknow" />
