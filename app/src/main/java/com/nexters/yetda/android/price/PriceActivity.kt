@@ -1,7 +1,10 @@
 package com.nexters.yetda.android.price
 
 import android.content.Intent
+import android.util.Log
+import android.util.Range
 import androidx.lifecycle.Observer
+import com.appyvet.materialrangebar.RangeBar
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseKotlinActivity
@@ -28,6 +31,29 @@ class PriceActivity : BaseKotlinActivity<ActivityPriceBinding, PriceViewModel>()
     }
 
     override fun initViewFinal() {
+        binding.rangePrice.setOnRangeBarChangeListener(object : RangeBar.OnRangeBarChangeListener {
+            override fun onRangeChangeListener(
+                rangeBar: RangeBar,
+                leftPinIndex: Int,
+                rightPinIndex: Int,
+                leftPinValue: String,
+                rightPinValue: String
+            ) {
+            }
+
+            override fun onTouchEnded(rangeBar: RangeBar) {
+                Log.e(
+                    TAG,
+                    "left pin index is ${rangeBar.leftPinValue} and right is ${rangeBar.rightPinValue}"
+                )
+                binding.tvPrice.text = "${rangeBar.leftPinValue}~${rangeBar.rightPinValue}만원"
+                viewModel.btnActivated.value = true
+            }
+
+            override fun onTouchStarted(rangeBar: RangeBar) {
+            }
+        })
+
     }
 
 }

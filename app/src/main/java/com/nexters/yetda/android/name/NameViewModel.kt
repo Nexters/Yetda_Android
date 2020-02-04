@@ -13,8 +13,8 @@ class NameViewModel : BaseKotlinViewModel(), NameContact.ViewModel {
 
     private val TAG = javaClass.simpleName
 
-    var name = MutableLiveData<String>()
-    var btnActivated = MutableLiveData<Boolean>()
+    var name = MutableLiveData<String>("")
+    var btnActivated = MutableLiveData<Boolean>(false)
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
@@ -42,7 +42,7 @@ class NameViewModel : BaseKotlinViewModel(), NameContact.ViewModel {
     //클릭 이벤트를 받아온다.
     fun clickNextButton() {
         //null처리 어떻게하더라.. 내일 마저 고고
-        if(btnActivated.value!= null && btnActivated.value!!)
+        if (btnActivated.value!!)
             _startNextActivityEvent.call()
     }
     fun afterTextChanged(s: Editable?) {

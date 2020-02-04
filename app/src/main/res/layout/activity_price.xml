@@ -1,37 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
                 name="vm"
                 type="com.nexters.yetda.android.price.PriceViewModel" />
     </data>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
         <LinearLayout
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/side_margin"
-                android:paddingRight="@dimen/side_margin"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/side_margin"
+                android:paddingRight="@dimen/side_margin">
+
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/txt_medium"
-                    android:text="@string/price_q"/>
-            <EditText
+                    android:text="@string/price_q"
+                    android:textSize="@dimen/txt_medium" />
+
+            <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/txt_big"
-                    android:hint="@string/price_a"/>
+                    android:text="0~100만원"
+                    android:id="@+id/tv_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_medium" />
+
+            <com.appyvet.materialrangebar.RangeBar
+                    android:id="@+id/range_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mrb_rangeBar="true"
+                    app:mrb_tickEnd="100"
+                    app:mrb_tickInterval="1"
+                    app:mrb_tickStart="0" />
         </LinearLayout>
+
         <TextView
+                android:selected="@{vm.btnActivated}"
                 style="@style/btn"
                 android:onClick="@{()->vm.clickNextButton()}"
                 android:text="@string/next" />

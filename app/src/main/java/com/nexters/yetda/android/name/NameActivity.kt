@@ -8,6 +8,7 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseKotlinActivity
 import com.nexters.yetda.android.birthday.BirthdayActivity
 import com.nexters.yetda.android.databinding.ActivityNameBinding
+import com.nexters.yetda.android.gender.GenderActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -30,7 +31,7 @@ class NameActivity : BaseKotlinActivity<ActivityNameBinding, NameViewModel>() {
         //        Crashlytics.getInstance().crash() // Force a crash
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext,BirthdayActivity::class.java))
+            startActivity(Intent(applicationContext, GenderActivity::class.java))
         })
     }
 
