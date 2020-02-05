@@ -4,3 +4,4 @@
 <br>
 
 <img src="https://github.com/Nexters/Yetda_Android/blob/master/yetda_week2.jpg" width="50%">
+test
