@@ -8,45 +8,11 @@
                 name="vm"
                 type="com.nexters.yetda.android.question.QuestionViewModel" />
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_question_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            >
-        <!--START cardView-->
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:background="#FFEB3B" />
 
-            <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/question_card_no"
-                    android:padding="@dimen/click_padding"
-                    style="@style/iv"
-                    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-            <ImageView
-                    android:layout_toStartOf="@+id/question_card_yes"
-                    android:layout_width="match_parent"
-                    android:layout_toEndOf="@+id/question_card_no"
-                    android:id="@+id/question_card_view"
-                    style="@style/iv"
-                    android:src="@drawable/members"/>
-
-            <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/question_card_yes"
-                    style="@style/iv"
-                    android:padding="@dimen/click_padding"
-                    android:layout_alignParentEnd="true"
-                    app:srcCompat="@android:drawable/btn_radio" />
-
-        </RelativeLayout>
-        <TextView
-                style="@style/btn"
-                android:onClick="@{()->vm.clickNextButton()}"
-                android:text="@string/idontknow"/>
-
-    </LinearLayout>
 </layout>
