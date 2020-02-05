@@ -1,6 +1,7 @@
 package com.nexters.yetda.android.di
 
 import com.nexters.yetda.android.birthday.BirthdayViewModel
+import com.nexters.yetda.android.gender.GenderViewModel
 import com.nexters.yetda.android.name.NameViewModel
 import com.nexters.yetda.android.price.PriceViewModel
 import com.nexters.yetda.android.question.QuestionViewModel
@@ -15,6 +16,9 @@ val viewModelPart = module {
     }
     viewModel {
         NameViewModel()
+    }
+    viewModel {
+        GenderViewModel()
     }
     viewModel {
         BirthdayViewModel()

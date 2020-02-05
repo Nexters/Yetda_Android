@@ -6,7 +6,9 @@
     <color name="white">#ffffff</color>
     <color name="black">#324148</color>
     <color name="grey">#7a7a7a</color>
-    <color name="light_grey">#ababab</color>
+    <color name="light_grey">#dfdfe4</color>
+    <color name="red">#da5959</color>
+    <color name="transparent">#00ffffff</color>
 
     <!--ripple-->
     <color name="color_control_highlight">#0a000000</color>
