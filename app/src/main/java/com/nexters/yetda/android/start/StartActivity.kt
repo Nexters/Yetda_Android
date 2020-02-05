@@ -30,12 +30,11 @@ class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>()
          * Kook
          * - Question 개발을 위해 임의로 수정
          */
+//        startActivity(Intent(applicationContext, QuestionActivity::class.java))
 
-        startActivity(Intent(applicationContext, QuestionActivity::class.java))
-
-//        viewModel.startNextActivityEvent.observe(this, Observer {
-//            startActivity(Intent(applicationContext, NameActivity::class.java))
-//        })
+        viewModel.startNextActivityEvent.observe(this, Observer {
+            startActivity(Intent(applicationContext, NameActivity::class.java))
+        })
     }
     override fun initViewFinal() {
     }
