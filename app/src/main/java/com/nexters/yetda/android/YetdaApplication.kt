@@ -12,8 +12,11 @@ class YetdaApplication: Application(){
         startKoin(applicationContext, diModule)
 
         // Realm
-        Realm.init(applicationContext)
-        val config = RealmConfiguration.Builder().name("myrealm.realm").build()
+        Realm.init(this)
+        val config = RealmConfiguration.Builder()
+            .name("myrealm.realm")
+            .deleteRealmIfMigrationNeeded() // 릴리즈 전에 수정해야됨
+            .build()
         Realm.setDefaultConfiguration(config)
     }
 }

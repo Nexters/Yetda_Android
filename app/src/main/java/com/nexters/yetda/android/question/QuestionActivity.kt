@@ -41,7 +41,6 @@ class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionVie
     }
 
     fun addQuestionFragment(bundle: Bundle) {
-        Log.d(TAG, "* * * addQuestionFragment")
         fragment.arguments = bundle
         fragmentTransaction.add(R.id.layout_question_container, fragment)
         fragmentTransaction.commit()

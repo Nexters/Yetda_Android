@@ -29,6 +29,7 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding, QuestionViewModel
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
+        viewModel.addPerson()
     }
 
     override fun initDataBinding() {
