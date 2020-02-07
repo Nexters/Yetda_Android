@@ -8,6 +8,10 @@
     <string name="price_q">가격대를 설정해주세요</string>
     <string name="price_a">0,000원</string>
 
+    <string name="gender_q">쭈피의 성별은?</string>
+    <string name="gender_female">여성</string>
+    <string name="gender_male">남성</string>
+
 
     <string name="idontknow">잘 모르겠어요</string>
     <string name="next">다음</string>

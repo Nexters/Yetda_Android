@@ -60,5 +60,6 @@ dependencies {
     implementation "org.koin:koin-android-scope:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
+    implementation "com.appyvet:materialrangebar:$rangebar_version"
     implementation "io.realm:realm-gradle-plugin:6.0.2"
 }
