@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.start.StartViewModel" />
+                type="com.nexters.yetda.android.home.HomeViewModel" />
     </data>
 
     <RelativeLayout

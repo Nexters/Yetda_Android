@@ -3,11 +3,11 @@ package com.nexters.yetda.android.gender
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class GenderViewModel : BaseKotlinViewModel() {
+class GenderViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
 

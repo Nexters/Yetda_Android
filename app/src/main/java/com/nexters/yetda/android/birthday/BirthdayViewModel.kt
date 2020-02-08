@@ -4,11 +4,11 @@ import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class BirthdayViewModel : BaseKotlinViewModel() {
+class BirthdayViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
     var btnActivated = MutableLiveData<Boolean>(false)

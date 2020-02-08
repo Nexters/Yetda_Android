@@ -1,14 +1,14 @@
-package com.nexters.yetda.android.start
+package com.nexters.yetda.android.home
 
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class StartViewModel : BaseKotlinViewModel(){
+class HomeViewModel : BaseViewModel(){
 
     private val TAG = javaClass.simpleName
 
