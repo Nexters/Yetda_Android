@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 apply plugin: "kotlin-kapt"
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 29
@@ -60,6 +61,5 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     implementation "com.appyvet:materialrangebar:$rangebar_version"
-
-
+    implementation "io.realm:realm-gradle-plugin:6.0.2"
 }

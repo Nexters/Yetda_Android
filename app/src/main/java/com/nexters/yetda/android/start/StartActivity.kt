@@ -1,6 +1,7 @@
 package com.nexters.yetda.android.start
 
 import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
@@ -20,7 +21,6 @@ class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>()
     override fun initViewStart() {
 //        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm
-
     }
 
     override fun initDataBinding() {
@@ -30,7 +30,6 @@ class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>()
          * Kook
          * - Question 개발을 위해 임의로 수정
          */
-
         startActivity(Intent(applicationContext, QuestionActivity::class.java))
 
 //        viewModel.startNextActivityEvent.observe(this, Observer {
