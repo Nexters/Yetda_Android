@@ -5,11 +5,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class NameViewModel : BaseKotlinViewModel(), NameContact.ViewModel {
+class NameViewModel : BaseViewModel(), NameContact.ViewModel {
 
     private val TAG = javaClass.simpleName
 

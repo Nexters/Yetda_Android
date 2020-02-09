@@ -4,13 +4,13 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseKotlinActivity
+import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityResultBinding
-import com.nexters.yetda.android.start.StartActivity
+import com.nexters.yetda.android.home.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class ResultActivity : BaseKotlinActivity<ActivityResultBinding, ResultViewModel>() {
+class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     override val layoutResourceId = R.layout.activity_result
     override val viewModel: ResultViewModel by viewModel()
 
@@ -24,7 +24,7 @@ class ResultActivity : BaseKotlinActivity<ActivityResultBinding, ResultViewModel
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, StartActivity::class.java))
+            startActivity(Intent(applicationContext, HomeActivity::class.java))
         })
     }
 

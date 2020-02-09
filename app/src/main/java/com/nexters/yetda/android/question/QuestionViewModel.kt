@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.database.Person
 import com.nexters.yetda.android.database.RealmUtil
 import com.nexters.yetda.android.util.SingleLiveEvent
@@ -12,7 +12,7 @@ import io.realm.Realm
 import io.realm.kotlin.createObject
 
 
-class QuestionViewModel : BaseKotlinViewModel() {
+class QuestionViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
     private lateinit var mDb: Realm

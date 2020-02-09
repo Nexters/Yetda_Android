@@ -7,13 +7,13 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseKotlinActivity
+import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityBirthdayBinding
 import com.nexters.yetda.android.price.PriceActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BirthdayActivity : BaseKotlinActivity<ActivityBirthdayBinding, BirthdayViewModel>() {
+class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel>() {
     override val layoutResourceId = R.layout.activity_birthday
     override val viewModel: BirthdayViewModel by viewModel()
 

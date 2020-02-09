@@ -2,11 +2,11 @@ package com.nexters.yetda.android.result
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.nexters.yetda.android.base.BaseKotlinViewModel
+import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class ResultViewModel : BaseKotlinViewModel(){
+class ResultViewModel : BaseViewModel(){
 
     private val TAG = javaClass.simpleName
 

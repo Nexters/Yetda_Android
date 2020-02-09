@@ -6,13 +6,13 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseKotlinActivity
+import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
 import com.nexters.yetda.android.result.ResultActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class QuestionActivity : BaseKotlinActivity<ActivityQuestionBinding, QuestionViewModel>() {
+class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
     override val layoutResourceId = R.layout.activity_question
     override val viewModel: QuestionViewModel by viewModel()
 

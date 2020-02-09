@@ -4,13 +4,13 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseKotlinActivity
+import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.birthday.BirthdayActivity
 import com.nexters.yetda.android.databinding.ActivityGenderBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class GenderActivity : BaseKotlinActivity<ActivityGenderBinding, GenderViewModel>() {
+class GenderActivity : BaseActivity<ActivityGenderBinding, GenderViewModel>() {
     override val layoutResourceId = R.layout.activity_gender
     override val viewModel: GenderViewModel by viewModel()
 

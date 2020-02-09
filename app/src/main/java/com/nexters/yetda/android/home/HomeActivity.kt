@@ -1,20 +1,17 @@
-package com.nexters.yetda.android.start
+package com.nexters.yetda.android.home
 
 import android.content.Intent
-import android.util.Log
-import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseKotlinActivity
-import com.nexters.yetda.android.databinding.ActivityStartBinding
-import com.nexters.yetda.android.name.NameActivity
+import com.nexters.yetda.android.base.BaseActivity
+import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.question.QuestionActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class StartActivity : BaseKotlinActivity<ActivityStartBinding, StartViewModel>() {
-    override val layoutResourceId = R.layout.activity_start
-    override val viewModel: StartViewModel by viewModel()
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
+    override val layoutResourceId = R.layout.activity_home
+    override val viewModel: HomeViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
 

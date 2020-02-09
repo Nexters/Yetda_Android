@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProviders
  * 2. 클린 빌드 후 다시 빌드 수행
  * 3. 이름 확인 : sbs_main_activity => ActivitySbsMainBinding
  */
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseKotlinViewModel> : Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     protected lateinit var binding: VB
     /**
