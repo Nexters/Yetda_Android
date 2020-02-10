@@ -5,7 +5,7 @@
         tools:targetApi="lollipop">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/light_grey" />
+            <solid android:color="@color/btnBgColor" />
             <corners android:radius="@dimen/radius" />
         </shape>
     </item>

@@ -28,6 +28,9 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
         viewModel.startNextActivityEvent.observe(this, Observer {
             startActivity(Intent(applicationContext, QuestionActivity::class.java))
         })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
     }
 
     override fun initViewFinal() {
