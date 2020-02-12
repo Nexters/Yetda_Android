@@ -26,6 +26,9 @@ class GenderActivity : BaseActivity<ActivityGenderBinding, GenderViewModel>() {
         viewModel.startNextActivityEvent.observe(this, Observer {
             startActivity(Intent(applicationContext,BirthdayActivity::class.java))
         })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
     }
 
     override fun initViewFinal() {

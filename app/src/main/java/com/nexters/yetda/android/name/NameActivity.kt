@@ -33,10 +33,13 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
         viewModel.startNextActivityEvent.observe(this, Observer {
             startActivity(Intent(applicationContext, GenderActivity::class.java))
         })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
     }
 
     override fun initViewFinal() {
-        viewModel.getFirebaseSampleData()
+//        viewModel.getFirebaseSampleData()
 
     }
 

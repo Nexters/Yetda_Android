@@ -3,6 +3,7 @@ package com.nexters.yetda.android.birthday
 import android.content.Intent
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
@@ -29,6 +30,9 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
         viewModel.startNextActivityEvent.observe(this, Observer {
             startActivity(Intent(applicationContext, PriceActivity::class.java))
         })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
 
     }
 
@@ -40,22 +44,17 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
             }
         }
         binding.edBirthdayM2.doAfterTextChanged {
-            if (binding.edBirthdayM2.text.isEmpty()) {
-                binding.edBirthdayM1.requestFocus()
-            } else {
+            if (!binding.edBirthdayM2.text.isEmpty()) {
                 binding.edBirthdayD1.requestFocus()
             }
         }
         binding.edBirthdayD1.doAfterTextChanged {
-            if (binding.edBirthdayD1.text.isEmpty()) {
-                binding.edBirthdayM2.requestFocus()
-            } else {
+            if (!binding.edBirthdayD1.text.isEmpty()) {
                 binding.edBirthdayD2.requestFocus()
             }
         }
         binding.edBirthdayD2.doAfterTextChanged {
             if (binding.edBirthdayD2.text.isEmpty()) {
-                binding.edBirthdayD1.requestFocus()
                 viewModel.validBirthday(false)
             } else {
                 viewModel.validBirthday(true)
@@ -63,7 +62,7 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
         }
     }
 
-    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         when (keyCode) {
             KeyEvent.KEYCODE_DEL -> {
                 if (binding.edBirthdayM2.text.isEmpty()) {
