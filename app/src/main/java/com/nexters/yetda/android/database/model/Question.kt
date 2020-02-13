@@ -12,6 +12,4 @@ open class Question : RealmObject() {
     var tag: Tag? = null
     var isAsked: Boolean = false
 
-    var createdAt: Date? = null
-
 }

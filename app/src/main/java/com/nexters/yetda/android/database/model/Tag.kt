@@ -8,7 +8,4 @@ import java.util.*
 open class Tag : RealmObject() {
     @PrimaryKey
     var name: String = ""
-
-    var createdAt: Date? = null
-
 }

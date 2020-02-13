@@ -9,10 +9,9 @@ import java.util.*
 open class Present : RealmObject() {
     @PrimaryKey
     var id: Int = 0
-    var startPrice: Int = 0
-    var endPrice: Int = 0
+    var price: Int = 0
+    var name: String = ""
     var tags = RealmList<Tag>()
 
-    var createdAt: Date? = null
 
 }

@@ -41,6 +41,7 @@
                     android:maxLength="6"
                     android:text="@={vm.name}"
                     android:textColor="@color/black"
+                    android:singleLine="true"
                     android:textSize="@dimen/txt_big" />
         </LinearLayout>
 
