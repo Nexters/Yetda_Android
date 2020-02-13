@@ -9,7 +9,7 @@ import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class NameViewModel : BaseViewModel(), NameContact.ViewModel {
+class NameViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
 
@@ -20,30 +20,17 @@ class NameViewModel : BaseViewModel(), NameContact.ViewModel {
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent
 
-
-    override fun getFirebaseSampleData() {
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("presents")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                    Log.d(TAG, document.data["name"].toString())
-
-                    name.value = document.data["name"]?.toString()
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
-    }
+    private val _backBeforeActivityEvent = SingleLiveEvent<Any>()
+    val backBeforeActivityEvent: LiveData<Any>
+        get() = _backBeforeActivityEvent
 
     //클릭 이벤트를 받아온다.
     fun clickNextButton() {
-        //null처리 어떻게하더라.. 내일 마저 고고
         if (btnActivated.value!!)
             _startNextActivityEvent.call()
+    }
+    fun clickBackButton() {
+        _backBeforeActivityEvent.call()
     }
     fun afterTextChanged(s: Editable?) {
         btnActivated.value = !name.value.equals("")

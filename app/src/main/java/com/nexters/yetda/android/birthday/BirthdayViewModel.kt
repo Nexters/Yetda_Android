@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.birthday
 
+import android.content.Intent
 import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -16,12 +17,20 @@ class BirthdayViewModel : BaseViewModel() {
     var m2 = MutableLiveData<String>("")
     var d1 = MutableLiveData<String>("")
     var d2 = MutableLiveData<String>("")
+    var name = MutableLiveData<String>()
+    var gender: String = ""
+    var birthday: String = ""
 
+    init {
+        name.value = "__"
+    }
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent
-
+    private val _backBeforeActivityEvent = SingleLiveEvent<Any>()
+    val backBeforeActivityEvent: LiveData<Any>
+        get() = _backBeforeActivityEvent
 
     //클릭 이벤트를 받아온다.
     fun clickNextButton() {
@@ -29,10 +38,18 @@ class BirthdayViewModel : BaseViewModel() {
             _startNextActivityEvent.call()
     }
 
-    fun validBirthday(isValid: Boolean) {
-        btnActivated.value = isValid
-        var birthday = m1.value + m2.value + d1.value + d2.value
-        Log.e(TAG, "birthday is $birthday")
+    fun clickBackButton() {
+        _backBeforeActivityEvent.call()
     }
 
+    fun validBirthday(isValid: Boolean) {
+        btnActivated.value = isValid
+        birthday = m1.value + m2.value + d1.value + d2.value
+//        Log.e(TAG, "birthday is $birthday")
+    }
+
+    fun getUserFromIntent(intent: Intent) {
+        name.value = intent.getStringExtra("NAME")
+        gender = intent.getStringExtra("GENDER")
+    }
 }

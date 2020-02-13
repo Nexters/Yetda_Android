@@ -3,6 +3,7 @@ package com.nexters.yetda.android.birthday
 import android.content.Intent
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
@@ -10,6 +11,7 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityBirthdayBinding
 import com.nexters.yetda.android.price.PriceActivity
+import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -22,12 +24,20 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
+        viewModel.getUserFromIntent(intent)
     }
 
     override fun initDataBinding() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, PriceActivity::class.java))
+            val intent = Intent(applicationContext, PriceActivity::class.java)
+            intent.putExtra("NAME", viewModel.name.value)
+            intent.putExtra("GENDER", viewModel.gender)
+            intent.putExtra("BIRTHDAY", viewModel.birthday)
+            startActivity(intent)
+        })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
         })
 
     }
@@ -40,30 +50,27 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
             }
         }
         binding.edBirthdayM2.doAfterTextChanged {
-            if (binding.edBirthdayM2.text.isEmpty()) {
-                binding.edBirthdayM1.requestFocus()
-            } else {
+            if (!binding.edBirthdayM2.text.isEmpty()) {
                 binding.edBirthdayD1.requestFocus()
             }
         }
         binding.edBirthdayD1.doAfterTextChanged {
-            if (binding.edBirthdayD1.text.isEmpty()) {
-                binding.edBirthdayM2.requestFocus()
-            } else {
+            if (!binding.edBirthdayD1.text.isEmpty()) {
                 binding.edBirthdayD2.requestFocus()
             }
         }
         binding.edBirthdayD2.doAfterTextChanged {
             if (binding.edBirthdayD2.text.isEmpty()) {
-                binding.edBirthdayD1.requestFocus()
                 viewModel.validBirthday(false)
             } else {
                 viewModel.validBirthday(true)
             }
         }
+
+        ControlKeyboard.show(this)
     }
 
-    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         when (keyCode) {
             KeyEvent.KEYCODE_DEL -> {
                 if (binding.edBirthdayM2.text.isEmpty()) {

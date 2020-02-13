@@ -13,24 +13,25 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
             android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->vm.clickBackButton()}"
+                app:srcCompat="@drawable/ic_arrow_left" />
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/side_margin"
-                android:paddingRight="@dimen/side_margin">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_interval"
-                    android:layout_marginBottom="@dimen/bottom_interval"
-                    android:gravity="center"
-                    android:text="@string/gender_q"
-                    android:textSize="@dimen/txt_small" />
+                    style="@style/tvQuestion"
+                    android:text="@{@string/gender_q(vm.name)}" />
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -47,7 +48,7 @@
                         android:onClick="@{()->vm.isFemale()}"
                         android:selected="@{vm.isfemale}"
                         android:text="@string/gender_female"
-                        android:textColor="@drawable/selector_text"
+                        android:textColor="@drawable/selector_gender_text"
                         android:textSize="@dimen/txt_medium" />
 
                 <TextView
@@ -58,7 +59,7 @@
                         android:onClick="@{()->vm.isMale()}"
                         android:selected="@{vm.ismale}"
                         android:text="@string/gender_male"
-                        android:textColor="@drawable/selector_text"
+                        android:textColor="@drawable/selector_gender_text"
                         android:textSize="@dimen/txt_medium" />
             </LinearLayout>
         </LinearLayout>

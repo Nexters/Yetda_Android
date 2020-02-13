@@ -13,24 +13,25 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
             android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->vm.clickBackButton()}"
+                app:srcCompat="@drawable/ic_arrow_left" />
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/side_margin"
-                android:paddingRight="@dimen/side_margin">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_interval"
-                    android:layout_marginBottom="@dimen/bottom_interval"
-                    android:gravity="center"
-                    android:text="@string/birthday_q"
-                    android:textSize="@dimen/txt_small" />
+                    style="@style/tvQuestion"
+                    android:text="@{@string/birthday_q(vm.name)}" />
 
 
             <LinearLayout
@@ -41,63 +42,43 @@
 
                 <EditText
                         android:id="@+id/ed_birthday_m1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/textlines"
-                        android:cursorVisible="false"
+                        style="@style/edBirthday"
                         android:digits="01"
                         android:hint="M"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:text="@{vm.m1}"
-                        android:textSize="@dimen/txt_medium" />
+                        android:text="@{vm.m1}" />
 
                 <EditText
                         android:id="@+id/ed_birthday_m2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/edBirthday"
                         android:layout_marginLeft="@dimen/click_padding"
                         android:layout_marginRight="@dimen/click_padding"
-                        android:background="@drawable/textlines"
-                        android:cursorVisible="false"
                         android:hint="M"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:text="@{vm.m2}"
-                        android:textSize="@dimen/txt_medium" />
+                        android:text="@{vm.m2}" />
+
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="/"
+                        android:textColor="@color/genderGrey"
                         android:textSize="@dimen/txt_medium" />
 
                 <EditText
                         android:id="@+id/ed_birthday_d1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/edBirthday"
                         android:layout_marginLeft="@dimen/click_padding"
                         android:layout_marginRight="@dimen/click_padding"
-                        android:background="@drawable/textlines"
-                        android:cursorVisible="false"
                         android:digits="0123"
                         android:hint="D"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:text="@{vm.d1}"
-                        android:textSize="@dimen/txt_medium" />
+                        android:text="@{vm.d1}" />
+
 
                 <EditText
                         android:id="@+id/ed_birthday_d2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/textlines"
-                        android:cursorVisible="false"
+                        style="@style/edBirthday"
                         android:hint="D"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:text="@{vm.d2}"
-                        android:textSize="@dimen/txt_medium" />
+                        android:text="@{vm.d2}" />
+
             </LinearLayout>
 
         </LinearLayout>

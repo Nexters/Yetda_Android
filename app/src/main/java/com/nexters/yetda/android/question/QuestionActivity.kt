@@ -34,6 +34,11 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 //        viewModel.startNextActivityEvent.observe(this, Observer {
 //            startActivity(Intent(applicationContext, ResultActivity::class.java))
 //        })
+
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
+
     }
 
     override fun initViewFinal() {

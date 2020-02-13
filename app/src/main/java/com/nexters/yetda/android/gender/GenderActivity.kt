@@ -19,12 +19,19 @@ class GenderActivity : BaseActivity<ActivityGenderBinding, GenderViewModel>() {
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
+        viewModel.getUserFromIntent(intent)
     }
 
     override fun initDataBinding() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext,BirthdayActivity::class.java))
+            val intent = Intent(applicationContext, BirthdayActivity::class.java)
+            intent.putExtra("NAME", viewModel.name.value)
+            intent.putExtra("GENDER", viewModel.getGender())
+            startActivity(intent)
+        })
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
         })
     }
 
