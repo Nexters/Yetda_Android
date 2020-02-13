@@ -21,6 +21,10 @@ class QuestionViewModel : BaseViewModel() {
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent
 
+    private val _backBeforeActivityEvent = SingleLiveEvent<Any>()
+    val backBeforeActivityEvent: LiveData<Any>
+        get() = _backBeforeActivityEvent
+
     var name = MutableLiveData<String>()
 
 
@@ -78,5 +82,9 @@ class QuestionViewModel : BaseViewModel() {
             }
 
         _startNextActivityEvent.call()
+    }
+
+    fun clickBackButton(){
+        _backBeforeActivityEvent.call()
     }
 }

@@ -7,8 +7,10 @@ import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.birthday.BirthdayActivity
+import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityNameBinding
 import com.nexters.yetda.android.gender.GenderActivity
+import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -20,7 +22,6 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
 
 
     override fun initViewStart() {
-//        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm
 
         //set title, db open등
@@ -31,7 +32,9 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
         //        Crashlytics.getInstance().crash() // Force a crash
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, GenderActivity::class.java))
+            val intent = Intent(applicationContext, GenderActivity::class.java)
+            intent.putExtra("NAME", viewModel.name.value)
+            startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             finish()
@@ -40,6 +43,8 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
 
     override fun initViewFinal() {
 //        viewModel.getFirebaseSampleData()
+        ControlKeyboard.show(this)
+
 
     }
 

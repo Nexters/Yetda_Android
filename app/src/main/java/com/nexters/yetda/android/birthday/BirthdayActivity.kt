@@ -11,6 +11,7 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityBirthdayBinding
 import com.nexters.yetda.android.price.PriceActivity
+import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -23,12 +24,17 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
+        viewModel.getUserFromIntent(intent)
     }
 
     override fun initDataBinding() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, PriceActivity::class.java))
+            val intent = Intent(applicationContext, PriceActivity::class.java)
+            intent.putExtra("NAME", viewModel.name.value)
+            intent.putExtra("GENDER", viewModel.gender)
+            intent.putExtra("BIRTHDAY", viewModel.birthday)
+            startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             finish()
@@ -60,6 +66,8 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
                 viewModel.validBirthday(true)
             }
         }
+
+        ControlKeyboard.show(this)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
