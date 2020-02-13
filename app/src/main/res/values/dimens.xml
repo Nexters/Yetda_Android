@@ -3,7 +3,7 @@
 
     <dimen name="side_margin">20dp</dimen>
     <dimen name="bottom_height">60dp</dimen>
-    <dimen name="btn_height">48dp</dimen>
+    <dimen name="btn_height">50dp</dimen>
 
 <!--    질문 레이아웃 들 최상단 간격-->
     <dimen name="top_interval">39dp</dimen>

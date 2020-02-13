@@ -1,10 +1,13 @@
 package com.nexters.yetda.android.price
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.yetda.android.base.BaseViewModel
+import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.util.SingleLiveEvent
+import io.realm.RealmObject
 
 
 class PriceViewModel : BaseViewModel() {
@@ -15,7 +18,7 @@ class PriceViewModel : BaseViewModel() {
     var name = MutableLiveData<String>()
 
     init {
-        name.value = "쭈피"
+        name.value = "__"
     }
 
 
@@ -35,5 +38,14 @@ class PriceViewModel : BaseViewModel() {
 
     fun clickBackButton() {
         _backBeforeActivityEvent.call()
+    }
+
+    fun getUserFromIntent(intent: Intent): History {
+        val history = History()
+        name.value = intent.getStringExtra("NAME")
+        history.name = name.value!!
+        history.gender = intent.getStringExtra("GENDER")
+        history.birthday = intent.getStringExtra("BIRTHDAY")
+        return history
     }
 }

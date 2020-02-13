@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.gender
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +19,7 @@ class GenderViewModel : BaseViewModel() {
     var name = MutableLiveData<String>()
 
     init {
-        name.value = "쭈피"
+        name.value = "__"
     }
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
@@ -33,9 +34,11 @@ class GenderViewModel : BaseViewModel() {
         if (btnActivated.value!!)
             _startNextActivityEvent.call()
     }
+
     fun clickBackButton() {
         _backBeforeActivityEvent.call()
     }
+
     fun isFemale() {
         Log.e(TAG, "isFemale Click")
         if (!isfemale.value!!) {
@@ -50,5 +53,14 @@ class GenderViewModel : BaseViewModel() {
             ismale.value = !ismale.value!!
             isfemale.value = false
         }
+    }
+
+    fun getGender(): String {
+        return if (isfemale.value!!) "F"
+        else "M"
+    }
+
+    fun getUserFromIntent(intent: Intent) {
+        name.value = intent.getStringExtra("NAME")
     }
 }
