@@ -21,6 +21,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 //        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm
 
+        viewModel.getUpdatesInfo()
         viewModel.getPresentsList()
     }
 
