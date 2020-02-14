@@ -1,12 +1,9 @@
 package com.nexters.yetda.android
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.firestore.FirebaseFirestore
-import com.crashlytics.android.Crashlytics
 import com.nexters.yetda.android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainContact.View {

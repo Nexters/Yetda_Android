@@ -1,21 +1,16 @@
 package com.nexters.yetda.android.question
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
-import com.nexters.yetda.android.result.ResultActivity
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
     override val layoutResourceId = R.layout.activity_question
     override val viewModel: QuestionViewModel by viewModel()
-
     private val TAG = javaClass.simpleName
 
     private val fragment = QuestionFragment.newInstance()

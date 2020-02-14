@@ -35,8 +35,8 @@ val viewModelPart = module {
     }
 }
 
-var daoPart = module {
-    factory<PersonDao> {
+val daoPart = module {
+    factory {
         PersonDao(get())
     }
 }

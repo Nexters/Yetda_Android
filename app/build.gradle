@@ -63,4 +63,5 @@ dependencies {
 
     implementation "com.appyvet:materialrangebar:$rangebar_version"
     implementation "io.realm:realm-gradle-plugin:6.0.2"
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
 }

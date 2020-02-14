@@ -1,6 +1,7 @@
 package com.nexters.yetda.android.home
 
 import android.content.Intent
+import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
@@ -19,6 +20,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun initViewStart() {
 //        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm
+
+        viewModel.getPresentsList()
     }
 
     override fun initDataBinding() {
@@ -28,13 +31,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
          * Kook
          * - Question 개발을 위해 임의로 수정
          */
-        startActivity(Intent(applicationContext, NameActivity::class.java))
+//        startActivity(Intent(applicationContext, QuestionActivity::class.java))
 
-//        viewModel.startNextActivityEvent.observe(this, Observer {
-//            startActivity(Intent(applicationContext, NameActivity::class.java))
-//        })
+        viewModel.startNextActivityEvent.observe(this, Observer {
+            startActivity(Intent(applicationContext, NameActivity::class.java))
+        })
     }
+
     override fun initViewFinal() {
+        //
     }
 
 }
