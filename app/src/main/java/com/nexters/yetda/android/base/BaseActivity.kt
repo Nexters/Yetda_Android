@@ -55,7 +55,6 @@ abstract class BaseActivity<VB : ViewDataBinding,VM: BaseViewModel> : AppCompatA
         binding = DataBindingUtil.setContentView(this, layoutResourceId)
         binding.lifecycleOwner = this
 
-
         initViewStart()
         initDataBinding()
         initViewFinal()
