@@ -32,8 +32,8 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
             //save realm object to History
-            history.startPrice = leftValue
-            history.endPrice = rightValue
+            history.startPrice = leftValue.toLong()
+            history.endPrice = rightValue.toLong()
             startActivity(Intent(applicationContext, QuestionActivity::class.java))
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {

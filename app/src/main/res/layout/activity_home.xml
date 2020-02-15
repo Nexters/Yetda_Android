@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="vm"
                 type="com.nexters.yetda.android.home.HomeViewModel" />
@@ -12,18 +12,55 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:paddingBottom="@dimen/bottom_height"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/side_interval"
+            android:paddingRight="@dimen/side_interval">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval"
+                    android:text="@string/start"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_big"
+                    android:textStyle="bold" />
+
+            <ImageView
+                    style="@style/iv"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="82dp"
+                    android:src="@drawable/img_main" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/top_interval"
+                    android:layout_marginBottom="@dimen/side_interval"
+                    android:text="선물 추천기록"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_small" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_present_list" />
+
+        </LinearLayout>
+
         <ImageView
                 style="@style/iv"
-                android:layout_centerInParent="true"
-                android:src="@drawable/members"/>
-
-        <TextView
-                style="@style/btn"
-                android:onClick="@{()->vm.clickNextButton()}"
-                android:background="@drawable/btn_active"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:text="@string/start" />
+                android:layout_margin="16dp"
+                android:background="@drawable/fb_rounded_red" />
+
     </RelativeLayout>
 </layout>

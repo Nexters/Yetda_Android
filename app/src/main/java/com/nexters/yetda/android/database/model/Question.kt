@@ -7,9 +7,8 @@ import java.util.*
 
 open class Question : RealmObject() {
     @PrimaryKey
-    var id: Long = 0
+    var id: Int = 0
     var question: String = ""
-    var tag: Tag? = null
+    var tag: String = ""
     var isAsked: Boolean = false
-
 }

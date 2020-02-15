@@ -10,5 +10,5 @@ open class Present : RealmObject() {
     var id: Int = 0
     var price: Long = 0
     var name: String = ""
-    var tags = RealmList<Tag>()
+    var tags = RealmList<String>()
 }
