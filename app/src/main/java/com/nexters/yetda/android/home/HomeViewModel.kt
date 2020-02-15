@@ -70,8 +70,8 @@ class HomeViewModel : BaseViewModel() {
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(UpdateModel::class.java)
-                Log.d(TAG, "* * * ${convertLongToTime(documents[0].updated_at.seconds)}")
-                Log.d(TAG, "* * * ${documents[0].updated_at.seconds}")
+                Log.d(TAG, "* * * date : ${convertLongToTime(documents[0].updatedAt.seconds)}")
+                Log.d(TAG, "* * * date : ${documents[0].updatedAt.seconds}")
                 realm.where<Update>().findAll().deleteAllFromRealm()
                 realm.executeTransaction {
                     realm.where<Update>().findAll().deleteAllFromRealm()
