@@ -4,63 +4,84 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"/>
         <variable
                 name="vm"
                 type="com.nexters.yetda.android.home.HomeViewModel" />
     </data>
 
+
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/side_interval"
-            android:paddingRight="@dimen/side_interval">
+            android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/interval"
-                    android:text="@string/start"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_big"
-                    android:textStyle="bold" />
-
-            <ImageView
-                    style="@style/iv"
-                    android:layout_marginLeft="65dp"
-                    android:layout_marginTop="82dp"
-                    android:src="@drawable/img_main" />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_interval"
-                    android:layout_marginBottom="@dimen/side_interval"
-                    android:text="선물 추천기록"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_small" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_present_list" />
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/side_interval"
+                        android:layout_marginTop="@dimen/interval"
+                        android:text="@string/start"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/txt_big"
+                        android:textStyle="bold" />
+
+                <ImageView
+                        style="@style/iv"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="82dp"
+                        android:layout_marginRight="@dimen/side_interval"
+                        android:src="@drawable/img_main" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/side_interval"
+                        android:layout_marginTop="@dimen/top_interval"
+                        android:layout_marginBottom="@dimen/side_interval"
+                        android:text="선물 추천기록"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/txt_small" />
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_card"
+                        android:gravity="center"
+                        android:text="아직 준비된 선물이 없어요.."
+                        android:textColor="@color/genderGrey"
+                        android:textSize="@dimen/txt_small"
+                        android:visibility="@{vm.isEmptyList?View.VISIBLE:View.GONE}"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:visibility="@{vm.isEmptyList?View.GONE:View.VISIBLE}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_present_list" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
 
         <ImageView
                 style="@style/iv"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="16dp"
-                android:background="@drawable/fb_rounded_red" />
+                android:layout_marginBottom="@dimen/side_interval"
+                android:onClick="@{()->vm.clickNextButton()}"
+                android:src="@drawable/btn_gift" />
 
     </RelativeLayout>
 </layout>

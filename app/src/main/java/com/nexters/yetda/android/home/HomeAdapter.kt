@@ -10,14 +10,14 @@ import com.nexters.yetda.android.database.model.History
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.item_present_list.view.*
 
-class HomeAdapter(private val items: RealmResults<History>) :
+class HomeAdapter(private val items: ArrayList<History>) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         //click시 토스트
-        val item = items[position]!!
+        val item = items[position]
         val listener = View.OnClickListener {it ->
             Toast.makeText(it.context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()
         }
