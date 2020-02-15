@@ -45,8 +45,7 @@ class HomeViewModel : BaseViewModel() {
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
                 realm.executeTransaction {
-                    //                    it.deleteAll()
-                    realm.where<Present>().findAll().deleteAllFromRealm()
+//                    realm.where<Present>().findAll().deleteAllFromRealm()
                     for ((i, doc) in documents.withIndex()) {
                         val present = it.createObject(Present::class.java, doc.id)
                         present.name = doc.name

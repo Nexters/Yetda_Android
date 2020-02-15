@@ -1,13 +1,11 @@
 package com.nexters.yetda.android.price
 
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.util.SingleLiveEvent
-import io.realm.RealmObject
 
 
 class PriceViewModel : BaseViewModel() {
@@ -21,7 +19,7 @@ class PriceViewModel : BaseViewModel() {
         name.value = "__"
     }
 
-
+    // todo 확실히 필요없다고 생각되면 지우자
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent

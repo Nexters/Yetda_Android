@@ -11,7 +11,6 @@ import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.kotlin.createObject
 
-
 class QuestionViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
@@ -38,29 +37,9 @@ class QuestionViewModel : BaseViewModel() {
 //            mDb.createObject<Person>() // Create managed objects directly
 //            mDb.commitTransaction()
         }
-        RealmUtil.personModel(mDb).addPerson()
-//            .findLoansByNameAfter("Mike", getYesterdayDate())
-//        mLoansResult = Transformations.map<RealmResults<Loan>, Any>(
-//            loans,
-//            object : Function<RealmResults<Loan?>?, String?>() {
-//                fun apply(loans: RealmResults<Loan>): String? {
-//                    val sb = StringBuilder()
-//                    val simpleDateFormat = SimpleDateFormat(
-//                        "yyyy-MM-dd HH:mm",
-//                        Locale.US
-//                    )
-//                    for (loan in loans) {
-//                        sb.append(
-//                            java.lang.String.format(
-//                                "%s\n  (Returned: %s)\n",
-//                                loan.book.title,
-//                                simpleDateFormat.format(loan.endTime)
-//                            )
-//                        )
-//                    }
-//                    return sb.toString()
-//                }
-//            })
+
+        // todo 확실히 필요없다고 생각되면 지우자
+//        RealmUtil.personModel(mDb).addPerson()
     }
 
 
