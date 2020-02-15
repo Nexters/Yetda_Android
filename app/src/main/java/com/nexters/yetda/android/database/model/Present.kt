@@ -11,4 +11,5 @@ open class Present : RealmObject() {
     var price: Long = 0
     var name: String = ""
     var tags = RealmList<String>()
+    var image: String = ""
 }

@@ -46,7 +46,7 @@
                         android:background="@drawable/selector_btn_rounded"
                         android:gravity="center"
                         android:onClick="@{()->vm.isFemale()}"
-                        android:selected="@{vm.isfemale}"
+                        android:selected="@{vm.isfemale?true:false}"
                         android:text="@string/gender_female"
                         android:textColor="@drawable/selector_gender_text"
                         android:textSize="@dimen/txt_medium" />
@@ -57,7 +57,7 @@
                         android:background="@drawable/selector_btn_rounded"
                         android:gravity="center"
                         android:onClick="@{()->vm.isMale()}"
-                        android:selected="@{vm.ismale}"
+                        android:selected="@{vm.isfemale?false:true}"
                         android:text="@string/gender_male"
                         android:textColor="@drawable/selector_gender_text"
                         android:textSize="@dimen/txt_medium" />
