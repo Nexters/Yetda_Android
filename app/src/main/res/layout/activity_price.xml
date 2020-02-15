@@ -73,7 +73,7 @@
 
         <TextView
                 style="@style/btn"
-                android:onClick="@{()->vm.clickNextButton()}"
+                android:id="@+id/textPriceNext"
                 android:selected="@{vm.btnActivated}"
                 android:text="@string/next" />
     </LinearLayout>

@@ -2,7 +2,6 @@ package com.nexters.yetda.android.price
 
 import android.content.Intent
 import android.util.Log
-import android.util.Range
 import androidx.lifecycle.Observer
 import com.appyvet.materialrangebar.RangeBar
 import com.nexters.yetda.android.BR
@@ -10,7 +9,9 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityPriceBinding
+import com.nexters.yetda.android.name.NameActivity
 import com.nexters.yetda.android.question.QuestionActivity
+import kotlinx.android.synthetic.main.activity_price.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -64,9 +65,13 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
             }
 
             override fun onTouchStarted(rangeBar: RangeBar) {
+                //
             }
         })
 
+        textPriceNext.setOnClickListener {
+            startActivity(Intent(this, QuestionActivity::class.java))
+        }
     }
 
 }

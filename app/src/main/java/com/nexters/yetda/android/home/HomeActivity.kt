@@ -7,9 +7,8 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.name.NameActivity
-import com.nexters.yetda.android.question.QuestionActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override val layoutResourceId = R.layout.activity_home
@@ -21,6 +20,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 //        var vm = ViewModelProviders.of(this)[NameViewModel::class.java]
 //        binding.vm = vm
 
+        viewModel.getUpdatesInfo()
         viewModel.getPresentsList()
         viewModel.getQuestionsList()
     }
@@ -28,16 +28,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun initDataBinding() {
         binding.setVariable(BR.vm, viewModel)
 
-
         /**
          * Kook
          * - Question 개발을 위해 임의로 수정
          */
 //        startActivity(Intent(applicationContext, QuestionActivity::class.java))
 
-        viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, NameActivity::class.java))
-        })
+//        viewModel.startNextActivityEvent.observe(this, Observer {
+//            startActivity(Intent(applicationContext, NameActivity::class.java))
+//        })
 
         viewModel.getAllHistory().observe(this, Observer {
             it?.let {
@@ -49,7 +48,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     }
 
     override fun initViewFinal() {
-        //
+        imageHomeStart.setOnClickListener {
+            startActivity(Intent(this, NameActivity::class.java))
+        }
     }
 
 }
