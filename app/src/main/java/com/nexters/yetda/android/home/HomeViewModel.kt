@@ -45,15 +45,14 @@ class HomeViewModel : BaseViewModel() {
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
                 realm.executeTransaction {
-//                    realm.where<Present>().findAll().deleteAllFromRealm()
-                    for ((i, doc) in documents.withIndex()) {
+                    realm.where<Present>().findAll().deleteAllFromRealm()
+                    for (doc in documents) {
                         val present = it.createObject(Present::class.java, doc.id)
                         present.name = doc.name
                         present.price = doc.price
                         present.tags.addAll(doc.tags)
                     }
                 }
-
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)

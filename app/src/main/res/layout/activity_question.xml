@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -34,10 +33,73 @@
                     android:text="@string/price_q" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_question_container"
-                    android:layout_width="275dp"
-                    android:layout_height="294dp"
-                    android:background="#FFEB3B" />
+                    android:layout_width="match_parent"
+                    android:layout_height="330dp">
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="274dp"
+                        android:layout_height="294dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="10dp"
+                        app:cardUseCompatPadding="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal" >
+
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="233dp"
+                            android:layout_height="250dp"
+                            android:layout_marginTop="20dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="10dp"
+                            app:cardUseCompatPadding="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" >
+
+                        <androidx.cardview.widget.CardView
+                                android:layout_width="198dp"
+                                android:layout_height="214dp"
+                                android:layout_marginTop="10dp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardElevation="10dp"
+                                app:cardUseCompatPadding="true"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_question_container"
+                                android:layout_width="275dp"
+                                android:layout_height="294dp"
+                                android:background="#FFEB3B" />
+            -->
+
 
             <LinearLayout
                     android:layout_width="match_parent"

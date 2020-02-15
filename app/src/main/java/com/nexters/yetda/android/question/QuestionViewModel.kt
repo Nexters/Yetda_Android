@@ -42,7 +42,6 @@ class QuestionViewModel : BaseViewModel() {
 //        RealmUtil.personModel(mDb).addPerson()
     }
 
-
     fun clickNextButton() {
         val db = FirebaseFirestore.getInstance()
 

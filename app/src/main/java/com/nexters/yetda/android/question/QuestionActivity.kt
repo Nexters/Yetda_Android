@@ -22,7 +22,9 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         val bundle = Bundle()
         bundle.putString("KEY_TEST", "test test 123")
 //        val bundle = intent.extras
-        addQuestionFragment(bundle)
+
+
+//        addQuestionFragment(bundle)
     }
 
     override fun initDataBinding() {
@@ -42,7 +44,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     fun addQuestionFragment(bundle: Bundle) {
         fragment.arguments = bundle
-        fragmentTransaction.add(R.id.layout_question_container, fragment)
+//        fragmentTransaction.add(R.id.layout_question_container, fragment)
         fragmentTransaction.commit()
     }
 
