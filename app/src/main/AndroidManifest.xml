@@ -34,10 +34,12 @@
         <activity
                 android:name=".gender.GenderActivity"
                 android:windowSoftInputMode="adjustResize" />
+
         <!-- Crashlytics Debug시 리포트 중지 -->
         <meta-data
                 android:name="firebase_crashlytics_collection_enabled"
                 android:value="${enableAnalytics}" />
+
         <!-- Analytics Debug시 수집 중지 -->
         <meta-data
                 android:name="firebase_analytics_collection_enabled"

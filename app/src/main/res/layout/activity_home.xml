@@ -77,6 +77,7 @@
 
         <ImageView
                 style="@style/iv"
+                android:id="@+id/imageHomeStart"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/side_interval"
