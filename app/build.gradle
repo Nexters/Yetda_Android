@@ -62,6 +62,8 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     implementation "com.appyvet:materialrangebar:$rangebar_version"
-    implementation "io.realm:realm-gradle-plugin:6.0.2"
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation "io.realm:realm-gradle-plugin:$realm_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
 }

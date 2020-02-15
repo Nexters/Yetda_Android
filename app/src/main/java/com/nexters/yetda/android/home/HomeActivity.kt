@@ -23,10 +23,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.getUpdatesInfo()
         viewModel.getPresentsList()
+        viewModel.getQuestionsList()
     }
 
     override fun initDataBinding() {
         binding.setVariable(BR.vm, viewModel)
+
 
         /**
          * Kook
@@ -36,6 +38,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
             startActivity(Intent(applicationContext, NameActivity::class.java))
+        })
+
+        viewModel.getAllHistory().observe(this, Observer {
+            it?.let {
+                val adapter = HomeAdapter(it)
+                binding.recyclerView.adapter = adapter
+//                adapter.notifyDataSetChanged()
+            }
         })
     }
 

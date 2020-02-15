@@ -7,12 +7,12 @@ import java.util.*
 
 open class History : RealmObject() {
     @PrimaryKey
-    var id: Long = 0
+    var id: Int = 0
     var name: String = ""
     var gender: String = ""
     var birthday: String = ""
-    var startPrice: Int = 0
-    var endPrice: Int = 0
+    var startPrice: Long = 0
+    var endPrice: Long = 0
     var presents = RealmList<Present>()
 
     var createdAt: Long = 0
