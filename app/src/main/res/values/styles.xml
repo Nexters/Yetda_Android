@@ -1,11 +1,56 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--        커서색, 드래그 시 하이라이트 색, eidtText선택 시 밑줄 하이라이트 색 등 강조 색을 변경-->
+        <item name="colorAccent">@color/red</item>
+        <!--        하이라이트 되지 않았을 때 editText 밑줄 색-->
+        <item name="colorControlNormal">@color/light_grey</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="android:textColor">@drawable/selector_btn_text</item>
+        <item name="android:textSize">@dimen/txt_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/side_margin</item>
+        <item name="android:background">@drawable/selector_btn</item>
+    </style>
+
+    <style name="iv">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tvQuestion">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/top_interval</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/interval</item>
+        <item name="android:textColor">@color/txtBlack</item>
+        <item name="android:textSize">@dimen/txt_small</item>
+    </style>
+
+    <style name="edBirthday">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:focusableInTouchMode">false</item>-->
+        <item name="android:background">@drawable/textlines</item>
+<!--        <item name="android:cursorVisible">false</item>-->
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:textSize">@dimen/txt_big</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 
 </resources>

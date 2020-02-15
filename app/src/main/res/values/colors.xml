@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="backgroundColor">#fdfdfd</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#324148</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#292929</color>\
+    <color name="txtBlack">#666666</color>
+    <color name="grey">#7a7a7a</color>
+    <color name="light_grey">#dfdfe4</color>
+    <color name="red">#da5959</color>
+    <color name="transparent">#00ffffff</color>
+
+    <color name="genderGrey">#8c9098</color>
+<color name="btnBgColor">#eeeeee</color>
+    <color name="btnTxtColor">#c9c9c9</color>
+
+    <!--ripple-->
+    <color name="color_control_highlight">#0a000000</color>
 </resources>
