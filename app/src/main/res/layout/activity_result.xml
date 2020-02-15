@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="vm"
                 type="com.nexters.yetda.android.result.ResultViewModel" />
@@ -12,42 +12,56 @@
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:paddingBottom="@dimen/bottom_height"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
+        <TextView
+                style="@style/tvQuestion"
+                android:layout_marginTop="59dp"
+                android:layout_marginBottom="0dp"
+                android:text="@{@string/answer(vm.name)}" />
+
         <LinearLayout
-                android:gravity="center"
-                android:paddingLeft="@dimen/side_margin"
-                android:paddingRight="@dimen/side_margin"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/txt_small"
-                    android:textColor="@color/black"
-                    android:text="노우리 님을 위한"/>
+                android:layout_marginLeft="@dimen/side_interval"
+                android:layout_marginRight="@dimen/side_interval"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="70dp">
+
             <ImageView
                     style="@style/iv"
-                    android:src="@drawable/members"/>
+                    android:src="@drawable/img_main" />
+
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="@dimen/txt_big"
-                    android:textStyle="bold"
+                    android:layout_marginTop="55dp"
+                    android:text="따뜻한 장갑"
                     android:textColor="@color/black"
-                    android:text="주류"/>
+                    android:textSize="@dimen/txt_big"
+                    android:textStyle="bold" />
         </LinearLayout>
+
         <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:textColor="#ccc"
+                android:textSize="@dimen/txt_small" />
+
+        <TextView
+                android:id="@+id/btn_restart"
+                style="@style/btn"
                 android:background="@drawable/btn_active"
                 android:onClick="@{()->vm.clickNextButton()}"
-                style="@style/btn"
-                android:text="@string/restart"/>
+                android:text="@string/restart"
+                android:textColor="@color/white" />
     </LinearLayout>
-
 
 
 </layout>
