@@ -25,4 +25,6 @@
 
 <!--    Name-->
     <dimen name="ed_width">204dp</dimen>
+
+    <dimen name="padding">15dp</dimen>
 </resources>

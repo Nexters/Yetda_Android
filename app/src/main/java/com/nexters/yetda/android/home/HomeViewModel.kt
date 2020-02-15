@@ -4,17 +4,22 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nexters.yetda.android.base.BaseViewModel
-import com.nexters.yetda.android.database.RealmUtil
+import com.nexters.yetda.android.database.dao.HistoryDao
+import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.database.model.Tag
+import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.model.PresentModel
+import com.nexters.yetda.android.model.QuestionModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
+import io.realm.RealmResults
 
 class HomeViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
-    private var realm = Realm.getDefaultInstance()
+    private val realm by lazy {
+        Realm.getDefaultInstance()
+    }
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
@@ -37,11 +42,6 @@ class HomeViewModel : BaseViewModel() {
     fun getPresentsList() {
         val db = FirebaseFirestore.getInstance()
 
-        ArrayList<String>().map {
-            val tag = Tag()
-            tag.name = it
-            return@map tag
-        }
         db.collection("presents")
             .get()
             .addOnSuccessListener { documentSnapshot ->
@@ -50,18 +50,10 @@ class HomeViewModel : BaseViewModel() {
                 realm.executeTransaction {
                     it.deleteAll()
                     for ((i, doc) in documents.withIndex()) {
-                        val present = it.createObject(Present::class.java, i)
+                        val present = it.createObject(Present::class.java, doc.id)
                         present.name = doc.name
                         present.price = doc.price
-
-                        // todo 더 예쁜 방법이 없을까??
-                        val tags = ArrayList<Tag>()
-                        for (tagString in doc.tags) {
-                            val tag = Tag()
-                            tag.name = tagString
-                            tags.add(tag)
-                        }
-                        present.tags.addAll(tags)
+                        present.tags.addAll(doc.tags)
                     }
                 }
 
@@ -77,5 +69,46 @@ class HomeViewModel : BaseViewModel() {
                 //
             }
         */
+    }
+
+    fun getQuestionsList() {
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("question")
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val documents = documentSnapshot.toObjects(QuestionModel::class.java)
+                Log.d(TAG, "* * * ${documents[0]}")
+                realm.executeTransaction {
+                    it.deleteAll()
+                    for ((i, doc) in documents.withIndex()) {
+                        val question = it.createObject(Question::class.java, doc.id)
+                        question.question = doc.question
+                        question.tag = doc.tag
+                    }
+                }
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
+
+        /*
+        db.collection("users")
+            .document(FirebaseAuth.getInstance().currentUser!!.uid)
+            .addSnapshotListener { p0, p1 ->
+                //
+            }
+        */
+
+    }
+
+    fun getAllHistory(): LiveData<RealmResults<History>> {
+        return HistoryDao(realm).findAllHistory()
+    }
+
+    override fun onCleared() {
+        realm.close()
+        super.onCleared()
     }
 }
