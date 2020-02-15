@@ -11,6 +11,7 @@ import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.database.dao.HistoryDao
 import com.nexters.yetda.android.database.dao.PresentDao
 import com.nexters.yetda.android.database.dao.QuestionDao
+import com.nexters.yetda.android.database.dao.UpdateDao
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
 import com.nexters.yetda.android.database.model.Question
@@ -29,6 +30,8 @@ import java.util.*
 class HomeViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
+
+    private var isNew = false
     private val db = FirebaseFirestore.getInstance()
     private val realm by lazy {
         Realm.getDefaultInstance()
@@ -52,15 +55,8 @@ class HomeViewModel : BaseViewModel() {
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
-                realm.executeTransaction {
-                    //                    realm.where<Present>().findAll().deleteAllFromRealm()
-                    for ((i, doc) in documents.withIndex()) {
-                        val present = it.createObject(Present::class.java, doc.id)
-                        present.name = doc.name
-                        present.price = doc.price
-                        present.tags.addAll(doc.tags)
-                    }
-                }
+                for ((i, doc) in documents.withIndex())
+                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.tags)
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
@@ -77,13 +73,8 @@ class HomeViewModel : BaseViewModel() {
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(QuestionModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
-                realm.executeTransactionAsync {
-                    it.deleteAll()
-                    for ((i, doc) in documents.withIndex()) {
-                        val question = it.createObject(Question::class.java, doc.id)
-                        question.question = doc.question
-                        question.tag = doc.tag
-                    }
+                for ((i, doc) in documents.withIndex()) {
+                    QuestionDao(realm).addQuestion(doc.id, doc.question, doc.tag)
                 }
 
             }
@@ -91,7 +82,7 @@ class HomeViewModel : BaseViewModel() {
                 Log.w(TAG, "Error getting documents.", exception)
             }
             .addOnSuccessListener {
-                getQuestionsList()
+                getPresentsList()
             }
     }
 
@@ -100,18 +91,24 @@ class HomeViewModel : BaseViewModel() {
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(UpdateModel::class.java)
-                Log.d(TAG, "* * * date : ${convertLongToTime(documents[0].updatedAt.seconds)}")
-                Log.d(TAG, "* * * date : ${documents[0].updatedAt.seconds}")
-                realm.where<Update>().findAll().deleteAllFromRealm()
-                realm.executeTransaction {
-                    realm.where<Update>().findAll().deleteAllFromRealm()
-                    for ((i, doc) in documents.withIndex()) {
-//                        val update = it.createObject(Update::class.java)
-                    }
+//                Log.d(
+//                    TAG,
+//                    "* * * date : ${convertLongToTime(documents[0].updatedAt.seconds)}"
+//                )//2020.02.15 14:39:52
+//                Log.d(TAG, "* * * date : ${documents[0].updatedAt.seconds}") //1581777592
+
+                //newest updateDate
+                val strDate = documents[0].updated_at.seconds
+                if (UpdateDao(realm).findUpdate()?.updatedAt != strDate) {
+                    //NEED Update
+                    UpdateDao(realm).addUpdate(strDate)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
+            }
+            .addOnSuccessListener {
+                getQuestionsList()
             }
     }
 

@@ -43,7 +43,7 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
 
     override fun initViewFinal() {
 //        viewModel.getFirebaseSampleData()
-        ControlKeyboard.show(this)
+//        ControlKeyboard.show(this)
 
 
     }

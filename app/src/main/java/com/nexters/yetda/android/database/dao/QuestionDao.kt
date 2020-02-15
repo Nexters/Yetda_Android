@@ -32,5 +32,17 @@ class QuestionDao(private val mRealm: Realm) {
         return mRealm.where<Question>()
             .findFirst()
     }
+    fun addQuestion(
+        _id:Int,
+        _question:String,
+        _tag:String
+    ) {
+        mRealm.executeTransaction {
+            val item = mRealm.createObject<Question>(_id)
+            item.question=_question
+            item.tag = _tag
+            it.copyToRealm(item)
+        }
+    }
 
 }

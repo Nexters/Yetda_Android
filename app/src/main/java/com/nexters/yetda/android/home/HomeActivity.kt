@@ -24,7 +24,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun initViewStart() {
 
         viewModel.getUpdatesInfo()
-        viewModel.getPresentsList()
         Log.e(TAG, "initViewStart ${list.toString()}")
 
         // Hide the status bar.
@@ -41,9 +40,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 //        startActivity(Intent(applicationContext, QuestionActivity::class.java))
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            //            startActivity(Intent(applicationContext, NameActivity::class.java))
+                        startActivity(Intent(applicationContext, NameActivity::class.java))
             Log.e(TAG, "click ${list.toString()}")
-
         })
 
         val adapter = HomeAdapter(list)
@@ -58,7 +56,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
                 adapter.notifyDataSetChanged()
                 viewModel.isEmptyList.value = list.size == 0
                 Log.e(TAG, "notifydatasetchange ${list.toString()}")
-
             }
         })
     }
