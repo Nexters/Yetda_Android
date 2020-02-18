@@ -16,7 +16,7 @@
             android:text="쭈피"
             android:textColor="@color/black"
             android:textSize="@dimen/txt_medium"
-            android:textStyle="bold" />
+            android:fontFamily="@font/noto_sans_bold"/>
 r
     <RelativeLayout
             android:layout_width="match_parent"

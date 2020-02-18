@@ -27,7 +27,6 @@ class UpdateDao(private val mRealm: Realm) {
         updateAt: Long
     ) {
         mRealm.executeTransaction {
-            it.deleteAll()
             val update = mRealm.createObject<Update>()
             update.updatedAt = updateAt
             it.copyToRealm(update)

@@ -44,7 +44,7 @@
                     android:text="따뜻한 장갑"
                     android:textColor="@color/black"
                     android:textSize="@dimen/txt_big"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/noto_sans_bold"/>
         </LinearLayout>
 
         <TextView

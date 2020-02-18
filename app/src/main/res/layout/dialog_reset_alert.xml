@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/side_interval"
+        android:layout_marginRight="@dimen/side_interval"
+        android:background="@drawable/bg_white_rounded"
+        android:gravity="center"
+        android:orientation="vertical">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_interval"
+            android:layout_marginBottom="@dimen/bottom_interval"
+            android:text="@string/wait"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_big"
+            android:fontFamily="@font/noto_sans_bold" />
+
+
+    <ImageView
+            style="@style/iv"
+            android:src="@drawable/img_warning" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/side_margin"
+            android:layout_marginBottom="@dimen/bottom_interval"
+            android:gravity="center"
+            android:text="@string/reset_alert"
+            android:textColor="@color/txtBlack"
+            android:textSize="@dimen/txt_small" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_grey" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="@string/proceed"
+                android:textColor="@color/red"
+                android:textSize="@dimen/txt_small" />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="@string/cancel"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/txt_small" />
+    </LinearLayout>
+
+</LinearLayout>

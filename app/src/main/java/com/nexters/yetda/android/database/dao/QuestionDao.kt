@@ -32,14 +32,23 @@ class QuestionDao(private val mRealm: Realm) {
         return mRealm.where<Question>()
             .findFirst()
     }
+
+    fun deleteAll() {
+        val result = mRealm.where<Question>().findAll()
+        mRealm.executeTransaction {
+            result.deleteAllFromRealm()
+        }
+    }
+
     fun addQuestion(
-        _id:Int,
-        _question:String,
-        _tag:String
+        _id: Int,
+        _question: String,
+        _tag: String
     ) {
         mRealm.executeTransaction {
+
             val item = mRealm.createObject<Question>(_id)
-            item.question=_question
+            item.question = _question
             item.tag = _tag
             it.copyToRealm(item)
         }
