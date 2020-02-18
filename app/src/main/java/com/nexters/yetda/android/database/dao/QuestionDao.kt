@@ -10,6 +10,7 @@ import io.realm.RealmList
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
+import kotlin.random.Random
 
 
 class QuestionDao(private val mRealm: Realm) {
@@ -32,17 +33,44 @@ class QuestionDao(private val mRealm: Realm) {
         return mRealm.where<Question>()
             .findFirst()
     }
+
+    fun findQuestion(tags: Array<String>): Question? {
+        val results: RealmResults<Question> =
+            mRealm.where<Question>()
+                .equalTo("isAsked", false)
+                .not()
+                .beginGroup()
+                .`in`("tags", tags)
+                .endGroup()
+                .findAll()
+
+        //Randomly pick one
+        val r = Random(System.nanoTime())
+        val id = r.nextInt(results.size)
+        mRealm.executeTransaction {
+            results[id]?.isAsked = true
+        }
+        return results[id]
+    }
+
+    fun deleteAll() {
+        val result = mRealm.where<Question>().findAll()
+        mRealm.executeTransaction {
+            result.deleteAllFromRealm()
+        }
+    }
+
     fun addQuestion(
-        _id:Int,
-        _question:String,
-        _tag:String
+        _id: Int,
+        _question: String,
+        _tag: String
     ) {
         mRealm.executeTransaction {
+
             val item = mRealm.createObject<Question>(_id)
-            item.question=_question
+            item.question = _question
             item.tag = _tag
             it.copyToRealm(item)
         }
     }
-
 }

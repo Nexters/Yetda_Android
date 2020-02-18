@@ -33,6 +33,24 @@ class PresentDao(private val mRealm: Realm) {
         return mRealm.where<Present>()
             .findFirst()
     }
+
+    fun findPresents(tags: Array<String>, _startPrice:Long, _endPrice:Long): RealmResults<Present>{
+        return mRealm.where<Present>()
+            .not()
+            .beginGroup()
+            .`in`("tags", tags)
+            .endGroup()
+            .between("price",_startPrice,_endPrice)
+            .findAll()
+    }
+
+    fun deleteAll() {
+        val result = mRealm.where<Present>().findAll()
+        mRealm.executeTransaction {
+            result.deleteAllFromRealm()
+        }
+    }
+
     fun addPresent(
         _id:Int,
         _name:String,

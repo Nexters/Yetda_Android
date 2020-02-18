@@ -55,6 +55,7 @@ class HomeViewModel : BaseViewModel() {
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
+                PresentDao(realm).deleteAll()
                 for ((i, doc) in documents.withIndex())
                     PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.tags)
             }
@@ -73,6 +74,7 @@ class HomeViewModel : BaseViewModel() {
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(QuestionModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
+                QuestionDao(realm).deleteAll()
                 for ((i, doc) in documents.withIndex()) {
                     QuestionDao(realm).addQuestion(doc.id, doc.question, doc.tag)
                 }
@@ -102,13 +104,11 @@ class HomeViewModel : BaseViewModel() {
                 if (UpdateDao(realm).findUpdate()?.updatedAt != strDate) {
                     //NEED Update
                     UpdateDao(realm).addUpdate(strDate)
+                    getQuestionsList()
                 }
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-            }
-            .addOnSuccessListener {
-                getQuestionsList()
             }
     }
 

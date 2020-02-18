@@ -42,7 +42,9 @@
                     android:text="@={vm.name}"
                     android:textColor="@color/black"
                     android:singleLine="true"
-                    android:textSize="@dimen/txt_big" />
+                    android:textSize="@dimen/txt_big" >
+                    <requestFocus/>
+            </EditText>
         </LinearLayout>
 
         <TextView

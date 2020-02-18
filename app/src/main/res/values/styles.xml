@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/red</item>
         <!--        하이라이트 되지 않았을 때 editText 밑줄 색-->
         <item name="colorControlNormal">@color/light_grey</item>
+        <item name="android:fontFamily">@font/noto_sans_medium</item>
 
         <!--Status Bar의 배경색-->
         <item name="android:statusBarColor" tools:targetApi="21">@color/white</item>
@@ -54,7 +55,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/light_grey</item>
         <item name="android:textSize">@dimen/txt_big</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
 
     </style>
 
