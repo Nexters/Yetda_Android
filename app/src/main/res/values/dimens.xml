@@ -2,16 +2,13 @@
 <resources>
 
     <dimen name="side_margin">20dp</dimen>
-    <dimen name="bottom_height">60dp</dimen>
     <dimen name="btn_height">50dp</dimen>
 
 <!--    질문 레이아웃 들 최상단 간격-->
     <dimen name="top_interval">39dp</dimen>
 <!--    질문 레이아웃들 질문과 대답 사이 간격-->
     <dimen name="interval">47dp</dimen>
-<!--    성별 레이아웃 > 질문과 대답 사이 간격-->
-    <dimen name="bottom_interval">34dp</dimen>
-<!--    성별 원형 버튼-->
+    <!--    성별 원형 버튼-->
     <dimen name="round">100dp</dimen>
     <!--    성별 레이아웃 > 성별 사이 간격-->
     <dimen name="side_interval">22dp</dimen>

@@ -35,6 +35,7 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
             intent.putExtra("GENDER", viewModel.gender)
             intent.putExtra("BIRTHDAY", viewModel.birthday)
             startActivity(intent)
+            ControlKeyboard.hide(this)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             finish()
@@ -67,7 +68,7 @@ class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel
             }
         }
 
-        ControlKeyboard.show(this)
+
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
