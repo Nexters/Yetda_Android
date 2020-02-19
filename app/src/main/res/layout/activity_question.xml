@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -49,15 +50,16 @@
                         app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
+                            android:id="@+id/textQuestionCard"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:padding="22dp"
                             android:ellipsize="none"
+                            android:gravity="center"
                             android:maxLines="99"
-                            android:text="재미있는 선물을 준비할까요?"
+                            android:padding="22dp"
                             android:textColor="@color/black"
-                            android:textSize="34sp" />
+                            android:textSize="34sp"
+                            tools:text="재미있는 선물을 준비할까요?" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -122,15 +124,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/layout_question_container"
-                                android:layout_width="275dp"
-                                android:layout_height="294dp"
-                                android:background="#FFEB3B" />
-            -->
-
 
             <LinearLayout
                     android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.nexters.yetda.android.question
 
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.animation.AccelerateInterpolator
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
@@ -18,35 +19,19 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     private val fragment = QuestionFragment.newInstance()
     private val fragmentTransaction = supportFragmentManager.beginTransaction()
+    lateinit var tags: ArrayList<String>
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
 
+        tags = intent.getStringArrayListExtra("TAGS")
+        Log.d(TAG, "* * * tags ::: ${tags[0]}")
+        Log.d(TAG, "* * * tags ::: ${tags[1]}")
+        viewModel.findQuestion(tags)
+
         val bundle = Bundle()
-        bundle.putString("KEY_TEST", "test test 123")
 //        val bundle = intent.extras
 //        addQuestionFragment(bundle)
-
-        imageNoButton.setOnClickListener {
-            cardQuestion.animate()
-                .translationX(convertDpToPixel(-400f))
-                .setDuration(700)
-                .setInterpolator(AccelerateInterpolator())
-                .withEndAction {
-//                    cardQuestion.translationX = 0f
-                }.start()
-        }
-
-        imageOkButton.setOnClickListener {
-            cardQuestion.animate()
-                .translationX(convertDpToPixel(400f))
-                .setDuration(700)
-                .setInterpolator(AccelerateInterpolator())
-                .withEndAction {
-//                    cardQuestion.translationX = 0f
-                }.start()
-
-        }
     }
 
     override fun initDataBinding() {
@@ -58,10 +43,32 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             finish()
         })
 
+        viewModel.getQustionEvent.observe(this, Observer {
+            textQuestionCard.text = it.question
+        })
+
     }
 
     override fun initViewFinal() {
-        //
+        imageNoButton.setOnClickListener {
+            cardQuestion.animate()
+                .translationX(convertDpToPixel(-400f))
+                .setDuration(700)
+                .setInterpolator(AccelerateInterpolator())
+                .withEndAction {
+                    // No를 클릭한 뒤
+                }.start()
+        }
+
+        imageOkButton.setOnClickListener {
+            cardQuestion.animate()
+                .translationX(convertDpToPixel(400f))
+                .setDuration(700)
+                .setInterpolator(AccelerateInterpolator())
+                .withEndAction {
+                    // OK를 클릭한 뒤
+                }.start()
+        }
     }
 
     fun addQuestionFragment(bundle: Bundle) {

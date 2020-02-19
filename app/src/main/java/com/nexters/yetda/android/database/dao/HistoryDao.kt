@@ -26,13 +26,11 @@ class HistoryDao(private val mRealm: Realm) {
         return mRealm.where<History>()
             .equalTo("id",id)
             .findFirst()
-
     }
 
     fun findHistory(): History? {
         return mRealm.where<History>()
             .findFirst()
-
     }
 
     fun addHistory(

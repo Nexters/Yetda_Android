@@ -34,13 +34,16 @@ class QuestionDao(private val mRealm: Realm) {
             .findFirst()
     }
 
-    fun findQuestion(tags: Array<String>): Question? {
+    fun findQuestion(tags: ArrayList<String>): Question? {
+        val tagList = arrayOfNulls<String>(tags.size)
+        tags.toArray(tagList)
+//        val tagList: Array<String> = tags.toArray()
         val results: RealmResults<Question> =
             mRealm.where<Question>()
                 .equalTo("isAsked", false)
                 .not()
                 .beginGroup()
-                .`in`("tags", tags)
+                .`in`("tag", tagList)
                 .endGroup()
                 .findAll()
 

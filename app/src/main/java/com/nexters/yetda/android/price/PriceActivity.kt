@@ -76,11 +76,11 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
             history.startPrice = leftValue.toLong()
             history.endPrice = rightValue.toLong()
 
-            val intent = Intent(this, ResultActivity::class.java)
+//            val intent = Intent(this, ResultActivity::class.java)
+            val intent = Intent(this, QuestionActivity::class.java)
             intent.putExtra("TAGS", viewModel.getTags())
             intent.putExtra("ITEM", history)
             startActivity(intent)
-
         }
     }
 

@@ -2,9 +2,7 @@ package com.nexters.yetda.android.home
 
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
@@ -70,9 +68,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             startActivity(Intent(this, NameActivity::class.java))
         }
 
-        textTempButton.setOnClickListener {
-            startActivity(Intent(this, QuestionActivity::class.java))
-        }
+//        textTempButton.setOnClickListener {
+//            startActivity(Intent(this, QuestionActivity::class.java))
+//        }
     }
 
 }
