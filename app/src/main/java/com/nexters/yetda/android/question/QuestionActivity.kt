@@ -1,11 +1,14 @@
 package com.nexters.yetda.android.question
 
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.animation.AccelerateInterpolator
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
+import kotlinx.android.synthetic.main.activity_question.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
@@ -22,9 +25,28 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         val bundle = Bundle()
         bundle.putString("KEY_TEST", "test test 123")
 //        val bundle = intent.extras
-
-
 //        addQuestionFragment(bundle)
+
+        imageNoButton.setOnClickListener {
+            cardQuestion.animate()
+                .translationX(convertDpToPixel(-400f))
+                .setDuration(1000)
+                .setInterpolator(AccelerateInterpolator())
+                .withEndAction {
+//                    cardQuestion.translationX = 0f
+                }.start()
+        }
+
+        imageOkButton.setOnClickListener {
+            cardQuestion.animate()
+                .translationX(convertDpToPixel(400f))
+                .setDuration(1000)
+                .setInterpolator(AccelerateInterpolator())
+                .withEndAction {
+//                    cardQuestion.translationX = 0f
+                }.start()
+
+        }
     }
 
     override fun initDataBinding() {
@@ -48,4 +70,14 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         fragmentTransaction.commit()
     }
 
+    private fun transXAni() {
+//        val transAnimation: ObjectAnimator = ObjectAnimator.ofFloat(image, "y", image.getY(), 20)
+//        transAnimation.duration = duration.toLong()
+//        transAnimation.interpolator = AccelerateInterpolator()
+//        transAnimation.start()
+    }
+
+    fun convertDpToPixel(dp: Float): Float {
+        return dp * (this.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
 }
