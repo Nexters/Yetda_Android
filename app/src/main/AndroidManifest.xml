@@ -21,6 +21,9 @@
             </intent-filter>
         </activity>
         <activity
+                android:name=".detail.DetailActivity"
+                android:windowSoftInputMode="adjustResize" />
+        <activity
                 android:name=".price.PriceActivity"
                 android:windowSoftInputMode="adjustResize" />
         <activity android:name=".question.QuestionActivity" />
