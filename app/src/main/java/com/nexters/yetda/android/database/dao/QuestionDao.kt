@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.database.dao
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.nexters.yetda.android.database.RealmUtil
 import com.nexters.yetda.android.database.model.History
@@ -12,8 +13,9 @@ import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlin.random.Random
 
-
 class QuestionDao(private val mRealm: Realm) {
+
+    private val TAG = javaClass.simpleName
 
     fun findAllQuestions(): LiveData<RealmResults<Question>> {
         return RealmUtil.asLiveData(
@@ -40,7 +42,8 @@ class QuestionDao(private val mRealm: Realm) {
 //        val tagList: Array<String> = tags.toArray()
         val results: RealmResults<Question> =
             mRealm.where<Question>()
-                .equalTo("isAsked", false)
+                // todo 테스트중에는 제외
+//                .equalTo("isAsked", false)
                 .not()
                 .beginGroup()
                 .`in`("tag", tagList)
@@ -49,7 +52,11 @@ class QuestionDao(private val mRealm: Realm) {
 
         //Randomly pick one
         val r = Random(System.nanoTime())
+
+        Log.d(TAG, "* * * q all : ${tags}")
+        Log.d(TAG, "* * * ${results.size}")
         val id = r.nextInt(results.size)
+
         mRealm.executeTransaction {
             results[id]?.isAsked = true
         }
@@ -69,7 +76,6 @@ class QuestionDao(private val mRealm: Realm) {
         _tag: String
     ) {
         mRealm.executeTransaction {
-
             val item = mRealm.createObject<Question>(_id)
             item.question = _question
             item.tag = _tag
