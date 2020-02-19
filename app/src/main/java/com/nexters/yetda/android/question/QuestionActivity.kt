@@ -30,7 +30,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         imageNoButton.setOnClickListener {
             cardQuestion.animate()
                 .translationX(convertDpToPixel(-400f))
-                .setDuration(1000)
+                .setDuration(700)
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction {
 //                    cardQuestion.translationX = 0f
@@ -40,7 +40,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         imageOkButton.setOnClickListener {
             cardQuestion.animate()
                 .translationX(convertDpToPixel(400f))
-                .setDuration(1000)
+                .setDuration(700)
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction {
 //                    cardQuestion.translationX = 0f

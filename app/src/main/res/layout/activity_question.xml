@@ -35,48 +35,61 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="330dp">
-                
+
                 <androidx.cardview.widget.CardView
                         android:id="@+id/cardQuestion"
                         android:layout_width="274dp"
                         android:layout_height="294dp"
                         app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="14dp"
                         app:cardElevation="10dp"
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="22dp"
+                            android:ellipsize="none"
+                            android:maxLines="99"
+                            android:text="재미있는 선물을 준비할까요?"
+                            android:textColor="@color/black"
+                            android:textSize="34sp" />
+
+                </androidx.cardview.widget.CardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent">
 
                     <androidx.cardview.widget.CardView
                             android:layout_width="274dp"
                             android:layout_height="294dp"
                             app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="14dp"
                             app:cardElevation="10dp"
                             app:cardUseCompatPadding="true"
-                            app:cardCornerRadius="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:gravity="center_horizontal" >
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
                                 android:layout_width="233dp"
                                 android:layout_height="250dp"
                                 android:layout_marginTop="23dp"
                                 app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="12dp"
                                 app:cardElevation="10dp"
                                 app:cardUseCompatPadding="true"
-                                app:cardCornerRadius="12dp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,20 +97,20 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="vertical"
                                 android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent" >
+                                app:layout_constraintStart_toStartOf="parent">
 
                             <androidx.cardview.widget.CardView
                                     android:layout_width="198dp"
                                     android:layout_height="214dp"
                                     android:layout_marginTop="10dp"
                                     app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
                                     app:cardUseCompatPadding="true"
-                                    app:cardCornerRadius="10dp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
@@ -109,7 +122,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-            
+
             <!--
                         <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/layout_question_container"
