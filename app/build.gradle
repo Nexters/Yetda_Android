@@ -35,6 +35,10 @@ android {
     dataBinding {
         enabled = true
     }
+    //use parcelize
+    androidExtensions{
+        experimental = true
+    }
 }
 
 dependencies {

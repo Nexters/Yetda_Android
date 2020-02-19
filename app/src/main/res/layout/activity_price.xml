@@ -37,10 +37,10 @@
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_bold"
                     android:text="0~100만원"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/txt_big"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/txt_big" />
 
             <com.appyvet.materialrangebar.RangeBar
                     android:id="@+id/range_price"
@@ -51,16 +51,16 @@
                     app:mrb_barWeight="2dp"
                     app:mrb_connectingLineColor="@color/red"
                     app:mrb_connectingLineWeight="2dp"
-                    app:mrb_pinRadius="20dp"
+                    app:mrb_leftSelectorColor="@color/red"
                     app:mrb_pinColor="@color/red"
-                    app:mrb_rangeBarPaddingBottom="15dp"
                     app:mrb_pinMaxFont="@dimen/txt_small"
                     app:mrb_pinMinFont="@dimen/txt_small"
+                    app:mrb_pinRadius="20dp"
                     app:mrb_pinTextColor="@color/white"
-                    app:mrb_leftSelectorColor="@color/red"
-                    app:mrb_rightSelectorColor="@color/red"
                     app:mrb_rangeBar="true"
                     app:mrb_rangeBarColor="@color/light_grey"
+                    app:mrb_rangeBarPaddingBottom="15dp"
+                    app:mrb_rightSelectorColor="@color/red"
                     app:mrb_selectorBoundaryColor="@color/light_grey"
                     app:mrb_selectorBoundarySize="1dp"
                     app:mrb_selectorColor="@color/white"
@@ -72,8 +72,8 @@
         </LinearLayout>
 
         <TextView
-                style="@style/btn"
                 android:id="@+id/textPriceNext"
+                style="@style/btn"
                 android:selected="@{vm.btnActivated}"
                 android:text="@string/next" />
     </LinearLayout>

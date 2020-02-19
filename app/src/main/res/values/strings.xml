@@ -26,6 +26,13 @@
 
     <string name="restart">처음으로 돌아가기</string>
 
+<!--    dialog-->
+    <string name="wait">잠깐만요!</string>
+    <string name="reset_alert">이 페이지를 벗어나면\n지금까지 진행하신 질문에 대한\n<b>답변이 초기화</b>됩니다.</string>
+    <string name="proceed">계속진행</string>
+    <string name="cancel">아니요</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
