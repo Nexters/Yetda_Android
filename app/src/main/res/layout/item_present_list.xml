@@ -13,19 +13,20 @@
             android:id="@+id/tv_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_bold"
             android:text="쭈피"
             android:textColor="@color/black"
-            android:textSize="@dimen/txt_medium"
-            android:fontFamily="@font/noto_sans_bold"/>
-r
+            android:textSize="@dimen/txt_medium" />
+
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/click_padding">
+            android:layout_marginTop="3dp">
 
         <ImageView
                 android:id="@+id/iv_list_birthday"
                 style="@style/iv"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/click_padding"
                 app:srcCompat="@drawable/ic_birthday" />
 
@@ -33,28 +34,30 @@ r
                 android:id="@+id/tv_item_birthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/iv_list_birthday"
                 android:text="8월 22일"
                 android:textColor="@color/txtBlack"
-                android:textSize="@dimen/txt_small" />
+                android:textSize="14sp" />
 
         <TextView
                 android:id="@+id/tv_item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:text="\4000~5000"
                 android:textColor="@color/genderGrey"
-                android:textSize="@dimen/txt_small" />
+                android:textSize="14sp" />
 
     </RelativeLayout>
 
     <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/click_padding"
-            android:layout_marginBottom="10dp"
-            android:background="@color/light_grey" />
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="#f0f0f0" />
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -65,12 +68,11 @@ r
                 android:id="@+id/tv_item_tag1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/click_padding"
                 android:background="@drawable/bg_tag_rounded"
                 android:paddingLeft="10dp"
-                android:paddingTop="@dimen/click_padding"
+                android:paddingTop="3dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="@dimen/click_padding"
+                android:paddingBottom="3dp"
                 android:text="학천마리"
                 android:textColor="@color/txtBlack"
                 android:textSize="@dimen/txt_small" />
@@ -79,12 +81,26 @@ r
                 android:id="@+id/tv_item_tag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/click_padding"
+                android:layout_marginRight="@dimen/click_padding"
                 android:background="@drawable/bg_tag_rounded"
                 android:paddingLeft="10dp"
-                android:paddingTop="@dimen/click_padding"
+                android:paddingTop="3dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="@dimen/click_padding"
+                android:paddingBottom="3dp"
                 android:text="네잎클로버"
+                android:textColor="@color/txtBlack"
+                android:textSize="@dimen/txt_small" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tag_rounded"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="···"
                 android:textColor="@color/txtBlack"
                 android:textSize="@dimen/txt_small" />
     </LinearLayout>

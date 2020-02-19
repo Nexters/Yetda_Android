@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/side_interval"
                         android:layout_marginTop="@dimen/top_interval"
-                        android:layout_marginBottom="@dimen/side_interval"
+                        android:layout_marginBottom="10dp"
                         android:text="선물 추천기록"
                         android:textColor="@color/black"
                         android:textSize="@dimen/txt_small" />

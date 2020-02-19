@@ -9,6 +9,9 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.database.model.History
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.item_present_list.view.*
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeAdapter(private val items: ArrayList<History>) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -18,7 +21,7 @@ class HomeAdapter(private val items: ArrayList<History>) :
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         //click시 토스트
         val item = items[position]
-        val listener = View.OnClickListener {it ->
+        val listener = View.OnClickListener { it ->
             Toast.makeText(it.context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()
         }
         holder.apply {
@@ -36,14 +39,17 @@ class HomeAdapter(private val items: ArrayList<History>) :
 
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        private var view:View = v
+        private var view: View = v
         fun bind(listener: View.OnClickListener, item: History) {
             view.tv_item_name.text = item.name
             view.tv_item_birthday.text = item.birthday
-            view.tv_item_price.text = item.startPrice.toString() + "~" + item.endPrice.toString()
+            view.tv_item_price.text =
+                "${NumberFormat.getCurrencyInstance(Locale.KOREA).format(item.startPrice)} ~ ${NumberFormat.getCurrencyInstance(Locale.KOREA).format(item.endPrice)}"
             view.tv_item_tag1.text = item.presents.get(0)!!.name
             view.tv_item_tag2.text = item.presents.get(1)!!.name
             view.setOnClickListener(listener)
         }
     }
+
+
 }
