@@ -61,6 +61,7 @@
                             android:padding="22dp"
                             android:textColor="@color/black"
                             android:textSize="34sp"
+                            android:fontFamily="@font/noto_sans_bold"
                             tools:text="재미있는 선물을 준비할까요?" />
 
                 </androidx.cardview.widget.CardView>

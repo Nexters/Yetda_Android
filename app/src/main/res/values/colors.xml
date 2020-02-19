@@ -11,7 +11,7 @@
     <color name="transparent">#00ffffff</color>
 
     <color name="genderGrey">#8c9098</color>
-<color name="btnBgColor">#eeeeee</color>
+    <color name="btnBgColor">#eeeeee</color>
     <color name="btnTxtColor">#c9c9c9</color>
 
     <!--ripple-->

@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.question
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
@@ -61,6 +63,8 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         })
 
         viewModel.getQustionEvent.observe(this, Observer {
+            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)))
+            textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.black))
             question = it
             textQuestionCard.text = it.question
             cardQuestion.visibility = View.VISIBLE
@@ -71,6 +75,9 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     override fun initViewFinal() {
         imageNoButton.setOnClickListener {
+            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.genderGrey)))
+            textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
+
             cardQuestion.animate()
                 .translationX(convertDpToPixel(-400f))
                 .setDuration(700)
@@ -85,6 +92,9 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         }
 
         imageOkButton.setOnClickListener {
+            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)))
+            textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
+
             cardQuestion.animate()
                 .translationX(convertDpToPixel(400f))
                 .setDuration(700)
