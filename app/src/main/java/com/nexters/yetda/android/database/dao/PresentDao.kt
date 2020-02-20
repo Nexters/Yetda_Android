@@ -12,7 +12,6 @@ import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 
-
 class PresentDao(private val mRealm: Realm) {
 
     fun findAllPresents(): LiveData<RealmResults<Present>> {
@@ -34,12 +33,15 @@ class PresentDao(private val mRealm: Realm) {
             .findFirst()
     }
 
-    fun findPresents(tags: Array<String>, _startPrice:Long, _endPrice:Long): RealmResults<Present>{
+    fun findPresents(tags: ArrayList<String>, _startPrice:Long, _endPrice:Long): RealmResults<Present>{
+        val tagList = arrayOfNulls<String>(tags.size)
+        tags.toArray(tagList)
         return mRealm.where<Present>()
-            .not()
-            .beginGroup()
-            .`in`("tags", tags)
-            .endGroup()
+//            .not()
+//            .beginGroup()
+            // todo 아래 방법은 가능하지 않다.
+//            .`in`("tags", tagList)
+//            .endGroup()
             .between("price",_startPrice,_endPrice)
             .findAll()
     }

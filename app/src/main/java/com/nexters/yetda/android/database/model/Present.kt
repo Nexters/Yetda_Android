@@ -5,7 +5,6 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 open class Present : RealmObject(), Parcelable {

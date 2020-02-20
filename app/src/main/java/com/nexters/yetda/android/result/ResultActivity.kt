@@ -18,13 +18,12 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
 
     private val TAG = javaClass.simpleName
 
-
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
 
         //TODO: Sample Code
-        val history = intent.getParcelableExtra<History>("ITEM")
-        viewModel.name.value = history.name
+//        val history = intent.getParcelableExtra<History>("ITEM")
+//        viewModel.name.value = history.name
     }
 
     override fun initDataBinding() {

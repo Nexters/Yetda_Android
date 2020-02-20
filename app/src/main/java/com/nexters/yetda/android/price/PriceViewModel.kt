@@ -50,7 +50,8 @@ class PriceViewModel : BaseViewModel() {
 
     }
 
-    fun getTags(): Array<String> {
+    fun getTags(): ArrayList<String> {
+        val list = ArrayList<String>()
         //1. Reverse gender
         var _gender = ""
         _gender = if (gender == "여성") {
@@ -58,6 +59,7 @@ class PriceViewModel : BaseViewModel() {
         } else {
             "여성"
         }
+        list.add(_gender)
 
         //2. get season and reverse
         var season = birthday.substring(0, 2)
@@ -69,7 +71,9 @@ class PriceViewModel : BaseViewModel() {
         } else if (season.toInt() in winter) {
             season = "여름"
         }
+        list.add(season)
 
-        return arrayOf(_gender, season)
+//        return arrayOf(_gender, season)
+        return list
     }
 }

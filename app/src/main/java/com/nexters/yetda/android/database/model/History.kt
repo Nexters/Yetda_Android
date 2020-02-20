@@ -1,14 +1,11 @@
 package com.nexters.yetda.android.database.model
 
-import android.os.Parcel
 import android.os.Parcelable
 import com.nexters.yetda.android.database.RealmUtil
-import io.realm.*
+import io.realm.RealmList
+import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
-import io.realm.annotations.RealmClass
-import kotlinx.android.parcel.Parceler
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
 import kotlinx.android.parcel.WriteWith
 
 /**

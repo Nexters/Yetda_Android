@@ -54,7 +54,6 @@
             <TextView
                     android:id="@+id/text_idontknow"
                     style="@style/btn"
-                    android:onClick="@{()->vm.clickNextButton()}"
                     android:text="@string/idontknow" />
 
         </LinearLayout>

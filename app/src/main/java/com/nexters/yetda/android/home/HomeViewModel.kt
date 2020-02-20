@@ -55,9 +55,11 @@ class HomeViewModel : BaseViewModel() {
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
                 Log.d(TAG, "* * * ${documents[0]}")
+
                 PresentDao(realm).deleteAll()
                 for ((i, doc) in documents.withIndex())
                     PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.tags)
+
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
