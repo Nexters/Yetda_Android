@@ -33,12 +33,12 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding, QuestionViewModel
     }
 
     override fun initDataBinding() {
-        viewModel.startNextActivityEvent.observe(this, Observer {
-            if (it is String) {
-                Log.d(TAG, "* * * text : $it")
-            }
-            Log.d(TAG, "* * * QuestionFragment text_idontknow")
-        })
+//        viewModel.startNextActivityEvent.observe(this, Observer {
+//            if (it is String) {
+//                Log.d(TAG, "* * * text : $it")
+//            }
+//            Log.d(TAG, "* * * QuestionFragment text_idontknow")
+//        })
     }
 
     override fun initViewFinal(view: View) {

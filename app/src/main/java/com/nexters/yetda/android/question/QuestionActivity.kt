@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.question
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -13,57 +14,41 @@ import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
+import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
+import com.nexters.yetda.android.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_question.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
     override val layoutResourceId = R.layout.activity_question
     override val viewModel: QuestionViewModel by viewModel()
-
     private val TAG = javaClass.simpleName
-    private val fragment = QuestionFragment.newInstance()
-    private val fragmentTransaction = supportFragmentManager.beginTransaction()
 
     var question = Question()
     lateinit var tags: ArrayList<String>
+    lateinit var history: History
     lateinit var aniAlpha: Animation
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         aniAlpha = AnimationUtils.loadAnimation(this, R.anim.ani_fade_in)
-//        aniAlpha.setAnimationListener(object : Animation.AnimationListener {
-//            override fun onAnimationRepeat(p0: Animation?) {
-//                //
-//            }
-//
-//            override fun onAnimationEnd(p0: Animation?) {
-//                //
-//            }
-//
-//            override fun onAnimationStart(p0: Animation?) {
-//                //
-//            }
-//        })
 
         tags = intent.getStringArrayListExtra("TAGS")
-        Log.d(TAG, "* * * tags ::: ${tags[0]}")
-        Log.d(TAG, "* * * tags ::: ${tags[1]}")
-        viewModel.findQuestion(tags)
+        history = intent.getParcelableExtra<History>("ITEM")
+        findQuestionAndPresents()
     }
 
     override fun initDataBinding() {
-//        viewModel.startNextActivityEvent.observe(this, Observer {
-//            startActivity(Intent(applicationContext, ResultActivity::class.java))
-//        })
-
         viewModel.backBeforeActivityEvent.observe(this, Observer {
+            // todo 경고 문구 후 finish 처리해야 함
             finish()
         })
 
         viewModel.getQustionEvent.observe(this, Observer {
-            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)))
+            cardQuestion.setCardBackgroundColor(
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)))
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.black))
             question = it
             textQuestionCard.text = it.question
@@ -71,11 +56,18 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             cardQuestion.startAnimation(aniAlpha)
         })
 
+        viewModel.startNextActivityEvent.observe(this, Observer {
+            val intent = Intent(this, ResultActivity::class.java)
+//            intent.putExtra("TAGS", viewModel.getTags())
+//            intent.putExtra("ITEM", history)
+            startActivity(intent)
+        })
     }
 
     override fun initViewFinal() {
         imageNoButton.setOnClickListener {
-            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.genderGrey)))
+            cardQuestion.setCardBackgroundColor(
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.genderGrey)))
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
 
             cardQuestion.animate()
@@ -87,12 +79,13 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
                     cardQuestion.visibility = View.GONE
                     cardQuestion.translationX = 0f
                     tags.add(question.tag)
-                    viewModel.findQuestion(tags)
+                    findQuestionAndPresents()
                 }.start()
         }
 
         imageOkButton.setOnClickListener {
-            cardQuestion.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)))
+            cardQuestion.setCardBackgroundColor(
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)))
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
 
             cardQuestion.animate()
@@ -103,22 +96,14 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
                     // OK를 클릭한 뒤
                     cardQuestion.visibility = View.GONE
                     cardQuestion.translationX = 0f
-                    viewModel.findQuestion(tags)
+                    findQuestionAndPresents()
                 }.start()
         }
     }
 
-    fun addQuestionFragment(bundle: Bundle) {
-        fragment.arguments = bundle
-//        fragmentTransaction.add(R.id.layout_question_container, fragment)
-        fragmentTransaction.commit()
-    }
-
-    private fun transXAni() {
-//        val transAnimation: ObjectAnimator = ObjectAnimator.ofFloat(image, "y", image.getY(), 20)
-//        transAnimation.duration = duration.toLong()
-//        transAnimation.interpolator = AccelerateInterpolator()
-//        transAnimation.start()
+    fun findQuestionAndPresents() {
+        viewModel.findQuestion(tags)
+        viewModel.findPresents(tags, history.startPrice, history.endPrice)
     }
 
     private fun convertDpToPixel(dp: Float): Float {

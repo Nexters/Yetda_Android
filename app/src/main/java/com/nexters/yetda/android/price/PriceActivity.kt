@@ -9,9 +9,7 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityPriceBinding
-import com.nexters.yetda.android.name.NameActivity
 import com.nexters.yetda.android.question.QuestionActivity
-import com.nexters.yetda.android.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_price.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

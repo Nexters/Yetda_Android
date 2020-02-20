@@ -31,15 +31,9 @@ class QuestionDao(private val mRealm: Realm) {
 
     }
 
-    fun findQuestion(): Question? {
-        return mRealm.where<Question>()
-            .findFirst()
-    }
-
     fun findQuestion(tags: ArrayList<String>): Question? {
         val tagList = arrayOfNulls<String>(tags.size)
         tags.toArray(tagList)
-//        val tagList: Array<String> = tags.toArray()
         val results: RealmResults<Question> =
             mRealm.where<Question>()
                 // todo 테스트중에는 제외
@@ -52,9 +46,6 @@ class QuestionDao(private val mRealm: Realm) {
 
         //Randomly pick one
         val r = Random(System.nanoTime())
-
-        Log.d(TAG, "* * * q all : ${tags}")
-        Log.d(TAG, "* * * ${results.size}")
         val id = r.nextInt(results.size)
 
         mRealm.executeTransaction {
