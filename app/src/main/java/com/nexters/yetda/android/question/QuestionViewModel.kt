@@ -44,7 +44,7 @@ class QuestionViewModel : BaseViewModel() {
         _startPrice: Long,
         _endPrice: Long
     ): RealmResults<Present> {
-        Log.d(TAG, "* * * * ${_startPrice} // ${_endPrice}")
+
 
         val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
         Log.d(TAG, "* * * size :: ${presents.size}")

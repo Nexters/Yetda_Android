@@ -10,7 +10,6 @@ import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityPriceBinding
 import com.nexters.yetda.android.question.QuestionActivity
-import kotlinx.android.synthetic.main.activity_price.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -31,8 +30,8 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            history.startPrice = leftValue.toLong()
-            history.endPrice = rightValue.toLong()
+            history.startPrice = (leftValue * 10000).toLong()
+            history.endPrice = (rightValue * 10000).toLong()
 
             val intent = Intent(this, QuestionActivity::class.java)
             intent.putExtra("TAGS", viewModel.getTags())
