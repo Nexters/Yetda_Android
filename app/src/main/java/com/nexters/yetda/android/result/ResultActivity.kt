@@ -21,20 +21,20 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     private val TAG = javaClass.simpleName
     var history: History = History()
 
-    var index:Int = 0
+    var index: Int = 0
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         Glide.with(this).load(R.raw.pung).into(binding.ivResultPung)
         //TODO: Sample Code
 //        val history = intent.getParcelableExtra<History>("ITEM")
 //        viewModel.name.value = history.name
-        var id = intent.getIntExtra("hitoryId",0)
-        if(id == 0){
+        var id = intent.getIntExtra("hitoryId", 0)
+        if (id == 0) {
             //오류
             startActivity(Intent(applicationContext, HomeActivity::class.java))
             finish()
-        }else{
-           history =  viewModel.findHistoryById(id)
+        } else {
+            history = viewModel.findHistoryById(id)
         }
 
     }
@@ -54,8 +54,8 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     override fun initViewFinal() {
     }
 
-    fun setPresent(){
-        if(index<history.presents.size){
+    fun setPresent() {
+        if (index < history.presents.size) {
             binding.tvResultPresent.text = history.presents[index]?.name
             Glide
                 .with(this)
@@ -65,7 +65,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
                 .into(binding.ivResultPresent)
 
             index++
-        }else{
+        } else {
             index = 0
         }
     }

@@ -40,6 +40,12 @@ class QuestionViewModel : BaseViewModel() {
     val getQustionEvent: LiveData<Question>
         get() = _getQuestionEvent
 
+
+    private val _getQuestionFinished = SingleLiveEvent<Any>()
+    val getQuestionFinished: LiveData<Any>
+        get() = _getQuestionFinished
+
+
     var name = MutableLiveData<String>()
     var resultPresents = RealmList<Present>()
 
@@ -50,7 +56,7 @@ class QuestionViewModel : BaseViewModel() {
             _getQuestionEvent.postValue(question)
         } else {
             // 6번째 질문이 나오지 않고 결과 화면이 출력
-            showResult()
+            _getQuestionFinished.call()
         }
     }
 
@@ -87,19 +93,21 @@ class QuestionViewModel : BaseViewModel() {
         }
         indices.shuffle()
         var max = if (resultPresents.size > 10)
-            10
+            9
         else
-            resultPresents.size
+            resultPresents.size - 1
 
         for (i in 0..max) {
-            history.presents.add(resultPresents[i])
+            val index = indices[i]
+            history.presents.add(resultPresents[index])
         }
 
+    }
 
-        val historyDao = HistoryDao(realm)
-        historyId = historyDao.addHistory(history)
+    fun addHistory() {
+        historyId = HistoryDao(realm).addHistory(history)
         Log.d(TAG, "* * * id :: ${historyId}")
-        _startNextActivityEvent.call()
+//        _startNextActivityEvent.call()
     }
 
 

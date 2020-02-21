@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.question
 
+import android.animation.Animator
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.util.DisplayMetrics
@@ -16,8 +17,10 @@ import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
+import com.nexters.yetda.android.home.HomeActivity
 import com.nexters.yetda.android.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_question.*
+import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
@@ -48,7 +51,8 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
         viewModel.getQustionEvent.observe(this, Observer {
             cardQuestion.setCardBackgroundColor(
-                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)))
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white))
+            )
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.black))
             question = it
             textQuestionCard.text = it.question
@@ -56,22 +60,18 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             cardQuestion.startAnimation(aniAlpha)
         })
 
-        viewModel.startNextActivityEvent.observe(this, Observer {
-            if (viewModel.historyId > 0) {
-                val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("hitoryId", viewModel.historyId)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "(ㄒoㄒ) 알 수 없는 문제가 생겼습니다.\n앱을 종료 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
-            }
-
+        viewModel.getQuestionFinished.observe(this, Observer {
+            showAnimation()
         })
+
+
     }
 
     override fun initViewFinal() {
         imageNoButton.setOnClickListener {
             cardQuestion.setCardBackgroundColor(
-                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.genderGrey)))
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.genderGrey))
+            )
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
 
             cardQuestion.animate()
@@ -89,7 +89,8 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
         imageOkButton.setOnClickListener {
             cardQuestion.setCardBackgroundColor(
-                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)))
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red))
+            )
             textQuestionCard.setTextColor(ContextCompat.getColor(this, R.color.white))
 
             cardQuestion.animate()
@@ -113,7 +114,10 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             viewModel.findQuestion(tags)
         } else {
             // 선물이 10개 이하인 경우 결과 화면 출력
-            viewModel.showResult()
+//            viewModel.showResult()
+            //초기에 데이터를 못갖고 오기도 함.
+            if (presentList.size != 0)
+                showAnimation()
         }
 //        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
 //            Log.d(TAG, "* * * p list ::: ${it.size}")
@@ -134,5 +138,43 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     override fun onDestroy() {
         super.onDestroy()
         viewModel.initAskedStatus()
+    }
+
+    fun showAnimation() {
+        viewModel.showResult()
+        binding.lottieQuestionResult.visibility = View.VISIBLE
+        binding.lottieQuestionResult.playAnimation()
+        binding.lottieQuestionResult.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                binding.lottieQuestionResult.visibility = View.GONE
+                binding.lottieQuestionResultRepeat.visibility = View.VISIBLE
+                binding.lottieQuestionResultRepeat.playAnimation()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+            }
+        })
+
+        binding.lottieQuestionResultRepeat.setOnClickListener {
+            viewModel.addHistory()
+
+            if (viewModel.historyId > 0) {
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("hitoryId", viewModel.historyId)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "(ㄒoㄒ) 알 수 없는 문제가 생겼습니다.\n앱을 종료 후 다시 시도해주세요.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }
