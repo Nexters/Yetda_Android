@@ -60,4 +60,8 @@ class QuestionViewModel : BaseViewModel() {
     fun clickBackButton() {
         _backBeforeActivityEvent.call()
     }
+
+    fun initAskedStatus(){
+        QuestionDao(realm).initAskedStatus()
+    }
 }

@@ -33,6 +33,12 @@ class HistoryDao(private val mRealm: Realm) {
             .findFirst()
     }
 
+    fun deleteAll(){
+        val result = mRealm.where<History>().findAll()
+        mRealm.executeTransaction {
+            result.deleteAllFromRealm()
+        }
+    }
     fun addHistory(
         name: String,
         gender: String,

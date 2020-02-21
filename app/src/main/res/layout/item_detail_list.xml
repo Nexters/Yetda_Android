@@ -21,8 +21,8 @@
         <ImageView
                 android:id="@+id/iv_item_detail"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
+                android:layout_marginLeft="95dp"
+                android:layout_marginRight="95dp"
                 style="@style/iv"
                 android:src="@drawable/img_present_default" />
 
@@ -34,6 +34,13 @@
                 android:fontFamily="@font/noto_sans_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_big" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/txtBlack"
+                android:text="당신에게 딱 맞는 선물이에요."
+                android:textSize="@dimen/txt_small" />
     </LinearLayout>
 
 </layout>

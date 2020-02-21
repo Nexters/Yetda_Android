@@ -54,9 +54,14 @@ class HomeAdapter(private val items: ArrayList<History>) :
 
             if(item.presents.size>0){
                 view.tv_item_tag1.text = item.presents.get(0)!!.name
-                if(item.presents.size>1)
+                if(item.presents.size>1){
                     view.tv_item_tag2.text = item.presents.get(1)!!.name
-
+                }else{
+                    view.tv_item_tag2.visibility=View.GONE
+                }
+            }else{
+                view.tv_item_tag1.visibility=View.GONE
+                view.tv_item_tag2.visibility=View.GONE
             }
 
             view.setOnClickListener(listener)
