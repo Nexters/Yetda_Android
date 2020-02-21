@@ -26,6 +26,8 @@
 
     <string name="restart">처음으로 돌아가기</string>
 
+    <string name="detail"> 님을 위한\n추천선물</string>
+
 <!--    dialog-->
     <string name="wait">잠깐만요!</string>
     <string name="reset_alert">이 페이지를 벗어나면\n지금까지 진행하신 질문에 대한\n<b>답변이 초기화</b>됩니다.</string>

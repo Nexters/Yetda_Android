@@ -39,6 +39,11 @@ android {
     androidExtensions{
         experimental = true
     }
+
+    //doAfterTextChanged jvm error fix
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -69,5 +74,8 @@ dependencies {
     implementation "io.realm:realm-gradle-plugin:$realm_version"
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //history card viewpager
+    implementation "com.github.IslamKhSh:CardSlider:${card_slider_version}"
 
 }
