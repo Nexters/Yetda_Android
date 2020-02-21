@@ -32,8 +32,7 @@ class QuestionDao(private val mRealm: Realm) {
         tags.toArray(tagList)
         val results: RealmResults<Question> =
             mRealm.where<Question>()
-                // todo 테스트중에는 제외
-//                .equalTo("isAsked", false)
+                .equalTo("isAsked", false)
                 .not()
                 .beginGroup()
                 .`in`("tag", tagList)
@@ -42,6 +41,7 @@ class QuestionDao(private val mRealm: Realm) {
 
         //Randomly pick one
         val r = Random(System.nanoTime())
+        // todo : error ::: Random range is empty: [0, 0).
         val id = r.nextInt(results.size)
 
         mRealm.executeTransaction {

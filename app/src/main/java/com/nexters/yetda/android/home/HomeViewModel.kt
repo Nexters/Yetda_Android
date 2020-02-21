@@ -11,14 +11,12 @@ import com.nexters.yetda.android.database.dao.PresentDao
 import com.nexters.yetda.android.database.dao.QuestionDao
 import com.nexters.yetda.android.database.dao.UpdateDao
 import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Present
 import com.nexters.yetda.android.database.model.Tag
 import com.nexters.yetda.android.model.PresentModel
 import com.nexters.yetda.android.model.QuestionModel
 import com.nexters.yetda.android.model.UpdateModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
-import io.realm.RealmList
 import io.realm.RealmResults
 import java.text.SimpleDateFormat
 import java.util.*
@@ -97,11 +95,6 @@ class HomeViewModel : BaseViewModel() {
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(UpdateModel::class.java)
-//                Log.d(
-//                    TAG,
-//                    "* * * date : ${convertLongToTime(documents[0].updatedAt.seconds)}"
-//                )//2020.02.15 14:39:52
-//                Log.d(TAG, "* * * date : ${documents[0].updatedAt.seconds}") //1581777592
 
                 //newest updateDate
                 val strDate = documents[0].updated_at.seconds
@@ -128,14 +121,12 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun sampleHistory() {
-
         //TODO: Present가 비어있을 경우 처리해야함.
-        var presents = RealmList<Present>()
-        presents.add(PresentDao(realm).findPresentById(13))
-        presents.add(PresentDao(realm).findPresentById(12))
-        HistoryDao(realm).addHistory("도현", "여성", "3월 9일", 10000, 20000, presents)
-        HistoryDao(realm).addHistory("쭈피", "여성", "3월 9일", 10000, 20000, presents)
-
+//        var presents = RealmList<Present>()
+//        presents.add(PresentDao(realm).findPresentById(13))
+//        presents.add(PresentDao(realm).findPresentById(12))
+//        HistoryDao(realm).addHistory("도현", "여성", "3월 9일", 10000, 20000, presents)
+//        HistoryDao(realm).addHistory("쭈피", "여성", "3월 9일", 10000, 20000, presents)
     }
 
     override fun onCleared() {

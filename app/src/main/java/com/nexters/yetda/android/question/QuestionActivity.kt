@@ -59,7 +59,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         viewModel.startNextActivityEvent.observe(this, Observer {
             if (viewModel.historyId > 0) {
                 val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("hitoryId", viewModel.historyId)
+                intent.putExtra("historyId", viewModel.historyId)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "(ㄒoㄒ) 알 수 없는 문제가 생겼습니다.\n앱을 종료 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
@@ -115,16 +115,6 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             // 선물이 10개 이하인 경우 결과 화면 출력
             viewModel.showResult()
         }
-//        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
-//            Log.d(TAG, "* * * p list ::: ${it.size}")
-//
-//            val presentList = ArrayList<Present>()
-////            presentList.addAll(realm.copyFromRealm(presents))
-////            presentList.forEach {
-////                // todo : price값이 모두 0으로 들어가고 있음.
-////                Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-////            }
-//        })
     }
 
     private fun convertDpToPixel(dp: Float): Float {

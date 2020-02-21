@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.question
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.yetda.android.base.BaseViewModel
@@ -52,8 +51,6 @@ class QuestionViewModel : BaseViewModel() {
 
     fun saveHistoryInfo(history: History) {
         this.history = history
-        Log.d(TAG, "* * * history ::: ${this.history}")
-
         HistoryDao(realm).findAllHistory()
     }
 
@@ -67,10 +64,6 @@ class QuestionViewModel : BaseViewModel() {
         presentList.addAll(realm.copyFromRealm(presents))
         resultPresents.clear()
         resultPresents.addAll(presents.subList(0, presents.size))
-        presentList.forEach {
-            // todo : price값이 모두 0으로 들어가고 있음.
-//            Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-        }
         return presentList
     }
 
@@ -79,7 +72,6 @@ class QuestionViewModel : BaseViewModel() {
         val historyDao = HistoryDao(realm)
         historyDao.addHistory(history)
         historyId = historyDao.nextId
-        Log.d(TAG, "* * * id :: ${historyId}")
         _startNextActivityEvent.call()
     }
 
