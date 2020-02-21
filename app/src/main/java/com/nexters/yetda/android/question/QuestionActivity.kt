@@ -57,9 +57,9 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         })
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            if (viewModel.nextId > 0) {
+            if (viewModel.historyId > 0) {
                 val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("hitoryId", viewModel.nextId)
+                intent.putExtra("hitoryId", viewModel.historyId)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "(ㄒoㄒ) 알 수 없는 문제가 생겼습니다.\n앱을 종료 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show()

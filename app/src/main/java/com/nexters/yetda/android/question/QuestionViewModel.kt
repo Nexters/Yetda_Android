@@ -21,7 +21,7 @@ class QuestionViewModel : BaseViewModel() {
         Realm.getDefaultInstance()
     }
     var qCount = 1 // 시작하자마자 질문이 1개 나타나기 때문
-    var nextId = -1
+    var historyId = -1
     var history = History()
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
@@ -76,8 +76,10 @@ class QuestionViewModel : BaseViewModel() {
 
     fun showResult() {
         history.presents = resultPresents
-        HistoryDao(realm).addHistory(history)
-        nextId = HistoryDao(realm).nextId
+        val historyDao = HistoryDao(realm)
+        historyDao.addHistory(history)
+        historyId = historyDao.nextId
+        Log.d(TAG, "* * * id :: ${historyId}")
         _startNextActivityEvent.call()
     }
 

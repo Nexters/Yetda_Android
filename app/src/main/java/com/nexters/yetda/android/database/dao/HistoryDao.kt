@@ -2,11 +2,9 @@ package com.nexters.yetda.android.database.dao
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.firebase.firestore.auth.User
 import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.util.LiveRealmData
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
@@ -28,7 +26,7 @@ class HistoryDao(private val mRealm: Realm) {
 
     fun findHistoryById(id: Int): History? {
         return mRealm.where<History>()
-            .equalTo("id",id)
+            .equalTo("id", id)
             .findFirst()
     }
 
@@ -62,13 +60,12 @@ class HistoryDao(private val mRealm: Realm) {
         }
     }
 
-    fun addHistory(history: History): Int {
-        mRealm.executeTransaction {
-            val currentId = mRealm.where<History>(History::class.java).max("id")
-            Log.d(TAG, "* * * max : ${currentId}")
-            nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+    fun addHistory(history: History) {
+        val currentId = mRealm.where<History>(History::class.java).max("id")
+        nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
 
-            val newHistory = mRealm.createObject<History>(nextId)
+        mRealm.executeTransaction {
+            val newHistory = it.createObject<History>(nextId)
             newHistory.name = history.name
             newHistory.gender = history.gender
             newHistory.birthday = history.birthday
@@ -77,10 +74,7 @@ class HistoryDao(private val mRealm: Realm) {
             newHistory.presents = history.presents
             newHistory.createdAt = System.currentTimeMillis() / 1000
 
-            // todo : crash (RealmPrimaryKeyConstraintException: Attempting to create an object of type 'History' with an existing primary key value '1'.)
-            it.copyToRealm(history)
+            it.copyToRealm(newHistory)
         }
-
-        return nextId
     }
 }
