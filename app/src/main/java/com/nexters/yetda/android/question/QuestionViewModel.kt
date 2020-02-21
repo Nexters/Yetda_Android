@@ -13,6 +13,10 @@ import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmList
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.random.Random
+
 
 class QuestionViewModel : BaseViewModel() {
 
@@ -64,7 +68,7 @@ class QuestionViewModel : BaseViewModel() {
     ): ArrayList<Present> {
         val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
         val presentList = ArrayList<Present>()
-        presentList.addAll(realm.copyFromRealm(presents))
+        presentList.addAll(presents)
         resultPresents.clear()
         resultPresents.addAll(presents.subList(0, presents.size))
         presentList.forEach {
@@ -75,19 +79,35 @@ class QuestionViewModel : BaseViewModel() {
     }
 
     fun showResult() {
-        history.presents = resultPresents
+
+        //shuffle return presents
+        val indices: ArrayList<Int> = ArrayList(resultPresents.size)
+        for (i in 0 until resultPresents.size) {
+            indices.add(i)
+        }
+        indices.shuffle()
+        var max = if (resultPresents.size > 10)
+            10
+        else
+            resultPresents.size
+
+        for (i in 0..max) {
+            history.presents.add(resultPresents[i])
+        }
+
+
         val historyDao = HistoryDao(realm)
-        historyDao.addHistory(history)
-        historyId = historyDao.nextId
+        historyId = historyDao.addHistory(history)
         Log.d(TAG, "* * * id :: ${historyId}")
         _startNextActivityEvent.call()
     }
+
 
     fun clickBackButton() {
         _backBeforeActivityEvent.call()
     }
 
-    fun initAskedStatus(){
+    fun initAskedStatus() {
         QuestionDao(realm).initAskedStatus()
     }
 }

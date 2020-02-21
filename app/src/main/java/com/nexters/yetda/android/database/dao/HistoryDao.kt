@@ -15,7 +15,6 @@ import io.realm.kotlin.where
 class HistoryDao(private val mRealm: Realm) {
 
     private val TAG = javaClass.simpleName
-    var nextId = -1
 
     fun findAllHistory(): LiveData<RealmResults<History>> {
         return asLiveData(
@@ -66,9 +65,9 @@ class HistoryDao(private val mRealm: Realm) {
         }
     }
 
-    fun addHistory(history: History) {
+    fun addHistory(history: History) :Int{
         val currentId = mRealm.where<History>(History::class.java).max("id")
-        nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+     val   nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
 
         mRealm.executeTransaction {
             val newHistory = it.createObject<History>(nextId)
@@ -81,6 +80,8 @@ class HistoryDao(private val mRealm: Realm) {
             newHistory.createdAt = System.currentTimeMillis() / 1000
 
             it.copyToRealm(newHistory)
+
         }
+        return nextId
     }
 }
