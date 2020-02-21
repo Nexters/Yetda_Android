@@ -50,10 +50,10 @@ class HistoryDao(private val mRealm: Realm) {
         presents: RealmList<Present>
     ) {
         mRealm.executeTransaction {
-            val currentId = mRealm.where<History>(History::class.java).max("id")
+            val currentId = it.where<History>(History::class.java).max("id")
             val nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
 
-            val history = mRealm.createObject<History>(nextId)
+            val history = it.createObject<History>(nextId)
             history.name = name
             history.gender = gender
             history.birthday = birthday
