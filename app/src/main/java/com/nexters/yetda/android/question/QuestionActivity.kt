@@ -7,6 +7,7 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
@@ -29,14 +30,13 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     lateinit var history: History
     lateinit var aniAlpha: Animation
 
-    var qCount = 1 // 시작하자마자 질문이 1개 나타나기 때문
-
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         aniAlpha = AnimationUtils.loadAnimation(this, R.anim.ani_fade_in)
 
         tags = intent.getStringArrayListExtra("TAGS")
         history = intent.getParcelableExtra<History>("ITEM")
+        viewModel.saveHistoryInfo(history)
         findQuestionAndPresents()
     }
 
@@ -57,9 +57,14 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
         })
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            val intent = Intent(this, ResultActivity::class.java)
-//            intent.putExtra("ITEM", history)
-            startActivity(intent)
+            if (viewModel.nextId > 0) {
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("hitoryId", viewModel.nextId)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "(ㄒoㄒ) 알 수 없는 문제가 생겼습니다.\n앱을 종료 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 

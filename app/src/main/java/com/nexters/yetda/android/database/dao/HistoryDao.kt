@@ -1,5 +1,6 @@
 package com.nexters.yetda.android.database.dao
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.auth.User
 import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
@@ -14,6 +15,9 @@ import io.realm.kotlin.where
 
 
 class HistoryDao(private val mRealm: Realm) {
+
+    private val TAG = javaClass.simpleName
+    var nextId = -1
 
     fun findAllHistory(): LiveData<RealmResults<History>> {
         return asLiveData(
@@ -56,7 +60,27 @@ class HistoryDao(private val mRealm: Realm) {
 
             it.copyToRealm(history)
         }
-
     }
 
+    fun addHistory(history: History): Int {
+        mRealm.executeTransaction {
+            val currentId = mRealm.where<History>(History::class.java).max("id")
+            Log.d(TAG, "* * * max : ${currentId}")
+            nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+
+            val newHistory = mRealm.createObject<History>(nextId)
+            newHistory.name = history.name
+            newHistory.gender = history.gender
+            newHistory.birthday = history.birthday
+            newHistory.startPrice = history.startPrice
+            newHistory.endPrice = history.endPrice
+            newHistory.presents = history.presents
+            newHistory.createdAt = System.currentTimeMillis() / 1000
+
+            // todo : crash (RealmPrimaryKeyConstraintException: Attempting to create an object of type 'History' with an existing primary key value '1'.)
+            it.copyToRealm(history)
+        }
+
+        return nextId
+    }
 }

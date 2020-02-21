@@ -41,7 +41,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
                         startActivity(Intent(applicationContext, NameActivity::class.java))
-            Log.e(TAG, "click ${list.toString()}")
+            Log.e(TAG, "click ${list}")
         })
 
         val adapter = HomeAdapter(list)
@@ -49,13 +49,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.getAllHistory().observe(this, Observer {
             it?.let {
-                Log.e(TAG, "obserbeStart ${list.toString()}")
+                Log.e(TAG, "obserbeStart ${list}")
 
                 list.clear()
                 list.addAll(it)
                 adapter.notifyDataSetChanged()
                 viewModel.isEmptyList.value = list.size == 0
-                Log.e(TAG, "notifydatasetchange ${list.toString()}")
+                Log.e(TAG, "notifydatasetchange ${list}")
             }
         })
     }
