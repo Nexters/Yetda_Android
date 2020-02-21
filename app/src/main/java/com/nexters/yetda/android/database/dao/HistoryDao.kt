@@ -1,11 +1,10 @@
 package com.nexters.yetda.android.database.dao
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.firebase.firestore.auth.User
 import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.util.LiveRealmData
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
@@ -14,6 +13,9 @@ import io.realm.kotlin.where
 
 
 class HistoryDao(private val mRealm: Realm) {
+
+    private val TAG = javaClass.simpleName
+    var nextId = -1
 
     fun findAllHistory(): LiveData<RealmResults<History>> {
         return asLiveData(
@@ -24,7 +26,7 @@ class HistoryDao(private val mRealm: Realm) {
 
     fun findHistoryById(id: Int): History? {
         return mRealm.where<History>()
-            .equalTo("id",id)
+            .equalTo("id", id)
             .findFirst()
     }
 
@@ -62,7 +64,23 @@ class HistoryDao(private val mRealm: Realm) {
 
             it.copyToRealm(history)
         }
-
     }
 
+    fun addHistory(history: History) {
+        val currentId = mRealm.where<History>(History::class.java).max("id")
+        nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+
+        mRealm.executeTransaction {
+            val newHistory = it.createObject<History>(nextId)
+            newHistory.name = history.name
+            newHistory.gender = history.gender
+            newHistory.birthday = history.birthday
+            newHistory.startPrice = history.startPrice
+            newHistory.endPrice = history.endPrice
+            newHistory.presents = history.presents
+            newHistory.createdAt = System.currentTimeMillis() / 1000
+
+            it.copyToRealm(newHistory)
+        }
+    }
 }

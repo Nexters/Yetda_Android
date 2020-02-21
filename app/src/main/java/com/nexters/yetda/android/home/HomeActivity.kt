@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
                         startActivity(Intent(applicationContext, NameActivity::class.java))
-            Log.e(TAG, "click ${list.toString()}")
+            Log.e(TAG, "click ${list}")
         })
 
         val adapter = HomeAdapter(list)
