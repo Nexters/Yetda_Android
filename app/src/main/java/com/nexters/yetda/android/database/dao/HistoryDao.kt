@@ -8,6 +8,7 @@ import com.nexters.yetda.android.database.model.Present
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
+import io.realm.Sort
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 
@@ -19,6 +20,7 @@ class HistoryDao(private val mRealm: Realm) {
     fun findAllHistory(): LiveData<RealmResults<History>> {
         return asLiveData(
             mRealm.where<History>(History::class.java)
+                .sort("createdAt", Sort.DESCENDING)
                 .findAllAsync()
         )
     }
