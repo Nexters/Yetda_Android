@@ -19,6 +19,7 @@ class QuestionViewModel : BaseViewModel() {
     private val realm by lazy {
         Realm.getDefaultInstance()
     }
+    var qCount = 1 // 시작하자마자 질문이 1개 나타나기 때문
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
@@ -36,25 +37,32 @@ class QuestionViewModel : BaseViewModel() {
 
     fun findQuestion(tags: ArrayList<String>) {
         val question = QuestionDao(realm).findQuestion(tags)
-        _getQuestionEvent.postValue(question)
+        if (qCount < 6) {
+            qCount += 1
+            _getQuestionEvent.postValue(question)
+        } else {
+            // 6번째 질문이 나오지 않고 결과 화면이 출력
+            showResult()
+        }
     }
 
     fun findPresents(
         tags: ArrayList<String>,
         _startPrice: Long,
         _endPrice: Long
-    ): RealmResults<Present> {
-
-
+    ): ArrayList<Present> {
         val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
-        Log.d(TAG, "* * * size :: ${presents.size}")
         val presentList = ArrayList<Present>()
         presentList.addAll(realm.copyFromRealm(presents))
         presentList.forEach {
             // todo : price값이 모두 0으로 들어가고 있음.
             Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
         }
-        return presents
+        return presentList
+    }
+
+    fun showResult() {
+        _startNextActivityEvent.call()
     }
 
     fun clickBackButton() {

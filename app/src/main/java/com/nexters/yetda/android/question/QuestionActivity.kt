@@ -3,7 +3,6 @@ package com.nexters.yetda.android.question
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
@@ -14,7 +13,6 @@ import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Present
 import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
 import com.nexters.yetda.android.result.ResultActivity
@@ -30,6 +28,8 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     lateinit var tags: ArrayList<String>
     lateinit var history: History
     lateinit var aniAlpha: Animation
+
+    var qCount = 1 // 시작하자마자 질문이 1개 나타나기 때문
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
@@ -58,7 +58,6 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
             val intent = Intent(this, ResultActivity::class.java)
-//            intent.putExtra("TAGS", viewModel.getTags())
 //            intent.putExtra("ITEM", history)
             startActivity(intent)
         })
@@ -78,8 +77,6 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
                     // No를 클릭한 뒤
                     cardQuestion.visibility = View.GONE
                     cardQuestion.translationX = 0f
-                    Log.d(TAG, "* * * tag ::: ${question.tag.trim()}")
-                    // todo : TAG에 공백이 들어가 있다??
                     tags.add(question.tag.trim())
                     findQuestionAndPresents()
                 }.start()
@@ -104,8 +101,15 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     }
 
     fun findQuestionAndPresents() {
-        viewModel.findQuestion(tags)
-        viewModel.findPresents(tags, history.startPrice, history.endPrice)
+
+        val presentList = viewModel.findPresents(tags, history.startPrice, history.endPrice)
+
+        if (presentList.size > 10) {
+            viewModel.findQuestion(tags)
+        } else {
+            // 선물이 10개 이하인 경우 결과 화면 출력
+            viewModel.showResult()
+        }
 //        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
 //            Log.d(TAG, "* * * p list ::: ${it.size}")
 //
