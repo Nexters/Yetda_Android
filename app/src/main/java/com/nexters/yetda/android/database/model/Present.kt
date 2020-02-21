@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 open class Present : RealmObject(), Parcelable {
     @PrimaryKey
-    var id: Int = 0
+    var id: Int = 1
     var price: Long = 0
     var name: String = ""
     var tags = RealmList<String>()

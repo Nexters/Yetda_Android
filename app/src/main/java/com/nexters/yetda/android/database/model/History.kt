@@ -21,7 +21,7 @@ import kotlinx.android.parcel.WriteWith
 @Parcelize
 open class History(
     @PrimaryKey
-    var id: Int = 0,
+    var id: Int = 1,
     var name: String = "",
     var gender: String = "",
     var birthday: String = "",
