@@ -70,4 +70,8 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, HomeActivity::class.java))
+        finish()
+    }
 }

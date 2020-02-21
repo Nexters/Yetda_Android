@@ -3,7 +3,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
     <TextView
             android:layout_width="wrap_content"
@@ -13,8 +15,8 @@
             android:layout_marginBottom="36dp"
             android:fontFamily="@font/noto_sans_bold"
             android:text="@string/wait"
-            android:textSize="24sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
     <ImageView
             android:layout_width="241dp"
@@ -50,9 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:fontFamily="@font/noto_sans_bold"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:fontFamily="@font/noto_sans_bold"
+                android:gravity="center"
                 android:text="@string/proceed"
                 android:textColor="@color/red"
                 android:textSize="18sp" />
@@ -62,8 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
                 android:text="@string/cancel"
                 android:textColor="@color/genderGrey"
                 android:textSize="18sp" />

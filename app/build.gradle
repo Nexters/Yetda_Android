@@ -14,8 +14,8 @@ android {
         applicationId "com.nexters.yetda.android"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 101
-        versionName "1.0.1"
+        versionCode 102
+        versionName "1.0.2"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
