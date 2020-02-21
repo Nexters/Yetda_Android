@@ -29,8 +29,8 @@ open class History(
     var endPrice: Long = 0,
     var presents: @WriteWith<RealmUtil.PresentRealmListParceler> RealmList<Present> = RealmList(),
     var createdAt: Long = 0
-
-): RealmObject(), Parcelable
-
-
-
+): RealmObject(), Parcelable {
+    override fun toString(): String {
+        return "History(id=$id, name='$name', gender='$gender', birthday='$birthday', startPrice=$startPrice, endPrice=$endPrice, presents=$presents, createdAt=$createdAt)"
+    }
+}
