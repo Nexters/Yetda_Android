@@ -78,7 +78,9 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
                     // No를 클릭한 뒤
                     cardQuestion.visibility = View.GONE
                     cardQuestion.translationX = 0f
-                    tags.add(question.tag)
+                    Log.d(TAG, "* * * tag ::: ${question.tag.trim()}")
+                    // todo : TAG에 공백이 들어가 있다??
+                    tags.add(question.tag.trim())
                     findQuestionAndPresents()
                 }.start()
         }
@@ -103,16 +105,17 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     fun findQuestionAndPresents() {
         viewModel.findQuestion(tags)
-        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
-            Log.d(TAG, "* * * p list ::: ${it.size}")
-
-            val presentList = ArrayList<Present>()
-//            presentList.addAll(realm.copyFromRealm(presents))
-//            presentList.forEach {
-//                // todo : price값이 모두 0으로 들어가고 있음.
-//                Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-//            }
-        })
+        viewModel.findPresents(tags, history.startPrice, history.endPrice)
+//        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
+//            Log.d(TAG, "* * * p list ::: ${it.size}")
+//
+//            val presentList = ArrayList<Present>()
+////            presentList.addAll(realm.copyFromRealm(presents))
+////            presentList.forEach {
+////                // todo : price값이 모두 0으로 들어가고 있음.
+////                Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
+////            }
+//        })
     }
 
     private fun convertDpToPixel(dp: Float): Float {

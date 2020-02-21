@@ -39,21 +39,24 @@ class QuestionViewModel : BaseViewModel() {
         _getQuestionEvent.postValue(question)
     }
 
-    fun findPresents(tags: ArrayList<String>, _startPrice:Long, _endPrice:Long): LiveData<RealmResults<Present>> {
-        val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
+    fun findPresents(
+        tags: ArrayList<String>,
+        _startPrice: Long,
+        _endPrice: Long
+    ): RealmResults<Present> {
+        tags.forEach {
+            Log.d(TAG, "* * * tag :: ${it}")
+        }
 
-        return presents
-//        presents.observe(, Observer {
-//
-//        })
-//        Log.d(TAG, "* * * p list ::: ${presents.size}")
-//
-//        val presentList = ArrayList<Present>()
-//        presentList.addAll(realm.copyFromRealm(presents))
-//        presentList.forEach {
-//            // todo : price값이 모두 0으로 들어가고 있음.
+        val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
+        Log.d(TAG, "* * * size :: ${presents.size}")
+        val presentList = ArrayList<Present>()
+        presentList.addAll(realm.copyFromRealm(presents))
+        presentList.forEach {
+            // todo : price값이 모두 0으로 들어가고 있음.
 //            Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-//        }
+        }
+        return presents
     }
 
     fun clickBackButton() {
