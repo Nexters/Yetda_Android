@@ -16,8 +16,6 @@ class PriceViewModel : BaseViewModel() {
     var gender = ""
     var birthday = ""
 
-
-    // todo 확실히 필요없다고 생각되면 지우자
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent
@@ -37,7 +35,7 @@ class PriceViewModel : BaseViewModel() {
     }
 
     fun getUserFromIntent(intent: Intent): History {
-1          //TODO: null처리
+        // TODO: null처리
         gender = intent.getStringExtra("GENDER") ?: ""
         birthday = intent.getStringExtra("BIRTHDAY") ?: ""
 

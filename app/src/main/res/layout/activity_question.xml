@@ -34,8 +34,10 @@
                     android:orientation="vertical">
 
                 <TextView
+                        android:id="@+id/textQuestionTop"
                         style="@style/tvQuestion"
-                        android:text="@string/price_q" />
+                        android:text="@{@string/question_1(vm.name)}"
+                        tools:text="쭈피 님은 어떤 사람인가요?"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -182,6 +184,5 @@
                 app:lottie_rawRes="@raw/result_repeat" />
 
     </RelativeLayout>
-
 
 </layout>

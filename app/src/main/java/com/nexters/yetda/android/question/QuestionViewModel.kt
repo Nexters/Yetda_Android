@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.question
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.yetda.android.base.BaseViewModel
@@ -13,10 +12,6 @@ import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmList
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.random.Random
-
 
 class QuestionViewModel : BaseViewModel() {
 
@@ -24,6 +19,7 @@ class QuestionViewModel : BaseViewModel() {
     private val realm by lazy {
         Realm.getDefaultInstance()
     }
+
     var qCount = 1 // 시작하자마자 질문이 1개 나타나기 때문
     var historyId = -1
     var history = History()
@@ -62,8 +58,7 @@ class QuestionViewModel : BaseViewModel() {
 
     fun saveHistoryInfo(history: History) {
         this.history = history
-        Log.d(TAG, "* * * history ::: ${this.history}")
-
+        this.name.value = history.name
         HistoryDao(realm).findAllHistory()
     }
 
@@ -77,15 +72,10 @@ class QuestionViewModel : BaseViewModel() {
         presentList.addAll(presents)
         resultPresents.clear()
         resultPresents.addAll(presents.subList(0, presents.size))
-        presentList.forEach {
-            // todo : price값이 모두 0으로 들어가고 있음.
-//            Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-        }
         return presentList
     }
 
     fun showResult() {
-
         //shuffle return presents
         val indices: ArrayList<Int> = ArrayList(resultPresents.size)
         for (i in 0 until resultPresents.size) {
@@ -106,8 +96,6 @@ class QuestionViewModel : BaseViewModel() {
 
     fun addHistory() {
         historyId = HistoryDao(realm).addHistory(history)
-        Log.d(TAG, "* * * id :: ${historyId}")
-//        _startNextActivityEvent.call()
     }
 
 

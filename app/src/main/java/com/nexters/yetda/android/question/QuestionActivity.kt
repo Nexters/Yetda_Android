@@ -17,10 +17,8 @@ import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Question
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
-import com.nexters.yetda.android.home.HomeActivity
 import com.nexters.yetda.android.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_question.*
-import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
@@ -32,10 +30,20 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     lateinit var tags: ArrayList<String>
     lateinit var history: History
     lateinit var aniAlpha: Animation
+    lateinit var dialog: QuestionCancelDialog
+
+    override fun onBackPressed() {
+        dialog.show(supportFragmentManager, "QuestionCancelDialog")
+    }
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         aniAlpha = AnimationUtils.loadAnimation(this, R.anim.ani_fade_in)
+        dialog = QuestionCancelDialog.getInstance {
+            if (it) {
+                finish()
+            }
+        }
 
         tags = intent.getStringArrayListExtra("TAGS")
         history = intent.getParcelableExtra<History>("ITEM")
@@ -45,8 +53,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     override fun initDataBinding() {
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            // todo 경고 문구 후 finish 처리해야 함
-            finish()
+            dialog.show(supportFragmentManager, "QuestionCancelDialog")
         })
 
         viewModel.getQustionEvent.observe(this, Observer {
@@ -119,16 +126,6 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
             if (presentList.size != 0)
                 showAnimation()
         }
-//        viewModel.findPresents(tags, history.startPrice, history.endPrice).observe(this, Observer {
-//            Log.d(TAG, "* * * p list ::: ${it.size}")
-//
-//            val presentList = ArrayList<Present>()
-////            presentList.addAll(realm.copyFromRealm(presents))
-////            presentList.forEach {
-////                // todo : price값이 모두 0으로 들어가고 있음.
-////                Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
-////            }
-//        })
     }
 
     private fun convertDpToPixel(dp: Float): Float {
