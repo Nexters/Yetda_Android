@@ -56,8 +56,8 @@ class YetdaApplication : Application() {
     /**
      * Progress Dialog
      * HOW TO USE
-     * MyApplication.Companion.get().progressON(JoinActivity.this);
-     * MyApplication.Companion.get().progressOFF();
+     * YetdaApplication.get().progressON(JoinActivity.this);
+     * YetdaApplication.get().progressOFF();
      */
     internal var progressDialog: AppCompatDialog? = null
 

@@ -14,7 +14,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_bold"
-            android:text="쭈피"
             android:textColor="@color/black"
             android:textSize="@dimen/txt_medium" />
 
@@ -36,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/iv_list_birthday"
-                android:text="8월 22일"
                 android:textColor="@color/txtBlack"
                 android:textSize="14sp" />
 
@@ -46,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:text="\4000~5000"
                 android:textColor="@color/genderGrey"
                 android:textSize="14sp" />
 
@@ -73,7 +70,6 @@
                 android:paddingTop="3dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="3dp"
-                android:text="학천마리"
                 android:textColor="@color/txtBlack"
                 android:textSize="@dimen/txt_small" />
 
@@ -88,7 +84,6 @@
                 android:paddingTop="3dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="3dp"
-                android:text="네잎클로버"
                 android:textColor="@color/txtBlack"
                 android:textSize="@dimen/txt_small" />
 
