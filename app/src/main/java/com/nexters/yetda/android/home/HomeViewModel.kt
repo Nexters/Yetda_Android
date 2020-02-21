@@ -131,8 +131,8 @@ class HomeViewModel : BaseViewModel() {
 
         //TODO: Present가 비어있을 경우 처리해야함.
         var presents = RealmList<Present>()
-        presents.add(PresentDao(realm).findPresentById(3))
-        presents.add(PresentDao(realm).findPresentById(4))
+        presents.add(PresentDao(realm).findPresentById(13))
+        presents.add(PresentDao(realm).findPresentById(12))
         HistoryDao(realm).addHistory("도현", "여성", "3월 9일", 10000, 20000, presents)
         HistoryDao(realm).addHistory("쭈피", "여성", "3월 9일", 10000, 20000, presents)
 
