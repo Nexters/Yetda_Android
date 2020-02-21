@@ -1,3 +1,4 @@
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
@@ -13,8 +14,8 @@ android {
         applicationId "com.nexters.yetda.android"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 102
+        versionName "1.0.2"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
@@ -34,6 +35,15 @@ android {
     dataBinding {
         enabled = true
     }
+    //use parcelize
+    androidExtensions{
+        experimental = true
+    }
+
+    //doAfterTextChanged jvm error fix
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -43,6 +53,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.cardview:cardview:$cardview_version"
 
     // 빠이야베이스
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
@@ -63,5 +74,8 @@ dependencies {
     implementation "io.realm:realm-gradle-plugin:$realm_version"
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //history card viewpager
+    implementation "com.github.IslamKhSh:CardSlider:${card_slider_version}"
 
 }

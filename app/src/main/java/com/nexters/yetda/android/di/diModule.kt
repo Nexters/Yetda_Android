@@ -2,6 +2,7 @@ package com.nexters.yetda.android.di
 
 import com.nexters.yetda.android.birthday.BirthdayViewModel
 import com.nexters.yetda.android.database.PersonDao
+import com.nexters.yetda.android.detail.DetailViewModel
 import com.nexters.yetda.android.gender.GenderViewModel
 import com.nexters.yetda.android.name.NameViewModel
 import com.nexters.yetda.android.price.PriceViewModel
@@ -33,6 +34,9 @@ val viewModelPart = module {
     viewModel {
         ResultViewModel()
     }
+    viewModel {
+        DetailViewModel()
+    }
 }
 
 val daoPart = module {
@@ -41,15 +45,4 @@ val daoPart = module {
     }
 }
 
-//var adapterPart = module {
-//    factory {
-//        MainSearchRecyclerViewAdapter()
-//    }
-//}
-//
-//var modelPart = module {
-//    factory<DataModel> {
-//        DataModelImpl(get())
-//    }
-//}
 val diModule = listOf(viewModelPart, daoPart)

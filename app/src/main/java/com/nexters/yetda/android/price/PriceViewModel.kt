@@ -13,13 +13,9 @@ class PriceViewModel : BaseViewModel() {
     private val TAG = javaClass.simpleName
 
     var btnActivated = MutableLiveData<Boolean>(false)
-    var name = MutableLiveData<String>()
+    var gender = ""
+    var birthday = ""
 
-    init {
-        name.value = "__"
-    }
-
-    // todo 확실히 필요없다고 생각되면 지우자
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
     val startNextActivityEvent: LiveData<Any>
         get() = _startNextActivityEvent
@@ -39,11 +35,43 @@ class PriceViewModel : BaseViewModel() {
     }
 
     fun getUserFromIntent(intent: Intent): History {
+        // TODO: null처리
+        gender = intent.getStringExtra("GENDER") ?: ""
+        birthday = intent.getStringExtra("BIRTHDAY") ?: ""
+
         val history = History()
-        name.value = intent.getStringExtra("NAME")
-        history.name = name.value!!
-        history.gender = intent.getStringExtra("GENDER")
-        history.birthday = intent.getStringExtra("BIRTHDAY")
+        history.name = intent.getStringExtra("NAME") ?: ""
+        history.gender = gender
+        history.birthday = birthday
+
         return history
+
+    }
+
+    fun getTags(): ArrayList<String> {
+        val list = ArrayList<String>()
+        //1. Reverse gender
+        var _gender = ""
+        _gender = if (gender == "여성") {
+            "남성"
+        } else {
+            "여성"
+        }
+        list.add(_gender)
+
+        //2. get season and reverse
+        var season = birthday.substring(0, 2)
+        val summer = arrayOf(6, 7, 8, 9)
+        val winter = arrayOf(1, 2, 11, 12)
+
+        if (season.toInt() in summer) {
+            season = "겨울"
+        } else if (season.toInt() in winter) {
+            season = "여름"
+        }
+        list.add(season)
+
+//        return arrayOf(_gender, season)
+        return list
     }
 }

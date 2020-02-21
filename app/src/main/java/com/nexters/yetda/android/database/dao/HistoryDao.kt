@@ -1,34 +1,47 @@
 package com.nexters.yetda.android.database.dao
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.firebase.firestore.auth.User
 import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.util.LiveRealmData
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
+import io.realm.Sort
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 
 
 class HistoryDao(private val mRealm: Realm) {
 
+    private val TAG = javaClass.simpleName
+
     fun findAllHistory(): LiveData<RealmResults<History>> {
         return asLiveData(
             mRealm.where<History>(History::class.java)
+                .sort("createdAt", Sort.DESCENDING)
                 .findAllAsync()
         )
     }
 
-    fun findHistoryById(id: Long): History? {
+    fun findHistoryById(id: Int): History? {
         return mRealm.where<History>()
+            .equalTo("id", id)
             .findFirst()
-
     }
 
+    fun findHistory(): History? {
+        return mRealm.where<History>()
+            .findFirst()
+    }
 
+    fun deleteAll(){
+        val result = mRealm.where<History>().findAll()
+        mRealm.executeTransaction {
+            result.deleteAllFromRealm()
+        }
+    }
     fun addHistory(
         name: String,
         gender: String,
@@ -38,10 +51,10 @@ class HistoryDao(private val mRealm: Realm) {
         presents: RealmList<Present>
     ) {
         mRealm.executeTransaction {
-            val currentId = mRealm.where<History>(History::class.java).max("id")
+            val currentId = it.where<History>(History::class.java).max("id")
             val nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
 
-            val history = mRealm.createObject<History>(nextId)
+            val history = it.createObject<History>(nextId)
             history.name = name
             history.gender = gender
             history.birthday = birthday
@@ -52,7 +65,25 @@ class HistoryDao(private val mRealm: Realm) {
 
             it.copyToRealm(history)
         }
-
     }
 
+    fun addHistory(history: History) :Int{
+        val currentId = mRealm.where<History>(History::class.java).max("id")
+     val   nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+
+        mRealm.executeTransaction {
+            val newHistory = it.createObject<History>(nextId)
+            newHistory.name = history.name
+            newHistory.gender = history.gender
+            newHistory.birthday = history.birthday
+            newHistory.startPrice = history.startPrice
+            newHistory.endPrice = history.endPrice
+            newHistory.presents = history.presents
+            newHistory.createdAt = System.currentTimeMillis() / 1000
+
+            it.copyToRealm(newHistory)
+
+        }
+        return nextId
+    }
 }

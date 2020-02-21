@@ -41,18 +41,12 @@ class GenderViewModel : BaseViewModel() {
 
     fun isFemale() {
         Log.e(TAG, "isFemale Click")
-        if (!isfemale.value!!) {
-            isfemale.value = !isfemale.value!!
-            ismale.value = false
-        }
+        isfemale.value = !isfemale.value!!
     }
 
     fun isMale() {
         Log.e(TAG, "isMale Click")
-        if (!ismale.value!!) {
-            ismale.value = !ismale.value!!
-            isfemale.value = false
-        }
+        isfemale.value = !isfemale.value!!
     }
 
     fun getGender(): String {

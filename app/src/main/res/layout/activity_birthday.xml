@@ -45,20 +45,23 @@
                         style="@style/edBirthday"
                         android:digits="01"
                         android:hint="M"
-                        android:text="@{vm.m1}" />
+                        android:text="@={vm.m1}">
+                    <requestFocus />
+                </EditText>
 
                 <EditText
                         android:id="@+id/ed_birthday_m2"
                         style="@style/edBirthday"
                         android:layout_marginLeft="@dimen/click_padding"
-                        android:layout_marginRight="@dimen/click_padding"
                         android:hint="M"
-                        android:text="@{vm.m2}" />
+                        android:text="@={vm.m2}" />
 
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:paddingLeft="8dp"
                         android:text="/"
                         android:textColor="@color/genderGrey"
                         android:textSize="@dimen/txt_medium" />
@@ -66,18 +69,17 @@
                 <EditText
                         android:id="@+id/ed_birthday_d1"
                         style="@style/edBirthday"
-                        android:layout_marginLeft="@dimen/click_padding"
                         android:layout_marginRight="@dimen/click_padding"
                         android:digits="0123"
                         android:hint="D"
-                        android:text="@{vm.d1}" />
+                        android:text="@={vm.d1}" />
 
 
                 <EditText
                         android:id="@+id/ed_birthday_d2"
                         style="@style/edBirthday"
                         android:hint="D"
-                        android:text="@{vm.d2}" />
+                        android:text="@={vm.d2}" />
 
             </LinearLayout>
 
