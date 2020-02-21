@@ -13,15 +13,18 @@ import com.nexters.yetda.android.home.HomeActivity
 import kotlinx.android.synthetic.main.item_detail_list.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     override val layoutResourceId = R.layout.activity_result
     override val viewModel: ResultViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
     var history: History = History()
-
     var index: Int = 0
+
+    override fun onBackPressed() {
+        viewModel.clickNextButton()
+    }
+
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         Glide.with(this).load(R.raw.pung).into(binding.ivResultPung)
@@ -36,7 +39,6 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
         } else {
             history = viewModel.findHistoryById(id)
         }
-
     }
 
     override fun initDataBinding() {
