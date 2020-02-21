@@ -45,15 +45,4 @@ val daoPart = module {
     }
 }
 
-//var adapterPart = module {
-//    factory {
-//        MainSearchRecyclerViewAdapter()
-//    }
-//}
-//
-//var modelPart = module {
-//    factory<DataModel> {
-//        DataModelImpl(get())
-//    }
-//}
 val diModule = listOf(viewModelPart, daoPart)

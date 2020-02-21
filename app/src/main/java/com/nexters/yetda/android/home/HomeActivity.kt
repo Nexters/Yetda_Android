@@ -35,12 +35,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun initDataBinding() {
         binding.setVariable(BR.vm, viewModel)
 
-        /**
-         * Kook
-         * - Question 개발을 위해 임의로 수정
-         */
-//        startActivity(Intent(applicationContext, QuestionActivity::class.java))
-
         viewModel.startNextActivityEvent.observe(this, Observer {
                         startActivity(Intent(applicationContext, NameActivity::class.java))
             Log.e(TAG, "click ${list}")
@@ -61,10 +55,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     }
 
     override fun initViewFinal() {
-
-//        textTempButton.setOnClickListener {
-//            startActivity(Intent(this, QuestionActivity::class.java))
-//        }
+        //
     }
 
 }

@@ -47,7 +47,6 @@ class HomeViewModel : BaseViewModel() {
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
-                Log.d(TAG, "* * * ${documents[0]}")
 
                 PresentDao(realm).deleteAll()
                 for ((i, doc) in documents.withIndex()) {
@@ -68,14 +67,12 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun getQuestionsList() {
-
         db.collection("question")
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(QuestionModel::class.java)
-                Log.d(TAG, "* * * ${documents[0]}")
                 QuestionDao(realm).deleteAll()
-                for ((i, doc) in documents.withIndex()) {
+                for (doc in documents) {
                     QuestionDao(realm).addQuestion(doc.id, doc.question, doc.tag)
                 }
                 getPresentsList()
