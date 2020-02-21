@@ -52,6 +52,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
                 Locale.KOREA
             ).format(history.endPrice)}"
 
+        viewModel.backBeforeActivityEvent.observe(this, Observer {
+            finish()
+        })
     }
 
     override fun initViewFinal() {

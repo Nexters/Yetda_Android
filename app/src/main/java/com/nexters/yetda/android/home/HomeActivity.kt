@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
+import com.nexters.yetda.android.YetdaApplication
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
@@ -60,13 +61,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     }
 
     override fun initViewFinal() {
-        imageHomeStart.setOnClickListener {
-            /**
-             * Kook
-             * - Question 개발을 위해 임의로 수정
-             */
-            startActivity(Intent(this, NameActivity::class.java))
-        }
 
 //        textTempButton.setOnClickListener {
 //            startActivity(Intent(this, QuestionActivity::class.java))

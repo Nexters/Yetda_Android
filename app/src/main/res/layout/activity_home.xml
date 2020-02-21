@@ -80,10 +80,10 @@
 
 
         <ImageView
-                android:id="@+id/imageHomeStart"
                 style="@style/iv"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/side_interval"
                 android:layout_marginBottom="@dimen/side_interval"
                 android:onClick="@{()->vm.clickNextButton()}"
                 android:src="@drawable/btn_gift" />

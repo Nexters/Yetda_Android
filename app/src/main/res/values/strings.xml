@@ -1,4 +1,8 @@
 <resources>
+
+    <string name="notification_channel_id">"notification_channel_id"</string>
+    <string name="notification_channel_name">"notification_channel_name"</string>
+
     <string name="app_name">옛다</string>
     <string name="next">다음</string>
 
