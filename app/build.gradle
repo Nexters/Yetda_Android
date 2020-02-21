@@ -39,6 +39,11 @@ android {
     androidExtensions{
         experimental = true
     }
+
+    //doAfterTextChanged jvm error fix
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {

@@ -3,6 +3,7 @@ package com.nexters.yetda.android.database
 import android.os.Parcel
 import android.os.Parcelable
 import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.database.model.Tag
 import com.nexters.yetda.android.util.LiveRealmData
 import io.realm.Realm
 import io.realm.RealmList
@@ -67,5 +68,8 @@ class RealmUtil {
         override val clazz: Class<Present>
             get() = Present::class.java
     }
-
+    object TagRealmListParceler : RealmListParceler<Tag> {
+        override val clazz: Class<Tag>
+            get() = Tag::class.java
+    }
 }
