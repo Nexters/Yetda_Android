@@ -1,9 +1,7 @@
 package com.nexters.yetda.android.home
 
-import android.transition.Visibility
 import android.annotation.SuppressLint
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,7 +10,9 @@ import com.nexters.yetda.android.database.dao.HistoryDao
 import com.nexters.yetda.android.database.dao.PresentDao
 import com.nexters.yetda.android.database.dao.QuestionDao
 import com.nexters.yetda.android.database.dao.UpdateDao
-import com.nexters.yetda.android.database.model.*
+import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.database.model.Tag
 import com.nexters.yetda.android.model.PresentModel
 import com.nexters.yetda.android.model.QuestionModel
 import com.nexters.yetda.android.model.UpdateModel
@@ -20,7 +20,6 @@ import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
-import io.realm.kotlin.where
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,7 +27,6 @@ class HomeViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
 
-    private var isNew = false
     private val db = FirebaseFirestore.getInstance()
     private val realm by lazy {
         Realm.getDefaultInstance()
@@ -54,7 +52,7 @@ class HomeViewModel : BaseViewModel() {
                 Log.d(TAG, "* * * ${documents[0]}")
 
                 PresentDao(realm).deleteAll()
-                for ((i, doc) in documents.withIndex()){
+                for ((i, doc) in documents.withIndex()) {
                     val tags = ArrayList<Tag>()
                     for (tagString in doc.tags) {
                         val tag = Tag()
