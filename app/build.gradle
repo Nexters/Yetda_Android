@@ -1,3 +1,4 @@
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
@@ -13,8 +14,8 @@ android {
         applicationId "com.nexters.yetda.android"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 101
+        versionName "1.0.1"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
@@ -47,6 +48,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.cardview:cardview:$cardview_version"
 
     // 빠이야베이스
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"

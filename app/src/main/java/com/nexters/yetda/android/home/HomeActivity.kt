@@ -2,15 +2,14 @@ package com.nexters.yetda.android.home
 
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.name.NameActivity
+import com.nexters.yetda.android.question.QuestionActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -62,8 +61,16 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     override fun initViewFinal() {
         imageHomeStart.setOnClickListener {
+            /**
+             * Kook
+             * - Question 개발을 위해 임의로 수정
+             */
             startActivity(Intent(this, NameActivity::class.java))
         }
+
+//        textTempButton.setOnClickListener {
+//            startActivity(Intent(this, QuestionActivity::class.java))
+//        }
     }
 
 }

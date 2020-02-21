@@ -5,7 +5,6 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 open class Present : RealmObject(), Parcelable {
@@ -13,6 +12,6 @@ open class Present : RealmObject(), Parcelable {
     var id: Int = 0
     var price: Long = 0
     var name: String = ""
-    var tags = RealmList<String>()
+    var tags = RealmList<Tag>()
     var image: String = ""
 }

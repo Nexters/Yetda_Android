@@ -3,10 +3,7 @@ package com.nexters.yetda.android.database.model
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-open class Question : RealmObject() {
-    @PrimaryKey
-    var id: Int = 0
-    var question: String = ""
+
+open class Tag : RealmObject() {
     var tag: String = ""
-    var isAsked: Boolean = false
 }
