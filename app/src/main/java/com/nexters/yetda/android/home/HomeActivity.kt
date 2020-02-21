@@ -27,6 +27,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         viewModel.initAskedStatus()
 
         Log.e(TAG, "initViewStart ${list.toString()}")
+
         backPressCloseHandler = BackPressCloseHandler(this)
     }
 
