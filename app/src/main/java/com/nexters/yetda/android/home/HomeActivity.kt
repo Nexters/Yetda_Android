@@ -28,8 +28,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         Log.e(TAG, "initViewStart ${list.toString()}")
 
-        // Hide the status bar.
-//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
     }
 
     override fun initDataBinding() {

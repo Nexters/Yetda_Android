@@ -59,7 +59,7 @@ class HomeViewModel : BaseViewModel() {
                     PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.image, tags)
                 }
                 //TODO:Sample Input, relase시 삭제
-                sampleHistory()
+//                sampleHistory()
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
