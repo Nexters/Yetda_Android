@@ -29,10 +29,20 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     lateinit var tags: ArrayList<String>
     lateinit var history: History
     lateinit var aniAlpha: Animation
+    lateinit var dialog: QuestionCancelDialog
+
+    override fun onBackPressed() {
+        dialog.show(supportFragmentManager, "QuestionCancelDialog")
+    }
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         aniAlpha = AnimationUtils.loadAnimation(this, R.anim.ani_fade_in)
+        dialog = QuestionCancelDialog.getInstance {
+            if (it) {
+                finish()
+            }
+        }
 
         tags = intent.getStringArrayListExtra("TAGS")
         history = intent.getParcelableExtra<History>("ITEM")
@@ -42,8 +52,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     override fun initDataBinding() {
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            // todo 경고 문구 후 finish 처리해야 함
-            finish()
+            dialog.show(supportFragmentManager, "QuestionCancelDialog")
         })
 
         viewModel.getQustionEvent.observe(this, Observer {

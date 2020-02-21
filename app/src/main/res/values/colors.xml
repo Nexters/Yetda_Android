@@ -14,6 +14,8 @@
     <color name="btnBgColor">#eeeeee</color>
     <color name="btnTxtColor">#c9c9c9</color>
 
+    <color name="grey">#e9ecef</color>
+
     <!--ripple-->
     <color name="color_control_highlight">#0a000000</color>
 </resources>

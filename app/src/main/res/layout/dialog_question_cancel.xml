@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_r10" >
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="31dp"
+            android:layout_marginBottom="36dp"
+            android:fontFamily="@font/noto_sans_bold"
+            android:text="@string/wait"
+            android:textSize="24sp"
+            android:textColor="@color/black"/>
+
+    <ImageView
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/warning" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="35dp"
+            android:gravity="center"
+            android:text="@string/reset_alert"
+            android:textSize="16sp" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/textQuestionCancelProceed"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/noto_sans_bold"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/proceed"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
+
+        <TextView
+                android:id="@+id/textQuestionCancelCancel"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/cancel"
+                android:textColor="@color/genderGrey"
+                android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
