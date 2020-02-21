@@ -76,7 +76,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
             cardQuestion.animate()
                 .translationX(convertDpToPixel(-400f))
-                .setDuration(700)
+                .setDuration(500)
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction {
                     // No를 클릭한 뒤
@@ -94,7 +94,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
             cardQuestion.animate()
                 .translationX(convertDpToPixel(400f))
-                .setDuration(700)
+                .setDuration(500)
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction {
                     // OK를 클릭한 뒤
@@ -119,5 +119,10 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     private fun convertDpToPixel(dp: Float): Float {
         return dp * (this.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.initAskedStatus()
     }
 }

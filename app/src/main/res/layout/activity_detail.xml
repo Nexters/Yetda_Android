@@ -63,11 +63,10 @@
                 android:id="@+id/card_detail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="24dp"
                 app:cardSlider_baseShadow="0dp"
                 app:cardSlider_minShadow="0dp"
-                app:cardSlider_otherPagesWidth="24dp"
-                app:cardSlider_pageMargin="12dp"
+                app:cardSlider_otherPagesWidth="30dp"
+                app:cardSlider_pageMargin="6dp"
                 app:cardSlider_smallScaleFactor="0.9" />
 
     </LinearLayout>

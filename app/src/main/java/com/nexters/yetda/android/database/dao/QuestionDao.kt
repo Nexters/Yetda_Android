@@ -27,6 +27,17 @@ class QuestionDao(private val mRealm: Realm) {
 
     }
 
+    fun initAskedStatus() {
+        mRealm.executeTransaction {
+            val result = it.where<Question>()
+                .equalTo("isAsked", true)
+                .findAll()
+            for (q in result) {
+                q.isAsked = false
+            }
+        }
+    }
+
     fun findQuestion(tags: ArrayList<String>): Question? {
         val tagList = arrayOfNulls<String>(tags.size)
         tags.toArray(tagList)
@@ -63,7 +74,10 @@ class QuestionDao(private val mRealm: Realm) {
         _tag: String
     ) {
         mRealm.executeTransaction {
-            val item = mRealm.createObject<Question>(_id)
+            val currentId = it.where<Question>(Question::class.java).max("id")
+            val nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+
+            val item = it.createObject<Question>(nextId)
             item.question = _question
             item.tag = _tag
             it.copyToRealm(item)

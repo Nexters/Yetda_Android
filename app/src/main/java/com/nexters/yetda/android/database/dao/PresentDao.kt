@@ -55,12 +55,17 @@ class PresentDao(private val mRealm: Realm) {
         _id: Int,
         _name: String,
         _price: Long,
+        _image: String,
         _tags: ArrayList<Tag>
     ) {
         mRealm.executeTransaction {
-            val item = mRealm.createObject<Present>(_id)
+            val currentId = it.where<Present>(Present::class.java).max("id")
+            val nextId = if (currentId == null || currentId == 0) 1 else currentId.toInt() + 1
+
+            val item = it.createObject<Present>(nextId)
             item.name = _name
             item.price = _price
+            item.image=_image
             item.tags.addAll(_tags)
             it.copyToRealm(item)
         }

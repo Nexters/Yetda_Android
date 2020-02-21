@@ -57,15 +57,13 @@ class HomeViewModel : BaseViewModel() {
                         tag.tag = tagString
                         tags.add(tag)
                     }
-                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, tags)
+                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.image, tags)
                 }
-
+                //TODO:Sample Input, relase시 삭제
+                sampleHistory()
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-            }
-            .addOnSuccessListener {
-                sampleHistory()
             }
     }
 
@@ -80,13 +78,10 @@ class HomeViewModel : BaseViewModel() {
                 for ((i, doc) in documents.withIndex()) {
                     QuestionDao(realm).addQuestion(doc.id, doc.question, doc.tag)
                 }
-
+                getPresentsList()
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-            }
-            .addOnSuccessListener {
-                getPresentsList()
             }
     }
 
@@ -132,5 +127,9 @@ class HomeViewModel : BaseViewModel() {
     override fun onCleared() {
         realm.close()
         super.onCleared()
+    }
+
+    fun initAskedStatus() {
+        QuestionDao(realm).initAskedStatus()
     }
 }
