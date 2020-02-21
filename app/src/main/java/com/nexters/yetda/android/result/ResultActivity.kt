@@ -3,6 +3,7 @@ package com.nexters.yetda.android.result
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
@@ -20,7 +21,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
-
+        Glide.with(this).load(R.raw.pung).into(binding.ivResultPung)
         //TODO: Sample Code
 //        val history = intent.getParcelableExtra<History>("ITEM")
 //        viewModel.name.value = history.name
