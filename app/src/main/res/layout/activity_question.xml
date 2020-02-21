@@ -29,8 +29,9 @@
                 android:orientation="vertical">
 
             <TextView
+                    android:id="@+id/textQuestionTop"
                     style="@style/tvQuestion"
-                    android:text="@string/price_q" />
+                    android:text="@{@string/question_1(vm.name)}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
