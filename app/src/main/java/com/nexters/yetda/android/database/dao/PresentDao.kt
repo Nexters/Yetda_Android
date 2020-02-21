@@ -39,7 +39,7 @@ class PresentDao(private val mRealm: Realm) {
             .beginGroup()
             .`in`("tags.tag", tagList)
             .endGroup()
-            .between("price", _startPrice, _endPrice)
+            .between("price", _startPrice, _endPrice).or().equalTo("price",0L)
             .findAll()
     }
 

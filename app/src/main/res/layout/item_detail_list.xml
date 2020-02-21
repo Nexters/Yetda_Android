@@ -33,7 +33,7 @@
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/noto_sans_bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/txt_big" />
+                android:textSize="@dimen/txt_medium" />
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

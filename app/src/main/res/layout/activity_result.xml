@@ -39,21 +39,34 @@
                     android:padding="70dp">
 
                 <ImageView
+                        android:id="@+id/iv_result_present"
                         style="@style/iv"
                         android:src="@drawable/img_main" />
+
+
+                <TextView
+                        android:id="@+id/tv_result_present"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/txt_medium" />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="55dp"
-                        android:fontFamily="@font/noto_sans_bold"
-                        android:text="따뜻한 장갑"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/txt_big" />
+                        android:layout_marginTop="15dp"
+                        android:text="완전 취향저격 선물일거에요!"
+                        android:textColor="@color/txtBlack"
+                        android:textSize="@dimen/txt_small" />
+
+
             </LinearLayout>
 
             <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/btn_result_repeat"
                     android:layout_height="wrap_content"
                     android:text="@string/retry"
                     android:textColor="#ccc"
