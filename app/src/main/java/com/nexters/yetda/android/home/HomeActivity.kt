@@ -24,6 +24,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun initViewStart() {
 
         viewModel.getUpdatesInfo()
+        viewModel.initAskedStatus()
+
         Log.e(TAG, "initViewStart ${list.toString()}")
 
         // Hide the status bar.

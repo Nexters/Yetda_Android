@@ -27,6 +27,17 @@ class QuestionDao(private val mRealm: Realm) {
 
     }
 
+    fun initAskedStatus() {
+        mRealm.executeTransaction {
+            val result = it.where<Question>()
+                .equalTo("isAsked", true)
+                .findAll()
+            for (q in result) {
+                q.isAsked = false
+            }
+        }
+    }
+
     fun findQuestion(tags: ArrayList<String>): Question? {
         val tagList = arrayOfNulls<String>(tags.size)
         tags.toArray(tagList)
