@@ -54,21 +54,31 @@ class HomeAdapter(private val items: ArrayList<History>) :
         fun bind(listener: View.OnClickListener, item: History) {
             view.tv_item_name.text = item.name
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (item.birthday.length == 4) {
-                    val newFormatter = DateTimeFormatter.ofPattern("M월 d일", Locale.ENGLISH)
-                    val date = MonthDay.of(item.birthday.substring(0, 2).toInt(), item.birthday.substring(2, 4).toInt())
-                    view.tv_item_birthday.text = date.format(newFormatter)
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (item.birthday.length == 4) {
+                        val newFormatter = DateTimeFormatter.ofPattern("M월 d일", Locale.ENGLISH)
+                        val date = MonthDay.of(item.birthday.substring(0, 2).toInt(), item.birthday.substring(2, 4).toInt())
+                        view.tv_item_birthday.text = date.format(newFormatter)
+                    } else {
+                        view.tv_item_birthday.text = item.birthday
+                    }
                 } else {
-                    view.tv_item_birthday.text = item.birthday
+                    if (item.birthday.length == 4) {
+                        view.tv_item_birthday.text = "${item.birthday.substring(0, 2)}월 ${item.birthday.substring(2, 4)}일"
+                    } else {
+                        view.tv_item_birthday.text = item.birthday
+                    }
                 }
-            } else {
+            } catch (e: Exception) {
+                Log.e(TAG, "* * * e ::: ${e.message}")
                 if (item.birthday.length == 4) {
                     view.tv_item_birthday.text = "${item.birthday.substring(0, 2)}월 ${item.birthday.substring(2, 4)}일"
                 } else {
                     view.tv_item_birthday.text = item.birthday
                 }
             }
+
 
             view.tv_item_price.text =
                 "${NumberFormat.getCurrencyInstance(Locale.KOREA).format(item.startPrice)} ~ ${NumberFormat.getCurrencyInstance(

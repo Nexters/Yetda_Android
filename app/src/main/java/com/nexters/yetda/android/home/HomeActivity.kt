@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.YetdaApplication
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.name.NameActivity
-import com.nexters.yetda.android.question.QuestionActivity
-import kotlinx.android.synthetic.main.activity_home.*
+import com.nexters.yetda.android.util.BackPressCloseHandler
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override val layoutResourceId = R.layout.activity_home
@@ -20,6 +19,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     private val list: ArrayList<History> by lazy { arrayListOf<History>() }
 
     private val TAG = javaClass.simpleName
+    private var backPressCloseHandler: BackPressCloseHandler? = null
 
     override fun initViewStart() {
 
@@ -27,13 +27,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         viewModel.initAskedStatus()
 
         Log.e(TAG, "initViewStart ${list.toString()}")
+
+        backPressCloseHandler = BackPressCloseHandler(this)
     }
 
     override fun initDataBinding() {
         binding.setVariable(BR.vm, viewModel)
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-                        startActivity(Intent(applicationContext, NameActivity::class.java))
+            startActivity(Intent(applicationContext, NameActivity::class.java))
             Log.e(TAG, "click ${list}")
         })
 
@@ -55,4 +57,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         //
     }
 
+    override fun onBackPressed() {
+        backPressCloseHandler!!.onBackPressed()
+    }
 }

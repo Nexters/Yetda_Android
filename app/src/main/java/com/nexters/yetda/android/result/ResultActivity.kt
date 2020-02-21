@@ -21,9 +21,9 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     var history: History = History()
     var index: Int = 0
 
-    override fun onBackPressed() {
-        viewModel.clickNextButton()
-    }
+//    override fun onBackPressed() {
+//        viewModel.clickNextButton()
+//    }
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
@@ -72,4 +72,8 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, HomeActivity::class.java))
+        finish()
+    }
 }
