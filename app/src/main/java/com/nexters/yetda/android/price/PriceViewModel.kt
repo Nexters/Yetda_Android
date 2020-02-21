@@ -37,7 +37,7 @@ class PriceViewModel : BaseViewModel() {
     }
 
     fun getUserFromIntent(intent: Intent): History {
-        //TODO: null처리
+1          //TODO: null처리
         gender = intent.getStringExtra("GENDER") ?: ""
         birthday = intent.getStringExtra("BIRTHDAY") ?: ""
 
