@@ -30,7 +30,7 @@
                 android:id="@+id/tv_item_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="45dp"
                 android:fontFamily="@font/noto_sans_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_big" />
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/txtBlack"
-                android:text="당신에게 딱 맞는 선물이에요."
+                android:text="완전 취향저격 선물일거에요!"
                 android:textSize="@dimen/txt_small" />
     </LinearLayout>
 
