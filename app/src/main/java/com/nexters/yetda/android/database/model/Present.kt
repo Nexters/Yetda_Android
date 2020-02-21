@@ -9,12 +9,12 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.WriteWith
 
 @Parcelize
-open class Present (
+open class Present(
     @PrimaryKey
-    var id: Int = 0,
+    var id: Int = 1,
     var price: Long = 0,
     var name: String = "",
-    var tags : @WriteWith<RealmUtil.TagRealmListParceler> RealmList<Tag> = RealmList(),
+    var tags: @WriteWith<RealmUtil.TagRealmListParceler> RealmList<Tag> = RealmList(),
     var image: String = ""
-): RealmObject(), Parcelable
+) : RealmObject(), Parcelable
 

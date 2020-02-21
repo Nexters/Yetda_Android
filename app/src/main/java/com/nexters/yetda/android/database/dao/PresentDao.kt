@@ -2,9 +2,9 @@ package com.nexters.yetda.android.database.dao
 
 import androidx.lifecycle.LiveData
 import com.nexters.yetda.android.database.RealmUtil
-import com.nexters.yetda.android.database.model.*
+import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.database.model.Tag
 import io.realm.Realm
-import io.realm.RealmList
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -34,18 +34,16 @@ class PresentDao(private val mRealm: Realm) {
         tags: ArrayList<String>,
         _startPrice: Long,
         _endPrice: Long
-    ): LiveData<RealmResults<Present>> {
-        val tagList = arrayOfNulls<String>(tags.size)
+    ): RealmResults<Present> {
+        val tagList = arrayOf<String>()
         tags.toArray(tagList)
-        return RealmUtil.asLiveData(
-            mRealm.where<Present>()
-                .not()
-                .beginGroup()
-                .`in`("tags", tagList)
-                .endGroup()
-                .between("price", _startPrice, _endPrice)
-                .findAll()
-        )
+        return mRealm.where<Present>()
+            .not()
+            .beginGroup()
+            .`in`("tags.tag", tagList)
+            .endGroup()
+            .between("price", _startPrice, _endPrice)
+            .findAll()
     }
 
 
