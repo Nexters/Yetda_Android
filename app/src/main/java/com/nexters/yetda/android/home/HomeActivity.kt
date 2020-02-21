@@ -27,8 +27,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         viewModel.initAskedStatus()
 
         Log.e(TAG, "initViewStart ${list.toString()}")
-
-
     }
 
     override fun initDataBinding() {
