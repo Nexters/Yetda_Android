@@ -35,11 +35,12 @@ class PresentDao(private val mRealm: Realm) {
         _startPrice: Long,
         _endPrice: Long
     ): RealmResults<Present> {
-        val tagList = arrayOf<String>()
+        val tagList = arrayOfNulls<String>(tags.size)
         tags.toArray(tagList)
         return mRealm.where<Present>()
             .not()
             .beginGroup()
+//            .`in`("tags.tag", arrayOf("감성","친구","집순이"))
             .`in`("tags.tag", tagList)
             .endGroup()
             .between("price", _startPrice, _endPrice)

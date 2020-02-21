@@ -75,6 +75,7 @@
                 android:id="@+id/textPriceNext"
                 style="@style/btn"
                 android:selected="@{vm.btnActivated}"
-                android:text="@string/next" />
+                android:text="@string/next"
+                android:onClick="@{()->vm.clickNextButton()}" />
     </LinearLayout>
 </layout>

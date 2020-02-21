@@ -31,10 +31,13 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            //save realm object to History
             history.startPrice = leftValue.toLong()
             history.endPrice = rightValue.toLong()
-            startActivity(Intent(applicationContext, QuestionActivity::class.java))
+
+            val intent = Intent(this, QuestionActivity::class.java)
+            intent.putExtra("TAGS", viewModel.getTags())
+            intent.putExtra("ITEM", history)
+            startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             finish()
@@ -68,18 +71,9 @@ class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
             }
         })
 
-        textPriceNext.setOnClickListener {
-//            startActivity(Intent(this, QuestionActivity::class.java))
-
-            history.startPrice = leftValue.toLong()
-            history.endPrice = rightValue.toLong()
-
-//            val intent = Intent(this, ResultActivity::class.java)
-            val intent = Intent(this, QuestionActivity::class.java)
-            intent.putExtra("TAGS", viewModel.getTags())
-            intent.putExtra("ITEM", history)
-            startActivity(intent)
-        }
+//        textPriceNext.setOnClickListener {
+////            startActivity(Intent(this, QuestionActivity::class.java))
+//        }
     }
 
 }

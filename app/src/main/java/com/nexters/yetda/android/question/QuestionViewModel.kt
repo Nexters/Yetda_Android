@@ -44,9 +44,7 @@ class QuestionViewModel : BaseViewModel() {
         _startPrice: Long,
         _endPrice: Long
     ): RealmResults<Present> {
-        tags.forEach {
-            Log.d(TAG, "* * * tag :: ${it}")
-        }
+        Log.d(TAG, "* * * * ${_startPrice} // ${_endPrice}")
 
         val presents = PresentDao(realm).findPresents(tags, _startPrice, _endPrice)
         Log.d(TAG, "* * * size :: ${presents.size}")
@@ -54,7 +52,7 @@ class QuestionViewModel : BaseViewModel() {
         presentList.addAll(realm.copyFromRealm(presents))
         presentList.forEach {
             // todo : price값이 모두 0으로 들어가고 있음.
-//            Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
+            Log.d(TAG, "* * * p list ::: ${it.name} // ${it.price}")
         }
         return presents
     }
