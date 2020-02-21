@@ -3,6 +3,7 @@ package com.nexters.yetda.android.database.dao
 import androidx.lifecycle.LiveData
 import com.nexters.yetda.android.database.RealmUtil
 import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.database.model.Tag
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
@@ -33,18 +34,20 @@ class PresentDao(private val mRealm: Realm) {
         tags: ArrayList<String>,
         _startPrice: Long,
         _endPrice: Long
-    ): RealmResults<Present> {
+    ): LiveData<RealmResults<Present>> {
         val tagList = arrayOfNulls<String>(tags.size)
         tags.toArray(tagList)
-        return mRealm.where<Present>()
-//            .not()
-//            .beginGroup()
-            // todo 아래 방법은 가능하지 않다.
-//            .`in`("tags", tagList)
-//            .endGroup()
-            .between("price", _startPrice, _endPrice)
-            .findAll()
+        return RealmUtil.asLiveData(
+            mRealm.where<Present>()
+                .not()
+                .beginGroup()
+                .`in`("tags", tagList)
+                .endGroup()
+                .between("price", _startPrice, _endPrice)
+                .findAll()
+        )
     }
+
 
     fun deleteAll() {
         val result = mRealm.where<Present>().findAll()
@@ -57,7 +60,7 @@ class PresentDao(private val mRealm: Realm) {
         _id: Int,
         _name: String,
         _price: Long,
-        _tags: ArrayList<String>
+        _tags: ArrayList<Tag>
     ) {
         mRealm.executeTransaction {
             val item = mRealm.createObject<Present>(_id)
@@ -67,4 +70,5 @@ class PresentDao(private val mRealm: Realm) {
             it.copyToRealm(item)
         }
     }
+
 }

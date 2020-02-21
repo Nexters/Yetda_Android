@@ -12,6 +12,7 @@ import com.nexters.yetda.android.database.dao.QuestionDao
 import com.nexters.yetda.android.database.dao.UpdateDao
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.database.model.Tag
 import com.nexters.yetda.android.model.PresentModel
 import com.nexters.yetda.android.model.QuestionModel
 import com.nexters.yetda.android.model.UpdateModel
@@ -51,8 +52,15 @@ class HomeViewModel : BaseViewModel() {
                 Log.d(TAG, "* * * ${documents[0]}")
 
                 PresentDao(realm).deleteAll()
-                for ((i, doc) in documents.withIndex())
-                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.tags)
+                for ((i, doc) in documents.withIndex()) {
+                    val tags = ArrayList<Tag>()
+                    for (tagString in doc.tags) {
+                        val tag = Tag()
+                        tag.tag = tagString
+                        tags.add(tag)
+                    }
+                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, tags)
+                }
 
             }
             .addOnFailureListener { exception ->

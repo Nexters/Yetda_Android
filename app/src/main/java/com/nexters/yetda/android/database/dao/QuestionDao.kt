@@ -1,13 +1,9 @@
 package com.nexters.yetda.android.database.dao
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.nexters.yetda.android.database.RealmUtil
-import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Present
 import com.nexters.yetda.android.database.model.Question
 import io.realm.Realm
-import io.realm.RealmList
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where

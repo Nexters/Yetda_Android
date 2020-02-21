@@ -12,6 +12,6 @@ open class Present : RealmObject(), Parcelable {
     var id: Int = 1
     var price: Long = 0
     var name: String = ""
-    var tags = RealmList<String>()
+    var tags = RealmList<Tag>()
     var image: String = ""
 }
