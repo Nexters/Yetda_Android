@@ -41,12 +41,16 @@
                 <ImageView
                         android:id="@+id/iv_result_present"
                         style="@style/iv"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/img_main" />
 
 
                 <TextView
                         android:id="@+id/tv_result_present"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="45dp"
                         android:fontFamily="@font/noto_sans_bold"
@@ -54,19 +58,20 @@
                         android:textSize="@dimen/txt_medium" />
 
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:gravity="center"
                         android:text="완전 취향저격 선물일거에요!"
                         android:textColor="@color/txtBlack"
-                        android:textSize="@dimen/txt_small" />
+                        android:textSize="15sp" />
 
 
             </LinearLayout>
 
             <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/btn_result_repeat"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/retry"
                     android:textColor="#ccc"

@@ -139,6 +139,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
 
     fun showAnimation() {
         viewModel.showResult()
+        binding.viewQuestionResult.visibility = View.VISIBLE
         binding.lottieQuestionResult.visibility = View.VISIBLE
         binding.lottieQuestionResult.playAnimation()
         binding.lottieQuestionResult.addAnimatorListener(object : Animator.AnimatorListener {
