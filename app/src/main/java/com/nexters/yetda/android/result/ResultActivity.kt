@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.nexters.yetda.android.BR
 import com.nexters.yetda.android.R
+import com.nexters.yetda.android.YetdaApplication
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityResultBinding
@@ -20,10 +21,6 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     private val TAG = javaClass.simpleName
     var history: History = History()
     var index: Int = 0
-
-//    override fun onBackPressed() {
-//        viewModel.clickNextButton()
-//    }
 
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
@@ -48,6 +45,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
         })
         setPresent()
         binding.btnResultRepeat.setOnClickListener {
+            YetdaApplication.get().progressON(this)
             setPresent()
         }
 
@@ -70,6 +68,7 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
         } else {
             index = 0
         }
+        YetdaApplication.get().progressOFF()
     }
 
     override fun onBackPressed() {

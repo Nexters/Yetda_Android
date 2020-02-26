@@ -33,9 +33,7 @@
     <string name="reset_alert">이 페이지를 벗어나면\n지금까지 진행하신 질문에 대한\n<b>답변이 초기화</b>됩니다. 이 페이지를 벗어나시겠습니까?</string>
     <string name="proceed">나가기</string>
     <string name="cancel">머무르기</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_remove_guide">앱을 삭제할 시, 선물 추천기록은 모두 삭제가 되며 복구는 불가능합니다. 이점 유의바랍니다.</string>
 
 </resources>
 

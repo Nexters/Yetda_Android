@@ -11,10 +11,14 @@ import kotlinx.android.synthetic.main.dialog_question_cancel.view.*
 class QuestionCancelDialog : DialogFragment() {
 
     lateinit var callback: (Boolean) -> Unit
+    lateinit var message: String
+    var oneButtonStatus = false
 
     companion object {
-        fun getInstance(callback: (Boolean) -> Unit): QuestionCancelDialog {
+        fun getInstance(msg: String, oneButtonStatus: Boolean, callback: (Boolean) -> Unit): QuestionCancelDialog {
             val dialog = QuestionCancelDialog()
+            dialog.message = msg
+            dialog.oneButtonStatus = oneButtonStatus
             dialog.callback = callback
             return dialog
         }
@@ -24,6 +28,11 @@ class QuestionCancelDialog : DialogFragment() {
         val view = inflater.inflate(R.layout.dialog_question_cancel, container)
 
         dialog?.window?.setBackgroundDrawableResource(R.drawable.bg_r10)
+        view.textQuestionCancelMessage.text = message
+
+        if (oneButtonStatus) {
+            view.textQuestionCancelCancel.visibility = View.GONE
+        }
 
         view.textQuestionCancelProceed.setOnClickListener {
             callback.invoke(true)
