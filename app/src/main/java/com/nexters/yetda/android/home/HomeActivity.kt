@@ -11,6 +11,7 @@ import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.gender.GenderActivity
 import com.nexters.yetda.android.member.MemberActivity
 import com.nexters.yetda.android.name.NameActivity
+import com.nexters.yetda.android.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -24,6 +25,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     private val TAG = javaClass.simpleName
     private var backPressCloseHandler: BackPressCloseHandler? = null
 
+    lateinit var dialog: QuestionCancelDialog
     private var flagEast = false
     private var flagEgg = false
 
@@ -69,10 +71,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             flagEgg = true
             showMemberActivity()
         }
+
+        dialog = QuestionCancelDialog.getInstance(getString(R.string.app_remove_guide), true) {
+            // 작성할 필요 없음
+        }
+        dialog.show(supportFragmentManager, "QuestionCancelDialog")
     }
 
     fun showMemberActivity() {
-        Log.d(TAG, "* * * ${flagEast} // ${flagEgg}")
         if (flagEast && flagEgg) {
             flagEast = false
             flagEgg = false

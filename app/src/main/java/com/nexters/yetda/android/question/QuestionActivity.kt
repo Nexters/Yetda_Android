@@ -39,7 +39,7 @@ class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel
     override fun initViewStart() {
         binding.setVariable(BR.vm, viewModel)
         aniAlpha = AnimationUtils.loadAnimation(this, R.anim.ani_fade_in)
-        dialog = QuestionCancelDialog.getInstance {
+        dialog = QuestionCancelDialog.getInstance(getString(R.string.reset_alert), false) {
             if (it) {
                 finish()
             }

@@ -1,11 +1,12 @@
 
-<img src="https://github.com/Nexters/Yetda_Android/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png?raw=true" width="30%">
+<img src="https://github.com/Nexters/Yetda_Android/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png?raw=true" width="20%">
 
 # Yetda (옛다)
 
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg) ]()
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
-[![API](https://img.shields.io/github/languages/top/Nexters/Yetda_Android)]()
+[![Language](https://img.shields.io/github/languages/top/Nexters/Yetda_Android)]()
+[![GooglePlay](https://img.shields.io/badge/google_play-Download-red?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.nexters.yetda.android)
 
 
 > 매번 친구들 생일선물 챙기기, 선물고르기 너무 어렵지 않나요?
@@ -24,12 +25,19 @@
 별도의 서버 구축 없이 서비스를 제공하기 위해서 파이어베이스의 제품들을 사용하였다.
 
 - [Cloud Firestore]([https://firebase.google.com/products/firestore?hl=ko](https://firebase.google.com/products/firestore?hl=ko))
+
 -- Firestore에 세팅된 최신의 데이터를 앱 DB에 저장한다.
+
 - [Cloud Storage](https://firebase.google.com/products/storage?hl=ko)
+
 -- 앱 DB에 저장된 이미지 URL을 통해 Storage의 이미지를 호출한다.
+
 - [Crashlytics](https://firebase.google.com/products/crashlytics?hl=ko)
+
 -- 앱 이슈가 생기면 바로 대응할 수 있도록 Crashlytics를 세팅한다.
+
 - [Google 애널리틱스](https://firebase.google.com/products/analytics?hl=ko)
+
 -- 활성 사용자가 어느 정도되는지 파악한다.
 
 
