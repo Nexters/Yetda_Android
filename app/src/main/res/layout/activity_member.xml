@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@color/white"
             android:gravity="center_horizontal">
 
         <TextView
@@ -45,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="12dp"
-                    android:text="지수\n디자이너, 조용한 관종"
+                    android:text="[지수]\n디자이너, 조용한 관종"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -66,7 +67,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="12dp"
                     android:gravity="end"
-                    android:text="희주\n디자이너, 겜방BJ 꿈나무"
+                    android:text="[희주]\n디자이너, 겜방BJ 꿈나무"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -97,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="12dp"
-                    android:text="예나\n디자이너, Yetda의 리더"
+                    android:text="[예나]\n디자이너, Yetda의 리더"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -118,7 +119,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="12dp"
                     android:gravity="end"
-                    android:text="종국\n안드로이드 개발자, 연장자"
+                    android:text="[종국]\n안드로이드 개발자, 연장자"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -149,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="12dp"
-                    android:text="수현\niOS 개발자, Yetda 마스코트"
+                    android:text="[수현]\niOS 개발자, Yetda 마스코트"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -170,7 +171,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="12dp"
                     android:gravity="end"
-                    android:text="도현\n안드로이드 개발자, 희주 천적"
+                    android:text="[도현]\n안드로이드 개발자, 희주 천적"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -201,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="12dp"
-                    android:text="채원\niOS 개발자, 본업은 서버개발"
+                    android:text="[채원]\niOS 개발자, 본업은 프론트엔드"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
