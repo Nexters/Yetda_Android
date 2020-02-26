@@ -119,7 +119,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="12dp"
                     android:gravity="end"
-                    android:text="[종국]\n안드로이드 개발자, 연장자"
+                    android:text="[종국]\n안드로이드 개발자, 맥주매니아"
                     android:textColor="@color/txtBlack"
                     android:textSize="15sp" />
 
@@ -162,7 +162,7 @@
                 android:orientation="horizontal"
                 android:gravity="end"
                 android:paddingStart="56dp"
-                android:paddingEnd="56dp"
+                android:paddingEnd="50dp"
                 android:paddingBottom="12dp" >
 
             <TextView
@@ -176,7 +176,7 @@
                     android:textSize="15sp" />
 
             <ImageView
-                    android:layout_width="53dp"
+                    android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_member_6"/>

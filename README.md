@@ -24,21 +24,14 @@
 
 별도의 서버 구축 없이 서비스를 제공하기 위해서 파이어베이스의 제품들을 사용하였다.
 
-- [Cloud Firestore]([https://firebase.google.com/products/firestore?hl=ko](https://firebase.google.com/products/firestore?hl=ko))
-
--- Firestore에 세팅된 최신의 데이터를 앱 DB에 저장한다.
-
+- [Cloud Firestore](https://firebase.google.com/products/firestore?hl=ko)
+  - Firestore에 세팅된 최신의 데이터를 앱 DB에 저장한다.
 - [Cloud Storage](https://firebase.google.com/products/storage?hl=ko)
-
--- 앱 DB에 저장된 이미지 URL을 통해 Storage의 이미지를 호출한다.
-
+  - 앱 DB에 저장된 이미지 URL을 통해 Storage의 이미지를 호출한다.
 - [Crashlytics](https://firebase.google.com/products/crashlytics?hl=ko)
-
--- 앱 이슈가 생기면 바로 대응할 수 있도록 Crashlytics를 세팅한다.
-
+  - 앱 이슈가 생기면 바로 대응할 수 있도록 Crashlytics를 세팅한다.
 - [Google 애널리틱스](https://firebase.google.com/products/analytics?hl=ko)
-
--- 활성 사용자가 어느 정도되는지 파악한다.
+  - 활성 사용자가 어느 정도되는지 파악한다.
 
 
 ## :facepunch: Local Database : Realm
