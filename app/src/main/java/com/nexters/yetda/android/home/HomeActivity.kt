@@ -65,13 +65,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             showMemberActivity()
         }
 
-        textHomeTitle.setOnClickListener {
-            flagEast = true
+        imageHomePresent.setOnClickListener {
+            flagEgg = true
             showMemberActivity()
         }
     }
 
     fun showMemberActivity() {
+        Log.d(TAG, "* * * ${flagEast} // ${flagEgg}")
         if (flagEast && flagEgg) {
             flagEast = false
             flagEgg = false
