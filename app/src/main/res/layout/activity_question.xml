@@ -37,7 +37,7 @@
                         android:id="@+id/textQuestionTop"
                         style="@style/tvQuestion"
                         android:text="@{@string/question_1(vm.name)}"
-                        tools:text="쭈피 님은 어떤 사람인가요?"/>
+                        tools:text="쭈피 님은 어떤 사람인가요?" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -156,19 +156,26 @@
 
                 </LinearLayout>
 
-<!--                <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="@dimen/top_interval"-->
-<!--                        android:text="@string/idontknow" />-->
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="@dimen/top_interval"-->
+                <!--                        android:text="@string/idontknow" />-->
             </LinearLayout>
         </LinearLayout>
+
+        <View
+                android:id="@+id/view_question_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundColor"
+                android:visibility="gone" />
 
         <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottie_question_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 android:scaleType="centerInside"
                 android:visibility="gone"
                 app:lottie_rawRes="@raw/result" />
@@ -177,10 +184,10 @@
                 android:id="@+id/lottie_question_result_repeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:lottie_loop="true"
+                android:layout_centerHorizontal="true"
                 android:scaleType="centerInside"
                 android:visibility="gone"
+                app:lottie_loop="true"
                 app:lottie_rawRes="@raw/result_repeat" />
 
     </RelativeLayout>

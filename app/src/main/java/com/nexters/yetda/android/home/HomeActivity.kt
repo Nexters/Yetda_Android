@@ -1,6 +1,7 @@
 package com.nexters.yetda.android.home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.BR
@@ -8,25 +9,33 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
+import com.nexters.yetda.android.member.MemberActivity
 import com.nexters.yetda.android.name.NameActivity
+import com.nexters.yetda.android.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
+import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override val layoutResourceId = R.layout.activity_home
     override val viewModel: HomeViewModel by viewModel()
-    private val list: ArrayList<History> by lazy { arrayListOf<History>() }
 
+    private val list: ArrayList<History> by lazy { arrayListOf<History>() }
     private val TAG = javaClass.simpleName
     private var backPressCloseHandler: BackPressCloseHandler? = null
+
+    lateinit var dialog: QuestionCancelDialog
+    lateinit var prefs: SharedPreferences
+
+    private var flagEast = false
+    private var flagEgg = false
+
 
     override fun initViewStart() {
 
         viewModel.getUpdatesInfo()
         viewModel.initAskedStatus()
-
-        Log.e(TAG, "initViewStart ${list.toString()}")
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
         backPressCloseHandler = BackPressCloseHandler(this)
     }
@@ -54,10 +63,40 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     }
 
     override fun initViewFinal() {
-        //
+        textHomeTitle.setOnClickListener {
+            flagEast = true
+            showMemberActivity()
+        }
+
+        imageHomePresent.setOnClickListener {
+            flagEgg = true
+            showMemberActivity()
+        }
+
+        checkFirstRun()
+    }
+
+    fun showMemberActivity() {
+        if (flagEast && flagEgg) {
+            flagEast = false
+            flagEgg = false
+            val intent = Intent(this, MemberActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {
         backPressCloseHandler!!.onBackPressed()
+    }
+
+    fun checkFirstRun() {
+        val isFirstRun: Boolean = prefs.getBoolean("isFirstRun", true)
+        if (isFirstRun) {
+            dialog = QuestionCancelDialog.getInstance(getString(R.string.app_remove_guide), true) {
+                // 작성할 필요 없음
+            }
+            dialog.show(supportFragmentManager, "QuestionCancelDialog")
+            prefs.edit().putBoolean("isFirstRun", false).apply()
+        }
     }
 }

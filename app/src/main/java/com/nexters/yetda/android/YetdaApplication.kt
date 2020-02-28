@@ -15,9 +15,7 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import org.koin.android.ext.android.startKoin
 
-
 class YetdaApplication : Application() {
-
 
     override fun onCreate() {
         super.onCreate()
@@ -53,6 +51,7 @@ class YetdaApplication : Application() {
             return instance!!
         }
     }
+
     /**
      * Progress Dialog
      * HOW TO USE
@@ -60,7 +59,6 @@ class YetdaApplication : Application() {
      * YetdaApplication.get().progressOFF();
      */
     internal var progressDialog: AppCompatDialog? = null
-
 
     fun progressON(activity: Activity?) {
         if (activity == null) {
@@ -76,10 +74,9 @@ class YetdaApplication : Application() {
             progressDialog!!.show()
         }
 
-        val lottieAnimationView = progressDialog!!.findViewById<View>(R.id.progress_lottie) as LottieAnimationView?
+        val lottieAnimationView =
+            progressDialog!!.findViewById<View>(R.id.progress_lottie) as LottieAnimationView?
         lottieAnimationView!!.playAnimation()
-
-
     }
 
     fun progressOFF() {

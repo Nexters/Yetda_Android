@@ -20,7 +20,6 @@ class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
 
     private val TAG = javaClass.simpleName
 
-
     override fun initViewStart() {
 //        binding.vm = vm
 

@@ -14,8 +14,8 @@ android {
         applicationId "com.nexters.yetda.android"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 102
-        versionName "1.0.2"
+        versionCode 103
+        versionName "1.0.3"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
@@ -36,7 +36,7 @@ android {
         enabled = true
     }
     //use parcelize
-    androidExtensions{
+    androidExtensions {
         experimental = true
     }
 

@@ -21,8 +21,8 @@
         <ImageView
                 android:id="@+id/iv_item_detail"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="95dp"
-                android:layout_marginRight="95dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
                 style="@style/iv"
                 android:src="@drawable/img_present_default" />
 

@@ -10,6 +10,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".member.MemberActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +21,7 @@
         </activity>
         <activity
                 android:name=".home.HomeActivity"
-                android:windowSoftInputMode="adjustResize">
-
-        </activity>
+                android:windowSoftInputMode="adjustResize"></activity>
         <activity
                 android:name=".detail.DetailActivity"
                 android:windowSoftInputMode="adjustResize" />
