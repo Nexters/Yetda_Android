@@ -15,6 +15,7 @@ import com.nexters.yetda.android.database.model.Tag
 import com.nexters.yetda.android.model.PresentModel
 import com.nexters.yetda.android.model.QuestionModel
 import com.nexters.yetda.android.model.UpdateModel
+import com.nexters.yetda.android.util.FireInTheRealm
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmResults
@@ -43,7 +44,11 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun getPresentsList() {
-        db.collection("presents")
+        val fireInTheRealm: FireInTheRealm? = null
+        fireInTheRealm?.test(db, realm)
+//        FireInTheRealm.test(db, realm)
+
+        /*db.collection("presents")
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
@@ -63,7 +68,7 @@ class HomeViewModel : BaseViewModel() {
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-            }
+            }*/
     }
 
     fun getQuestionsList() {
