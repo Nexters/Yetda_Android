@@ -8,15 +8,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.domain.database.dao.HistoryDao
-import com.nexters.yetda.android.domain.database.dao.PresentDao
 import com.nexters.yetda.android.domain.database.dao.QuestionDao
-import com.nexters.yetda.android.domain.database.dao.UpdateDao
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.domain.database.model.Tag
-import com.nexters.yetda.android.domain.firebase.model.PresentModel
-import com.nexters.yetda.android.domain.firebase.model.QuestionModel
-import com.nexters.yetda.android.domain.firebase.model.UpdateModel
-import com.nexters.yetda.android.util.FireInTheRealm
+import com.nexters.yetda.android.domain.firebase.FireInTheRealm
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmResults
@@ -32,6 +26,10 @@ class HomeViewModel : BaseViewModel() {
         Realm.getDefaultInstance()
     }
 
+    private val fireInTheRealm by lazy {
+        FireInTheRealm(db, realm)
+    }
+
     var isEmptyList = MutableLiveData<Boolean>(false)
 
     private val _startNextActivityEvent = SingleLiveEvent<Any>()
@@ -45,66 +43,15 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun getPresentsList() {
-//        val fireInTheRealm: FireInTheRealm? = null
-//        fireInTheRealm?.test(db, realm)
-//        FireInTheRealm.test(db, realm)
-
-        db.collection("presents")
-            .get()
-            .addOnSuccessListener { documentSnapshot ->
-                val documents = documentSnapshot.toObjects(PresentModel::class.java)
-
-                PresentDao(realm).deleteAll()
-                for ((i, doc) in documents.withIndex()) {
-                    val tags = ArrayList<Tag>()
-                    for (tagString in doc.tags) {
-                        val tag = Tag()
-                        tag.tag = tagString
-                        tags.add(tag)
-                    }
-                    PresentDao(realm).addPresent(doc.id, doc.name, doc.price, doc.image, tags)
-                }
-                //TODO:Sample Input, relase시 삭제
-//                sampleHistory()
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
+        fireInTheRealm.getPresents()
     }
 
     fun getQuestionsList() {
-        db.collection("question")
-            .get()
-            .addOnSuccessListener { documentSnapshot ->
-                val documents = documentSnapshot.toObjects(QuestionModel::class.java)
-                QuestionDao(realm).deleteAll()
-                for (doc in documents) {
-                    QuestionDao(realm).addQuestion(doc.id, doc.question, doc.tag)
-                }
-                getPresentsList()
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
+        fireInTheRealm.getQuestionsList(onSuccess = { getPresentsList() })
     }
 
     fun getUpdatesInfo() {
-        db.collection("updates")
-            .get()
-            .addOnSuccessListener { documentSnapshot ->
-                val documents = documentSnapshot.toObjects(UpdateModel::class.java)
-
-                //newest updateDate
-                val strDate = documents[0].updated_at.seconds
-                if (UpdateDao(realm).findUpdate()?.updatedAt != strDate) {
-                    //NEED Update
-                    UpdateDao(realm).addUpdate(strDate)
-                    getQuestionsList()
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
+        fireInTheRealm.getUpdatesInfo(onSuccess = { getQuestionsList() })
     }
 
     @SuppressLint("SimpleDateFormat")

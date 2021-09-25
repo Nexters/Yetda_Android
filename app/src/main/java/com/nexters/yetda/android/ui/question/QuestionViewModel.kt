@@ -106,4 +106,9 @@ class QuestionViewModel : BaseViewModel() {
     fun initAskedStatus() {
         QuestionDao(realm).initAskedStatus()
     }
+
+    override fun onCleared() {
+        realm.close()
+        super.onCleared()
+    }
 }

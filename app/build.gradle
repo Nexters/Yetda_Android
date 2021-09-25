@@ -22,7 +22,7 @@ android {
     }
     buildTypes {
         debug {
-            manifestPlaceholders = [enableAnalytics: "false"] //Analytics, Crashlytics 리포트 중지
+            manifestPlaceholders = [enableAnalytics: "true"] //Analytics, Crashlytics 리포트 중지
             minifyEnabled false
         }
         release {
