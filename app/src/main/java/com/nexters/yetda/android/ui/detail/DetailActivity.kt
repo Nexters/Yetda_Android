@@ -1,13 +1,13 @@
 package com.nexters.yetda.android.ui.detail
 
-import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.domain.database.model.Present
 
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.NumberFormat

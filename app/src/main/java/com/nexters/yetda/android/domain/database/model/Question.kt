@@ -1,4 +1,4 @@
-package com.nexters.yetda.android.database.model
+package com.nexters.yetda.android.domain.database.model
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

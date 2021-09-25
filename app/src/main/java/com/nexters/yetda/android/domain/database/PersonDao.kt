@@ -1,4 +1,4 @@
-package com.nexters.yetda.android.database
+package com.nexters.yetda.android.domain.database
 
 import android.util.Log
 import io.realm.Realm

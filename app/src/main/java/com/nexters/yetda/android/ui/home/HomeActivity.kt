@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.ui.member.MemberActivity
 import com.nexters.yetda.android.ui.name.NameActivity

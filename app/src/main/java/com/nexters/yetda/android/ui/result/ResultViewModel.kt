@@ -3,8 +3,8 @@ package com.nexters.yetda.android.ui.result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.yetda.android.base.BaseViewModel
-import com.nexters.yetda.android.database.dao.HistoryDao
-import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.domain.database.dao.HistoryDao
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 

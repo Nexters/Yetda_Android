@@ -1,7 +1,7 @@
-package com.nexters.yetda.android.database.model
+package com.nexters.yetda.android.domain.database.model
 
 import android.os.Parcelable
-import com.nexters.yetda.android.database.RealmUtil
+import com.nexters.yetda.android.domain.database.RealmUtil
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

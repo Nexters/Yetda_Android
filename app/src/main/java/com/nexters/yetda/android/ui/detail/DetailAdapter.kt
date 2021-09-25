@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.islamkhsh.CardSliderAdapter
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.domain.database.model.Present
 import kotlinx.android.synthetic.main.item_detail_list.view.*
 import kotlin.collections.ArrayList
 

@@ -1,4 +1,4 @@
-package com.nexters.yetda.android.database
+package com.nexters.yetda.android.domain.database
 
 
 import io.realm.RealmModel

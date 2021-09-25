@@ -2,9 +2,9 @@ package com.nexters.yetda.android.util
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.nexters.yetda.android.database.dao.PresentDao
-import com.nexters.yetda.android.database.model.Tag
-import com.nexters.yetda.android.model.PresentModel
+import com.nexters.yetda.android.domain.database.dao.PresentDao
+import com.nexters.yetda.android.domain.database.model.Tag
+import com.nexters.yetda.android.domain.firebase.model.PresentModel
 import io.realm.Realm
 import java.util.*
 

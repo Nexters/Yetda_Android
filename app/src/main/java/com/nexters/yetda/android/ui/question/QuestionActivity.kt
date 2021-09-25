@@ -13,8 +13,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Question
+import com.nexters.yetda.android.domain.database.model.History
+import com.nexters.yetda.android.domain.database.model.Question
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
 import com.nexters.yetda.android.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_question.*

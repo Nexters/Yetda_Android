@@ -1,9 +1,9 @@
-package com.nexters.yetda.android.database.dao
+package com.nexters.yetda.android.domain.database.dao
 
 import androidx.lifecycle.LiveData
-import com.nexters.yetda.android.database.RealmUtil
-import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.database.model.Tag
+import com.nexters.yetda.android.domain.database.RealmUtil
+import com.nexters.yetda.android.domain.database.model.Present
+import com.nexters.yetda.android.domain.database.model.Tag
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.createObject

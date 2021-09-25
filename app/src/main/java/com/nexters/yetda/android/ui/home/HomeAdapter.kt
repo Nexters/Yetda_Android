@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.item_present_list.view.*
 import java.text.NumberFormat

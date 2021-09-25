@@ -1,15 +1,7 @@
-package com.nexters.yetda.android.database.dao
+package com.nexters.yetda.android.domain.database.dao
 
-import androidx.lifecycle.LiveData
-import com.google.firebase.firestore.auth.User
-import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
-import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.database.model.Update
-import com.nexters.yetda.android.util.LiveRealmData
+import com.nexters.yetda.android.domain.database.model.Update
 import io.realm.Realm
-import io.realm.RealmList
-import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where

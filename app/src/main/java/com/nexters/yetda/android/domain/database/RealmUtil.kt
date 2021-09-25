@@ -1,9 +1,9 @@
-package com.nexters.yetda.android.database
+package com.nexters.yetda.android.domain.database
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.nexters.yetda.android.database.model.Present
-import com.nexters.yetda.android.database.model.Tag
+import com.nexters.yetda.android.domain.database.model.Present
+import com.nexters.yetda.android.domain.database.model.Tag
 import com.nexters.yetda.android.util.LiveRealmData
 import io.realm.Realm
 import io.realm.RealmList

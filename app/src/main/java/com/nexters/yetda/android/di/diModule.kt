@@ -1,7 +1,7 @@
 package com.nexters.yetda.android.di
 
 import com.nexters.yetda.android.ui.birthday.BirthdayViewModel
-import com.nexters.yetda.android.database.PersonDao
+import com.nexters.yetda.android.domain.database.PersonDao
 import com.nexters.yetda.android.ui.detail.DetailViewModel
 import com.nexters.yetda.android.ui.gender.GenderViewModel
 import com.nexters.yetda.android.ui.name.NameViewModel

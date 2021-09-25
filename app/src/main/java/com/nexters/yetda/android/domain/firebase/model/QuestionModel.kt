@@ -1,4 +1,4 @@
-package com.nexters.yetda.android.model
+package com.nexters.yetda.android.domain.firebase.model
 
 data class QuestionModel(
     /**

@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.appyvet.materialrangebar.RangeBar
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.database.model.History
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityPriceBinding
 import com.nexters.yetda.android.ui.question.QuestionActivity
 import org.koin.android.viewmodel.ext.android.viewModel

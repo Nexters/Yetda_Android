@@ -1,10 +1,9 @@
-package com.nexters.yetda.android.database.dao
+package com.nexters.yetda.android.domain.database.dao
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import com.nexters.yetda.android.database.RealmUtil.Companion.asLiveData
-import com.nexters.yetda.android.database.model.History
-import com.nexters.yetda.android.database.model.Present
+import com.nexters.yetda.android.domain.database.RealmUtil.Companion.asLiveData
+import com.nexters.yetda.android.domain.database.model.History
+import com.nexters.yetda.android.domain.database.model.Present
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
