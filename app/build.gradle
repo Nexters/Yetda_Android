@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'io.fabric'
+//todo: 주석처리 하여 firebase에서 데이터를 가져오지 못함. 수정 필요(#53)
+//apply plugin: 'io.fabric'
 apply plugin: "kotlin-kapt"
 apply plugin: 'realm-android'
 
