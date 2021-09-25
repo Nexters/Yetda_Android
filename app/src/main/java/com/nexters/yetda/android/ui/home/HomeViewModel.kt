@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.domain.database.dao.HistoryDao
+import com.nexters.yetda.android.domain.database.dao.PresentDao
 import com.nexters.yetda.android.domain.database.dao.QuestionDao
 import com.nexters.yetda.android.domain.database.dao.UpdateDao
 import com.nexters.yetda.android.domain.database.model.History
+import com.nexters.yetda.android.domain.database.model.Tag
+import com.nexters.yetda.android.domain.firebase.model.PresentModel
 import com.nexters.yetda.android.domain.firebase.model.QuestionModel
 import com.nexters.yetda.android.domain.firebase.model.UpdateModel
 import com.nexters.yetda.android.util.FireInTheRealm
@@ -23,7 +27,7 @@ class HomeViewModel : BaseViewModel() {
 
     private val TAG = javaClass.simpleName
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db  = Firebase.firestore
     private val realm by lazy {
         Realm.getDefaultInstance()
     }
@@ -41,11 +45,11 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun getPresentsList() {
-        val fireInTheRealm: FireInTheRealm? = null
-        fireInTheRealm?.test(db, realm)
+//        val fireInTheRealm: FireInTheRealm? = null
+//        fireInTheRealm?.test(db, realm)
 //        FireInTheRealm.test(db, realm)
 
-        /*db.collection("presents")
+        db.collection("presents")
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 val documents = documentSnapshot.toObjects(PresentModel::class.java)
@@ -65,7 +69,7 @@ class HomeViewModel : BaseViewModel() {
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
-            }*/
+            }
     }
 
     fun getQuestionsList() {
