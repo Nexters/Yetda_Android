@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".member.MemberActivity">
+        tools:context=".ui.member.MemberActivity">
 
     <data>
         <import type="android.view.View" />
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.member.MemberViewModel" />
+                type="com.nexters.yetda.android.ui.member.MemberViewModel" />
     </data>
 
     <LinearLayout

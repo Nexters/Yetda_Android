@@ -7,7 +7,7 @@
 
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.price.PriceViewModel" />
+                type="com.nexters.yetda.android.ui.price.PriceViewModel" />
     </data>
 
     <LinearLayout

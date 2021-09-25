@@ -9,7 +9,7 @@
 
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.home.HomeViewModel" />
+                type="com.nexters.yetda.android.ui.home.HomeViewModel" />
     </data>
 
 

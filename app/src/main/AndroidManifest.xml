@@ -10,8 +10,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".member.MemberActivity"></activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.nexters.yetda.android.ui.member.MemberActivity"></activity>
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -20,24 +20,24 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".home.HomeActivity"
+                android:name="com.nexters.yetda.android.ui.home.HomeActivity"
                 android:windowSoftInputMode="adjustResize"></activity>
         <activity
-                android:name=".detail.DetailActivity"
+                android:name="com.nexters.yetda.android.ui.detail.DetailActivity"
                 android:windowSoftInputMode="adjustResize" />
         <activity
-                android:name=".price.PriceActivity"
+                android:name="com.nexters.yetda.android.ui.price.PriceActivity"
                 android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".question.QuestionActivity" />
-        <activity android:name=".result.ResultActivity" />
+        <activity android:name="com.nexters.yetda.android.ui.question.QuestionActivity" />
+        <activity android:name="com.nexters.yetda.android.ui.result.ResultActivity" />
         <activity
-                android:name=".birthday.BirthdayActivity"
-                android:windowSoftInputMode="adjustResize" />
-        <activity
-                android:name=".name.NameActivity"
+                android:name="com.nexters.yetda.android.ui.birthday.BirthdayActivity"
                 android:windowSoftInputMode="adjustResize" />
         <activity
-                android:name=".gender.GenderActivity"
+                android:name="com.nexters.yetda.android.ui.name.NameActivity"
+                android:windowSoftInputMode="adjustResize" />
+        <activity
+                android:name="com.nexters.yetda.android.ui.gender.GenderActivity"
                 android:windowSoftInputMode="adjustResize" /> <!-- Crashlytics Debug시 리포트 중지 -->
         <meta-data
                 android:name="firebase_crashlytics_collection_enabled"

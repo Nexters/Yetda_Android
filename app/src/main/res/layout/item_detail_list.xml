@@ -7,7 +7,7 @@
 
         <variable
                 name="vm"
-                type="com.nexters.yetda.android.detail.DetailViewModel" />
+                type="com.nexters.yetda.android.ui.detail.DetailViewModel" />
     </data>
 
 
