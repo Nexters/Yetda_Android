@@ -3,12 +3,12 @@ package com.nexters.yetda.android.ui.price
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class PriceViewModel : BaseViewModel() {
+class PriceViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
 

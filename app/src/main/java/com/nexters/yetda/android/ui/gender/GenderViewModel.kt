@@ -4,11 +4,11 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class GenderViewModel : BaseViewModel() {
+class GenderViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
 

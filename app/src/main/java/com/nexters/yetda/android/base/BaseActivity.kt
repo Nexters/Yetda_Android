@@ -12,13 +12,9 @@ import androidx.databinding.ViewDataBinding
 * 2. 클린 빌드 후 다시 빌드 수행
 * 3. 이름 확인 : sbs_main_activity => ActivitySbsMainBinding
 */
-abstract class BaseActivity<VB : ViewDataBinding,VM: BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var binding: VB
-    /**
-     * viewModel 로 쓰일 변수.
-     */
-    abstract val  viewModel: VM
 
     /**
      * setContentView로 호출할 Layout의 리소스 id.
@@ -58,7 +54,5 @@ abstract class BaseActivity<VB : ViewDataBinding,VM: BaseViewModel> : AppCompatA
         initDataBinding()
         initViewFinal()
     }
-
-
 
 }

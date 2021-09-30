@@ -15,9 +15,9 @@ import com.nexters.yetda.android.util.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override val layoutResourceId = R.layout.activity_home
-    override val viewModel: HomeViewModel by viewModel()
+    val viewModel: HomeViewModel by viewModel()
 
     private val list: ArrayList<History> by lazy { arrayListOf<History>() }
     private val TAG = javaClass.simpleName

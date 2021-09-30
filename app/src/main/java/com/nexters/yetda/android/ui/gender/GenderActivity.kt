@@ -9,9 +9,9 @@ import com.nexters.yetda.android.databinding.ActivityGenderBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class GenderActivity : BaseActivity<ActivityGenderBinding, GenderViewModel>() {
+class GenderActivity : BaseActivity<ActivityGenderBinding>() {
     override val layoutResourceId = R.layout.activity_gender
-    override val viewModel: GenderViewModel by viewModel()
+    val viewModel: GenderViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
 

@@ -2,11 +2,11 @@ package com.nexters.yetda.android.ui.detail
 
 
 import androidx.lifecycle.LiveData
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class DetailViewModel : BaseViewModel() {
+class DetailViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
 

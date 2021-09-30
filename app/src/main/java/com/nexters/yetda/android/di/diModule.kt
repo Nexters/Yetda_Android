@@ -12,32 +12,32 @@ import com.nexters.yetda.android.ui.home.HomeViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
-val viewModelPart = module {
-    viewModel {
-        HomeViewModel()
-    }
-    viewModel {
-        NameViewModel()
-    }
-    viewModel {
-        GenderViewModel()
-    }
-    viewModel {
-        BirthdayViewModel()
-    }
-    viewModel {
-        PriceViewModel()
-    }
-    viewModel {
-        QuestionViewModel()
-    }
-    viewModel {
-        ResultViewModel()
-    }
-    viewModel {
-        DetailViewModel()
-    }
-}
+//val viewModelPart = module {
+//    viewModel {
+//        HomeViewModel()
+//    }
+//    viewModel {
+//        NameViewModel()
+//    }
+//    viewModel {
+//        GenderViewModel()
+//    }
+//    viewModel {
+//        BirthdayViewModel()
+//    }
+//    viewModel {
+//        PriceViewModel()
+//    }
+//    viewModel {
+//        QuestionViewModel()
+//    }
+//    viewModel {
+//        ResultViewModel()
+//    }
+//    viewModel {
+//        DetailViewModel()
+//    }
+//}
 
 val daoPart = module {
     factory {
@@ -45,4 +45,4 @@ val daoPart = module {
     }
 }
 
-val diModule = listOf(viewModelPart, daoPart)
+val diModule = listOf(daoPart)

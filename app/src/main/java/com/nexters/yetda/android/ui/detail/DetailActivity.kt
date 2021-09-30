@@ -15,9 +15,9 @@ import java.time.MonthDay
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
+class DetailActivity : BaseActivity<ActivityDetailBinding>() {
     override val layoutResourceId = R.layout.activity_detail
-    override val viewModel: DetailViewModel by viewModel()
+    val viewModel: DetailViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
 

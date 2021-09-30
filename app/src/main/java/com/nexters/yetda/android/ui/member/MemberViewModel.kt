@@ -1,7 +1,7 @@
 package com.nexters.yetda.android.ui.member
 
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class MemberViewModel : BaseViewModel() {
+class MemberViewModel : ViewModel() {
     //
 }

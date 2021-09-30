@@ -20,9 +20,9 @@ import com.nexters.yetda.android.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_question.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class QuestionActivity : BaseActivity<ActivityQuestionBinding, QuestionViewModel>() {
+class QuestionActivity : BaseActivity<ActivityQuestionBinding>() {
     override val layoutResourceId = R.layout.activity_question
-    override val viewModel: QuestionViewModel by viewModel()
+    val viewModel: QuestionViewModel by viewModel()
     private val TAG = javaClass.simpleName
 
     var question = Question()

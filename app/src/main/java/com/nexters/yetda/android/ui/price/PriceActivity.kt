@@ -12,9 +12,9 @@ import com.nexters.yetda.android.ui.question.QuestionActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class PriceActivity : BaseActivity<ActivityPriceBinding, PriceViewModel>() {
+class PriceActivity : BaseActivity<ActivityPriceBinding>() {
     override val layoutResourceId = R.layout.activity_price
-    override val viewModel: PriceViewModel by viewModel()
+    val viewModel: PriceViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
     var history = History()

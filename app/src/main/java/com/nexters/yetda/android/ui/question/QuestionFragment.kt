@@ -11,7 +11,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class QuestionFragment : BaseFragment<FragmentQuestionBinding, QuestionViewModel>() {
+class QuestionFragment : BaseFragment<FragmentQuestionBinding>() {
 
     private val TAG = javaClass.simpleName
 
@@ -21,7 +21,7 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding, QuestionViewModel
         }
     }
 
-    override val viewModel: QuestionViewModel by viewModel()
+    val viewModel: QuestionViewModel by viewModel()
     override val layoutResourceId: Int = R.layout.fragment_question
 
     override fun initViewStart() {

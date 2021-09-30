@@ -11,9 +11,9 @@ import com.nexters.yetda.android.databinding.ActivityResultBinding
 import com.nexters.yetda.android.ui.home.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
+class ResultActivity : BaseActivity<ActivityResultBinding>() {
     override val layoutResourceId = R.layout.activity_result
-    override val viewModel: ResultViewModel by viewModel()
+    val viewModel: ResultViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
     var history: History = History()

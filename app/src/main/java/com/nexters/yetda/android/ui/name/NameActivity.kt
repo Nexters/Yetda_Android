@@ -9,9 +9,9 @@ import com.nexters.yetda.android.ui.gender.GenderActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class NameActivity : BaseActivity<ActivityNameBinding, NameViewModel>() {
+class NameActivity : BaseActivity<ActivityNameBinding>() {
     override val layoutResourceId = R.layout.activity_name
-    override val viewModel: NameViewModel by viewModel()
+    val viewModel: NameViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
 
