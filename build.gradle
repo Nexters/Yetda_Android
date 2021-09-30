@@ -8,7 +8,7 @@ buildscript {
         compile_sdk_version = 29
         build_tools_version = "29.0.1"
         target_sdk_version = 29
-        min_sdk_version = 19
+        min_sdk_version = 24
 
         //project dependencies
         kotlin_version = '1.5.30'
