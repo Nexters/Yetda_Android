@@ -88,6 +88,7 @@
                 android:paddingBottom="12dp" >
 
             <ImageView
+                    android:id="@+id/imageMemberYena"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
