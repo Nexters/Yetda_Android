@@ -10,16 +10,14 @@ import android.os.Build
 import android.view.View
 import androidx.appcompat.app.AppCompatDialog
 import com.airbnb.lottie.LottieAnimationView
-import com.nexters.yetda.android.di.diModule
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import org.koin.android.ext.android.startKoin
 
 class YetdaApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        startKoin(applicationContext, diModule)
+//        startKoin(applicationContext, diModule)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelId = getString(R.string.notification_channel_id)
