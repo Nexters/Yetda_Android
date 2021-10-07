@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, NameActivity::class.java))
+            startActivity(Intent(this, NameActivity::class.java))
             Log.e(TAG, "click ${list}")
         })
 
@@ -70,6 +70,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         imageHomePresent.setOnClickListener {
             flagEgg = true
             showMemberActivity()
+        }
+
+        textHomeGiftListTitle.setOnClickListener {
+            startActivity(Intent(this, SampleActivity::class.java))
         }
 
         checkFirstRun()
