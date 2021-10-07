@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.ui.birthday.BirthdayActivity
 import com.nexters.yetda.android.databinding.ActivityGenderBinding
+import com.nexters.yetda.android.ui.birthday.BirthdayActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 

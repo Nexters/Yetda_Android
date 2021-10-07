@@ -1,10 +1,10 @@
 package com.nexters.yetda.android.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.nexters.yetda.android.R
 
 private const val ARG_PARAM1 = "param1"

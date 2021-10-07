@@ -1,41 +1,41 @@
 <resources>
 
-  <string name="notification_channel_id">"notification_channel_id"</string>
-  <string name="notification_channel_name">"notification_channel_name"</string>
+    <string name="notification_channel_id">"notification_channel_id"</string>
+    <string name="notification_channel_name">"notification_channel_name"</string>
 
-  <string name="app_name">옛다</string>
-  <string name="next">다음</string>
+    <string name="app_name">옛다</string>
+    <string name="next">다음</string>
 
-  <string name="start">선물 추천 받으러\n가볼까요?</string>
-  <string name="name_q">선물을 받을 사람은?</string>
-  <string name="gender_q">%s 님의 성별은?</string>
-  <string name="gender_female">여성</string>
-  <string name="gender_male">남성</string>
-  <string name="birthday_q">%s 님의 생일은?</string>
-  <string name="price_q">얼마 정도 생각하시나요?</string>
+    <string name="start">선물 추천 받으러\n가볼까요?</string>
+    <string name="name_q">선물을 받을 사람은?</string>
+    <string name="gender_q">%s 님의 성별은?</string>
+    <string name="gender_female">여성</string>
+    <string name="gender_male">남성</string>
+    <string name="birthday_q">%s 님의 생일은?</string>
+    <string name="price_q">얼마 정도 생각하시나요?</string>
 
-  <string name="question_1">%s 님은 어떤 사람인가요?</string>
-  <string name="question_2">%s 님에 대해 조금만 더 알려주세요!</string>
-  <string name="question_3">%s 님을 위한 선물이 곧..!</string>
+    <string name="question_1">%s 님은 어떤 사람인가요?</string>
+    <string name="question_2">%s 님에 대해 조금만 더 알려주세요!</string>
+    <string name="question_3">%s 님을 위한 선물이 곧..!</string>
 
-  <string name="answer">%s 님을 위한 추천선물</string>
+    <string name="answer">%s 님을 위한 추천선물</string>
 
-  <string name="retry"><u>또 다른 선물은?</u></string>
+    <string name="retry"><u>또 다른 선물은?</u></string>
 
-  <string name="idontknow">잘 모르겠어요</string>
+    <string name="idontknow">잘 모르겠어요</string>
 
-  <string name="restart">처음으로 돌아가기</string>
+    <string name="restart">처음으로 돌아가기</string>
 
-  <string name="detail"> 님을 위한\n추천선물</string>
+    <string name="detail"> 님을 위한\n추천선물</string>
 
-  <!-- dialog-->
-  <string name="wait">잠깐만요!</string>
-  <string name="reset_alert">이 페이지를 벗어나면\n지금까지 진행하신 질문에 대한\n<b>답변이 초기화</b>됩니다. 이 페이지를 벗어나시겠습니까?</string>
-  <string name="proceed">나가기</string>
-  <string name="cancel">머무르기</string>
-  <string name="app_remove_guide">앱을 삭제할 시, 선물 추천기록은 모두 삭제가 되며 복구는 불가능합니다. 이점 유의바랍니다.</string>
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- dialog-->
+    <string name="wait">잠깐만요!</string>
+    <string name="reset_alert">이 페이지를 벗어나면\n지금까지 진행하신 질문에 대한\n<b>답변이 초기화</b>됩니다. 이 페이지를 벗어나시겠습니까?</string>
+    <string name="proceed">나가기</string>
+    <string name="cancel">머무르기</string>
+    <string name="app_remove_guide">앱을 삭제할 시, 선물 추천기록은 모두 삭제가 되며 복구는 불가능합니다. 이점 유의바랍니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

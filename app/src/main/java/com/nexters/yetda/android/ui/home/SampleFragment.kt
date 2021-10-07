@@ -1,16 +1,12 @@
 package com.nexters.yetda.android.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.generated.callback.OnClickListener
 import kotlinx.android.synthetic.main.fragment_sample.*
 
 private const val ARG_PARAM1 = "param1"

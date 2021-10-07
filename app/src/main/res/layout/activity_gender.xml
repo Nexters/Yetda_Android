@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-                name="vm"
-                type="com.nexters.yetda.android.ui.gender.GenderViewModel" />
+            name="vm"
+            type="com.nexters.yetda.android.ui.gender.GenderViewModel" />
     </data>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundColor"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->vm.clickBackButton()}"
-                app:srcCompat="@drawable/ic_arrow_left" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.clickBackButton()}"
+            app:srcCompat="@drawable/ic_arrow_left" />
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                    style="@style/tvQuestion"
-                    android:text="@{@string/gender_q(vm.name)}" />
+                style="@style/tvQuestion"
+                android:text="@{@string/gender_q(vm.name)}" />
 
             <LinearLayout
-                    android:layout_width="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/side_interval"
+                    android:background="@drawable/selector_btn_rounded"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:onClick="@{()->vm.isFemale()}"
+                    android:selected="@{vm.isfemale?true:false}"
+                    android:text="@string/gender_female"
+                    android:textColor="@drawable/selector_gender_text"
+                    android:textSize="@dimen/txt_medium" />
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/side_interval"
-                        android:background="@drawable/selector_btn_rounded"
-                        android:gravity="center"
-                        android:onClick="@{()->vm.isFemale()}"
-                        android:selected="@{vm.isfemale?true:false}"
-                        android:text="@string/gender_female"
-                        android:textColor="@drawable/selector_gender_text"
-                        android:textSize="@dimen/txt_medium" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_btn_rounded"
-                        android:gravity="center"
-                        android:onClick="@{()->vm.isMale()}"
-                        android:selected="@{vm.isfemale?false:true}"
-                        android:text="@string/gender_male"
-                        android:textColor="@drawable/selector_gender_text"
-                        android:textSize="@dimen/txt_medium" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_btn_rounded"
+                    android:gravity="center"
+                    android:onClick="@{()->vm.isMale()}"
+                    android:selected="@{vm.isfemale?false:true}"
+                    android:text="@string/gender_male"
+                    android:textColor="@drawable/selector_gender_text"
+                    android:textSize="@dimen/txt_medium" />
             </LinearLayout>
         </LinearLayout>
 
         <TextView
-                style="@style/btn"
-                android:onClick="@{()->vm.clickNextButton()}"
-                android:selected="@{vm.btnActivated}"
-                android:text="@string/next" />
+            style="@style/btn"
+            android:onClick="@{()->vm.clickNextButton()}"
+            android:selected="@{vm.btnActivated}"
+            android:text="@string/next" />
     </LinearLayout>
 </layout>

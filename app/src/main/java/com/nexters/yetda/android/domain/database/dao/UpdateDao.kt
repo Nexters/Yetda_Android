@@ -11,7 +11,7 @@ class UpdateDao(private val mRealm: Realm) {
 
     fun findUpdate(): Update? {
         return mRealm.where<Update>()
-            .sort("updatedAt",Sort.DESCENDING)
+            .sort("updatedAt", Sort.DESCENDING)
             .findFirst()
     }
 

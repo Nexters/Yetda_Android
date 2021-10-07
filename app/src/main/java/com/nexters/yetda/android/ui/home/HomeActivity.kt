@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.ui.member.MemberActivity
 import com.nexters.yetda.android.ui.name.NameActivity
 import com.nexters.yetda.android.ui.question.QuestionCancelDialog
@@ -34,7 +34,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
         viewModel.getUpdatesInfo()
         viewModel.initAskedStatus()
-        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE)
 
         backPressCloseHandler = BackPressCloseHandler(this)
     }

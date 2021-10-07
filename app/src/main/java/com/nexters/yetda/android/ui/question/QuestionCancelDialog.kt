@@ -15,7 +15,11 @@ class QuestionCancelDialog : DialogFragment() {
     var oneButtonStatus = false
 
     companion object {
-        fun getInstance(msg: String, oneButtonStatus: Boolean, callback: (Boolean) -> Unit): QuestionCancelDialog {
+        fun getInstance(
+            msg: String,
+            oneButtonStatus: Boolean,
+            callback: (Boolean) -> Unit
+        ): QuestionCancelDialog {
             val dialog = QuestionCancelDialog()
             dialog.message = msg
             dialog.oneButtonStatus = oneButtonStatus
@@ -24,7 +28,11 @@ class QuestionCancelDialog : DialogFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.dialog_question_cancel, container)
 
         dialog?.window?.setBackgroundDrawableResource(R.drawable.bg_r10)

@@ -21,7 +21,7 @@ class HomeViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
 
-    private val db  = Firebase.firestore
+    private val db = Firebase.firestore
     private val realm by lazy {
         Realm.getDefaultInstance()
     }

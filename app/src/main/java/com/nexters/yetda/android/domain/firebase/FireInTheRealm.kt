@@ -2,8 +2,6 @@ package com.nexters.yetda.android.domain.firebase
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.nexters.yetda.android.domain.database.dao.PresentDao
 import com.nexters.yetda.android.domain.database.dao.QuestionDao
 import com.nexters.yetda.android.domain.database.dao.UpdateDao

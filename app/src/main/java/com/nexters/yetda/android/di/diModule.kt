@@ -13,36 +13,36 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val viewModelPart = module {
-  viewModel {
-    HomeViewModel()
-  }
-  viewModel {
-    NameViewModel()
-  }
-  viewModel {
-    GenderViewModel()
-  }
-  viewModel {
-    BirthdayViewModel()
-  }
-  viewModel {
-    PriceViewModel()
-  }
-  viewModel {
-    QuestionViewModel()
-  }
-  viewModel {
-    ResultViewModel()
-  }
-  viewModel {
-    DetailViewModel()
-  }
+    viewModel {
+        HomeViewModel()
+    }
+    viewModel {
+        NameViewModel()
+    }
+    viewModel {
+        GenderViewModel()
+    }
+    viewModel {
+        BirthdayViewModel()
+    }
+    viewModel {
+        PriceViewModel()
+    }
+    viewModel {
+        QuestionViewModel()
+    }
+    viewModel {
+        ResultViewModel()
+    }
+    viewModel {
+        DetailViewModel()
+    }
 }
 
 val daoPart = module {
-  factory {
-    PersonDao(get())
-  }
+    factory {
+        PersonDao(get())
+    }
 }
 
 val diModule = listOf(daoPart, viewModelPart)

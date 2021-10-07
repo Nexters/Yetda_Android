@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-                name="vm"
-                type="com.nexters.yetda.android.ui.detail.DetailViewModel" />
+            name="vm"
+            type="com.nexters.yetda.android.ui.detail.DetailViewModel" />
     </data>
 
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundColor"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->vm.clickBackButton()}"
-                app:srcCompat="@drawable/ic_arrow_left" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.clickBackButton()}"
+            app:srcCompat="@drawable/ic_arrow_left" />
 
         <TextView
-                android:id="@+id/tv_detail_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/side_interval"
-                android:layout_marginTop="@dimen/interval"
-                android:fontFamily="@font/noto_sans_bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/txt_big" />
+            android:id="@+id/tv_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/side_interval"
+            android:layout_marginTop="@dimen/interval"
+            android:fontFamily="@font/noto_sans_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_big" />
 
         <RelativeLayout
-                android:layout_width="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/side_interval">
+
+            <TextView
+                android:id="@+id/tv_detail_birthday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/side_interval">
+                android:textColor="@color/txtBlack"
+                android:textSize="@dimen/txt_small" />
 
             <TextView
-                    android:id="@+id/tv_detail_birthday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="@dimen/txt_small" />
-
-            <TextView
-                    android:id="@+id/tv_detail_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/bg_tag_rounded"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/light_grey"
-                    android:textSize="@dimen/txt_small" />
+                android:id="@+id/tv_detail_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_tag_rounded"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/txt_small" />
         </RelativeLayout>
 
         <com.github.islamkhsh.CardSliderViewPager
-                android:id="@+id/card_detail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardSlider_baseShadow="0dp"
-                app:cardSlider_minShadow="0dp"
-                app:cardSlider_otherPagesWidth="30dp"
-                app:cardSlider_pageMargin="6dp"
-                app:cardSlider_smallScaleFactor="0.9" />
+            android:id="@+id/card_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardSlider_baseShadow="0dp"
+            app:cardSlider_minShadow="0dp"
+            app:cardSlider_otherPagesWidth="30dp"
+            app:cardSlider_pageMargin="6dp"
+            app:cardSlider_smallScaleFactor="0.9" />
 
     </LinearLayout>
 </layout>

@@ -27,9 +27,11 @@ class NameViewModel : ViewModel() {
         if (btnActivated.value!!)
             _startNextActivityEvent.call()
     }
+
     fun clickBackButton() {
         _backBeforeActivityEvent.call()
     }
+
     fun afterTextChanged(s: Editable?) {
         btnActivated.value = !name.value.equals("")
     }

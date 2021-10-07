@@ -1,14 +1,13 @@
 package com.nexters.yetda.android.ui.detail
 
-import com.nexters.yetda.android.domain.database.model.Present
-
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityDetailBinding
+import com.nexters.yetda.android.domain.database.model.History
+import com.nexters.yetda.android.domain.database.model.Present
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.time.MonthDay
@@ -73,9 +72,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
 //        binding.tvDetailBirthday.text = history.birthday
         binding.tvDetailPrice.text =
-            "${NumberFormat.getCurrencyInstance(Locale.KOREA).format(history.startPrice)} ~ ${NumberFormat.getCurrencyInstance(
-                Locale.KOREA
-            ).format(history.endPrice)}"
+            "${NumberFormat.getCurrencyInstance(Locale.KOREA).format(history.startPrice)} ~ ${
+                NumberFormat.getCurrencyInstance(
+                    Locale.KOREA
+                ).format(history.endPrice)
+            }"
 
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             finish()
