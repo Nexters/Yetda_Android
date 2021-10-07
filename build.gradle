@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext{
+    ext {
         version_code = 103
         version_name = "1.0.3"
 
@@ -42,7 +42,6 @@ buildscript {
 
         //navigation
         nav_version = "2.3.5"
-
 
 
     }
