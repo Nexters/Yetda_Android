@@ -4,12 +4,12 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.home.SampleFragment">
+  tools:context=".ui.home.ZampleFragment">
 
   <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="Sample ~~~~"
+    android:text="Zample !!!!!"
     android:textSize="20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
