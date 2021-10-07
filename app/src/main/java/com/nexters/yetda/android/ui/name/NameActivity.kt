@@ -1,15 +1,17 @@
 package com.nexters.yetda.android.ui.name
 
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
+import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityNameBinding
 import com.nexters.yetda.android.ui.gender.GenderActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class NameActivity : BaseActivity<ActivityNameBinding>() {
+class NameActivity : BaseFragment<ActivityNameBinding>() {
     override val layoutResourceId = R.layout.activity_name
     val viewModel: NameViewModel by viewModel()
 
@@ -26,16 +28,16 @@ class NameActivity : BaseActivity<ActivityNameBinding>() {
         //        Crashlytics.getInstance().crash() // Force a crash
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            val intent = Intent(applicationContext, GenderActivity::class.java)
+            val intent = Intent(requireContext(), GenderActivity::class.java)
             intent.putExtra("NAME", viewModel.name.value)
             startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            finish()
+            requireActivity().finish()
         })
     }
 
-    override fun initViewFinal() {
+    override fun initViewFinal(view: View) {
 
 
     }
