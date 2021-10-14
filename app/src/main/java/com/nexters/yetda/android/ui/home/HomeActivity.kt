@@ -11,6 +11,7 @@ import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.ui.member.MemberActivity
 import com.nexters.yetda.android.ui.name.NameActivity
 import com.nexters.yetda.android.ui.question.QuestionCancelDialog
+import com.nexters.yetda.android.ui.survey.SurveyActivity
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -43,7 +44,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(this, NameActivity::class.java))
+//            startActivity(Intent(this, NameActivity::class.java))
+            startActivity(Intent(this, SurveyActivity::class.java))
             Log.e(TAG, "click ${list}")
         })
 

@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.SampleActivity"></activity>
+        <activity android:name=".ui.survey.SurveyActivity"></activity>
+        <activity android:name=".ui.home.SampleActivity" />
         <activity android:name=".ui.member.MemberActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
