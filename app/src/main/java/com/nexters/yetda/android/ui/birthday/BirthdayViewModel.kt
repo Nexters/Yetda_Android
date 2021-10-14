@@ -3,11 +3,11 @@ package com.nexters.yetda.android.ui.birthday
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.yetda.android.util.SingleLiveEvent
 
 
-class BirthdayViewModel : BaseViewModel() {
+class BirthdayViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
     var btnActivated = MutableLiveData<Boolean>(false)

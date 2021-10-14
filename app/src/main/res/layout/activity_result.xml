@@ -1,95 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
-                name="vm"
-                type="com.nexters.yetda.android.ui.result.ResultViewModel" />
+            name="vm"
+            type="com.nexters.yetda.android.ui.result.ResultViewModel" />
     </data>
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundColor">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                    style="@style/tvQuestion"
-                    android:layout_marginTop="59dp"
-                    android:layout_marginBottom="0dp"
-                    android:text="@{@string/answer(vm.name)}" />
+                style="@style/tvQuestion"
+                android:layout_marginTop="59dp"
+                android:layout_marginBottom="0dp"
+                android:text="@{@string/answer(vm.name)}" />
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="@dimen/side_interval"
-                    android:layout_marginRight="@dimen/side_interval"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_card"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="70dp">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/side_interval"
+                android:layout_marginRight="@dimen/side_interval"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="70dp">
 
                 <ImageView
-                        android:id="@+id/iv_result_present"
-                        style="@style/iv"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/img_main" />
+                    android:id="@+id/iv_result_present"
+                    style="@style/iv"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/img_main" />
 
 
                 <TextView
-                        android:id="@+id/tv_result_present"
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="45dp"
-                        android:fontFamily="@font/noto_sans_bold"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/txt_medium" />
+                    android:id="@+id/tv_result_present"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txt_medium" />
 
                 <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:text="완전 취향저격 선물일거에요!"
-                        android:textColor="@color/txtBlack"
-                        android:textSize="15sp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="완전 취향저격 선물일거에요!"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
 
             <TextView
-                    android:id="@+id/btn_result_repeat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/retry"
-                    android:textColor="#ccc"
-                    android:textSize="@dimen/txt_small" />
+                android:id="@+id/btn_result_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:textColor="#ccc"
+                android:textSize="@dimen/txt_small" />
 
             <TextView
-                    android:id="@+id/btn_restart"
-                    style="@style/btn"
-                    android:background="@drawable/btn_active"
-                    android:onClick="@{()->vm.clickNextButton()}"
-                    android:text="@string/restart"
-                    android:textColor="@color/white" />
+                android:id="@+id/btn_restart"
+                style="@style/btn"
+                android:background="@drawable/btn_active"
+                android:onClick="@{()->vm.clickNextButton()}"
+                android:text="@string/restart"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <ImageView
-                android:id="@+id/iv_result_pung"
-                style="@style/iv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:id="@+id/iv_result_pung"
+            style="@style/iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 </layout>

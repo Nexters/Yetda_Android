@@ -2,9 +2,9 @@ package com.nexters.yetda.android.ui
 
 import android.animation.Animator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_splash.*

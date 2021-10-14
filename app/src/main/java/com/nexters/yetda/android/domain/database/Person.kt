@@ -12,6 +12,7 @@ open class Person : RealmModel {
     var id: Long = 0
     var name: String = ""
     var age: Int = 0
+
     @Ignore
     var tempReference: Int = 0
 }

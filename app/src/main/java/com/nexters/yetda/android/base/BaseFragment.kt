@@ -15,13 +15,9 @@ import androidx.fragment.app.Fragment
  * 2. 클린 빌드 후 다시 빌드 수행
  * 3. 이름 확인 : sbs_main_activity => ActivitySbsMainBinding
  */
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
     protected lateinit var binding: VB
-    /**
-     * viewModel 로 쓰일 변수.
-     */
-    abstract val viewModel: VM
 
     /**
      * setContentView로 호출할 Layout의 리소스 id.

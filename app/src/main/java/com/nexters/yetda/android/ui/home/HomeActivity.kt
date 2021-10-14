@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
+import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.ui.member.MemberActivity
 import com.nexters.yetda.android.ui.name.NameActivity
 import com.nexters.yetda.android.ui.question.QuestionCancelDialog
@@ -15,9 +15,9 @@ import com.nexters.yetda.android.util.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override val layoutResourceId = R.layout.activity_home
-    override val viewModel: HomeViewModel by viewModel()
+    val viewModel: HomeViewModel by viewModel()
 
     private val list: ArrayList<History> by lazy { arrayListOf<History>() }
     private val TAG = javaClass.simpleName
@@ -34,7 +34,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         viewModel.getUpdatesInfo()
         viewModel.initAskedStatus()
-        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE)
 
         backPressCloseHandler = BackPressCloseHandler(this)
     }
@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, NameActivity::class.java))
+            startActivity(Intent(this, NameActivity::class.java))
             Log.e(TAG, "click ${list}")
         })
 
@@ -70,6 +70,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         imageHomePresent.setOnClickListener {
             flagEgg = true
             showMemberActivity()
+        }
+
+        textHomeGiftListTitle.setOnClickListener {
+            startActivity(Intent(this, SampleActivity::class.java))
         }
 
         checkFirstRun()

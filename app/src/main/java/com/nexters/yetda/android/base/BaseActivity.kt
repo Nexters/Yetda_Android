@@ -6,19 +6,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
 /**
-* BaseActivity<ActivitySbsMainBinding>
-* 와 같이 상속 받을 때, ActivitySbsMainBinding 과 같은 파일이 자동생성되지 않는다면
-* 1. 해당 엑티비티의 레이아웃이 <layout></layout> 으로 감싸져 있는지 확인
-* 2. 클린 빌드 후 다시 빌드 수행
-* 3. 이름 확인 : sbs_main_activity => ActivitySbsMainBinding
-*/
-abstract class BaseActivity<VB : ViewDataBinding,VM: BaseViewModel> : AppCompatActivity() {
+ * BaseActivity<ActivitySbsMainBinding>
+ * 와 같이 상속 받을 때, ActivitySbsMainBinding 과 같은 파일이 자동생성되지 않는다면
+ * 1. 해당 엑티비티의 레이아웃이 <layout></layout> 으로 감싸져 있는지 확인
+ * 2. 클린 빌드 후 다시 빌드 수행
+ * 3. 이름 확인 : sbs_main_activity => ActivitySbsMainBinding
+ */
+abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var binding: VB
-    /**
-     * viewModel 로 쓰일 변수.
-     */
-    abstract val  viewModel: VM
 
     /**
      * setContentView로 호출할 Layout의 리소스 id.
@@ -58,7 +54,5 @@ abstract class BaseActivity<VB : ViewDataBinding,VM: BaseViewModel> : AppCompatA
         initDataBinding()
         initViewFinal()
     }
-
-
 
 }

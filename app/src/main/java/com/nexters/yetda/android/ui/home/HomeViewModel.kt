@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.nexters.yetda.android.base.BaseViewModel
 import com.nexters.yetda.android.domain.database.dao.HistoryDao
 import com.nexters.yetda.android.domain.database.dao.QuestionDao
 import com.nexters.yetda.android.domain.database.model.History
@@ -17,11 +17,11 @@ import io.realm.RealmResults
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeViewModel : BaseViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
 
-    private val db  = Firebase.firestore
+    private val db = Firebase.firestore
     private val realm by lazy {
         Realm.getDefaultInstance()
     }

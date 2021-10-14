@@ -2,7 +2,7 @@ package com.nexters.yetda.android.ui.question
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.yetda.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.yetda.android.domain.database.dao.HistoryDao
 import com.nexters.yetda.android.domain.database.dao.PresentDao
 import com.nexters.yetda.android.domain.database.dao.QuestionDao
@@ -13,7 +13,7 @@ import com.nexters.yetda.android.util.SingleLiveEvent
 import io.realm.Realm
 import io.realm.RealmList
 
-class QuestionViewModel : BaseViewModel() {
+class QuestionViewModel : ViewModel() {
 
     private val TAG = javaClass.simpleName
     private val realm by lazy {

@@ -9,7 +9,6 @@ import com.github.islamkhsh.CardSliderAdapter
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.domain.database.model.Present
 import kotlinx.android.synthetic.main.item_detail_list.view.*
-import kotlin.collections.ArrayList
 
 class DetailAdapter(private val items: ArrayList<Present>) :
     CardSliderAdapter<DetailAdapter.ViewHolder>() {

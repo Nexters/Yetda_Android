@@ -12,9 +12,9 @@ import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BirthdayActivity : BaseActivity<ActivityBirthdayBinding, BirthdayViewModel>() {
+class BirthdayActivity : BaseActivity<ActivityBirthdayBinding>() {
     override val layoutResourceId = R.layout.activity_birthday
-    override val viewModel: BirthdayViewModel by viewModel()
+    val viewModel: BirthdayViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
 

@@ -68,6 +68,7 @@ class RealmUtil {
         override val clazz: Class<Present>
             get() = Present::class.java
     }
+
     object TagRealmListParceler : RealmListParceler<Tag> {
         override val clazz: Class<Tag>
             get() = Tag::class.java

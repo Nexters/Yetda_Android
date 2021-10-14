@@ -1,81 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-                name="vm"
-                type="com.nexters.yetda.android.ui.price.PriceViewModel" />
+            name="vm"
+            type="com.nexters.yetda.android.ui.price.PriceViewModel" />
     </data>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundColor"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->vm.clickBackButton()}"
-                app:srcCompat="@drawable/ic_arrow_left" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.clickBackButton()}"
+            app:srcCompat="@drawable/ic_arrow_left" />
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                    style="@style/tvQuestion"
-                    android:text="@string/price_q" />
+                style="@style/tvQuestion"
+                android:text="@string/price_q" />
 
             <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_bold"
-                    android:text="0~100만원"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_big" />
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="0~100만원"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_big" />
 
             <com.appyvet.materialrangebar.RangeBar
-                    android:id="@+id/range_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/side_margin"
-                    android:layout_marginRight="@dimen/side_margin"
-                    app:mrb_barWeight="2dp"
-                    app:mrb_connectingLineColor="@color/red"
-                    app:mrb_connectingLineWeight="2dp"
-                    app:mrb_leftSelectorColor="@color/red"
-                    app:mrb_pinColor="@color/red"
-                    app:mrb_pinMaxFont="@dimen/txt_small"
-                    app:mrb_pinMinFont="@dimen/txt_small"
-                    app:mrb_pinRadius="20dp"
-                    app:mrb_pinTextColor="@color/white"
-                    app:mrb_rangeBar="true"
-                    app:mrb_rangeBarColor="@color/light_grey"
-                    app:mrb_rangeBarPaddingBottom="15dp"
-                    app:mrb_rightSelectorColor="@color/red"
-                    app:mrb_selectorBoundaryColor="@color/light_grey"
-                    app:mrb_selectorBoundarySize="1dp"
-                    app:mrb_selectorColor="@color/white"
-                    app:mrb_selectorSize="15dp"
-                    app:mrb_tickDefaultColor="@color/transparent"
-                    app:mrb_tickEnd="100"
-                    app:mrb_tickInterval="1"
-                    app:mrb_tickStart="0" />
+                android:id="@+id/range_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/side_margin"
+                android:layout_marginRight="@dimen/side_margin"
+                app:mrb_barWeight="2dp"
+                app:mrb_connectingLineColor="@color/red"
+                app:mrb_connectingLineWeight="2dp"
+                app:mrb_leftSelectorColor="@color/red"
+                app:mrb_pinColor="@color/red"
+                app:mrb_pinMaxFont="@dimen/txt_small"
+                app:mrb_pinMinFont="@dimen/txt_small"
+                app:mrb_pinRadius="20dp"
+                app:mrb_pinTextColor="@color/white"
+                app:mrb_rangeBar="true"
+                app:mrb_rangeBarColor="@color/light_grey"
+                app:mrb_rangeBarPaddingBottom="15dp"
+                app:mrb_rightSelectorColor="@color/red"
+                app:mrb_selectorBoundaryColor="@color/light_grey"
+                app:mrb_selectorBoundarySize="1dp"
+                app:mrb_selectorColor="@color/white"
+                app:mrb_selectorSize="15dp"
+                app:mrb_tickDefaultColor="@color/transparent"
+                app:mrb_tickEnd="100"
+                app:mrb_tickInterval="1"
+                app:mrb_tickStart="0" />
         </LinearLayout>
 
         <TextView
-                android:id="@+id/textPriceNext"
-                style="@style/btn"
-                android:selected="@{vm.btnActivated}"
-                android:text="@string/next"
-                android:onClick="@{()->vm.clickNextButton()}" />
+            android:id="@+id/textPriceNext"
+            style="@style/btn"
+            android:onClick="@{()->vm.clickNextButton()}"
+            android:selected="@{vm.btnActivated}"
+            android:text="@string/next" />
     </LinearLayout>
 </layout>

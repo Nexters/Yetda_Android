@@ -7,11 +7,9 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.databinding.ActivityNameBinding
 import kotlinx.android.synthetic.main.activity_member.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
-class MemberActivity : BaseActivity<ActivityNameBinding, MemberViewModel>() {
+class MemberActivity : BaseActivity<ActivityNameBinding>() {
     override val layoutResourceId = R.layout.activity_member
-    override val viewModel: MemberViewModel by viewModel()
     private val TAG = javaClass.simpleName
 
     override fun initViewStart() {

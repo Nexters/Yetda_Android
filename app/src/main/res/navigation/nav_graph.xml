@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/sampleFragment">
+
+    <fragment
+        android:id="@+id/sampleFragment"
+        android:name="com.nexters.yetda.android.ui.home.SampleFragment"
+        android:label="sample"
+        tools:layout="@layout/fragment_sample">
+        <action
+            android:id="@+id/action_sampleFragment_to_zampleFragment"
+            app:destination="@id/zampleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/zampleFragment"
+        android:name="com.nexters.yetda.android.ui.home.ZampleFragment"
+        android:label="sample"
+        tools:layout="@layout/fragment_zample" />
+</navigation>

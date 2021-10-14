@@ -47,9 +47,9 @@
         <item name="android:layout_width">30dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
-<!--        <item name="android:focusableInTouchMode">false</item>-->
+        <!--        <item name="android:focusableInTouchMode">false</item>-->
         <item name="android:background">@drawable/textlines</item>
-<!--        <item name="android:cursorVisible">false</item>-->
+        <!--        <item name="android:cursorVisible">false</item>-->
         <item name="android:inputType">numberDecimal</item>
         <item name="android:maxLength">1</item>
         <item name="android:textColor">@color/black</item>

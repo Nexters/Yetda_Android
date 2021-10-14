@@ -39,7 +39,7 @@ class PresentDao(private val mRealm: Realm) {
             .beginGroup()
             .`in`("tags.tag", tagList)
             .endGroup()
-            .between("price", _startPrice, _endPrice).or().equalTo("price",0L)
+            .between("price", _startPrice, _endPrice).or().equalTo("price", 0L)
             .findAll()
     }
 
@@ -65,7 +65,7 @@ class PresentDao(private val mRealm: Realm) {
             val item = it.createObject<Present>(nextId)
             item.name = _name
             item.price = _price
-            item.image=_image
+            item.image = _image
             item.tags.addAll(_tags)
             it.copyToRealm(item)
         }

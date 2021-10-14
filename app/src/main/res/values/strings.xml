@@ -34,6 +34,8 @@
     <string name="proceed">나가기</string>
     <string name="cancel">머무르기</string>
     <string name="app_remove_guide">앱을 삭제할 시, 선물 추천기록은 모두 삭제가 되며 복구는 불가능합니다. 이점 유의바랍니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 
