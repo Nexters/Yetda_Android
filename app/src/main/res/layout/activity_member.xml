@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".ui.member.MemberActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.member.MemberActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background = "@color/btnBgColor"
+            android:background="@color/btnBgColor"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="54dp"
+                android:paddingTop="12dp"
                 android:paddingBottom="48dp"
                 android:text="Yetda를 만든 사람들"
                 android:textColor="@color/black"
@@ -46,7 +46,7 @@
                 android:text="디자이너, 조용한 관종" />
 
             <ImageView
-                android:id="@+id/imageMemberJongkuck"
+                android:id="@+id/imageMemberKook"
                 style="@style/memberImg"
                 app:srcCompat="@drawable/ic_member_4" />
 
@@ -59,6 +59,7 @@
                 android:text="안드로이드 개발자, 맥주매니아" />
 
             <ImageView
+                android:id="@+id/imageMemberHeeju"
                 style="@style/memberImg"
                 app:srcCompat="@drawable/ic_member_2" />
 
@@ -84,6 +85,7 @@
                 android:text="디자이너, Yetda의 리더" />
 
             <ImageView
+                android:id="@+id/imageMemberSuhyun"
                 style="@style/memberImg"
                 app:srcCompat="@drawable/ic_member_5" />
 
@@ -96,6 +98,7 @@
                 android:text="iOS 개발자, Yetda 마스코트" />
 
             <ImageView
+                android:id="@+id/imageMemberDohyun"
                 style="@style/memberImg"
                 android:layout_width="110dp"
                 app:srcCompat="@drawable/ic_member_6" />
@@ -109,6 +112,7 @@
                 android:text="안드로이드 개발자, 희주 천적" />
 
             <ImageView
+                android:id="@+id/imageMemberGong"
                 style="@style/memberImg"
                 app:srcCompat="@drawable/ic_member_7" />
 
