@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.ui.price
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,13 +33,13 @@ class PriceViewModel : ViewModel() {
         _backBeforeActivityEvent.call()
     }
 
-    fun getUserFromIntent(intent: Intent): History {
+    fun getUserFromIntent(args: PriceActivityArgs): History {
         // TODO: null처리
-        gender = intent.getStringExtra("GENDER") ?: ""
-        birthday = intent.getStringExtra("BIRTHDAY") ?: ""
+        gender = args.gender
+        birthday = args.birthday
 
         val history = History()
-        history.name = intent.getStringExtra("NAME") ?: ""
+        history.name = args.name
         history.gender = gender
         history.birthday = birthday
 

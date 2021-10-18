@@ -28,11 +28,13 @@ class BirthdayActivity : BaseFragment<ActivityBirthdayBinding>() {
     override fun initDataBinding() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            val intent = Intent(context, PriceActivity::class.java)
-            intent.putExtra("NAME", viewModel.name.value)
-            intent.putExtra("GENDER", viewModel.gender)
-            intent.putExtra("BIRTHDAY", viewModel.birthday)
-            startActivity(intent)
+            findNavController().navigate(
+                BirthdayActivityDirections.actionBirthdayToPrice(
+                    viewModel.name.value ?: "",
+                    viewModel.gender,
+                    viewModel.birthday
+                )
+            )
             ControlKeyboard.hide(requireActivity())
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {

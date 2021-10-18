@@ -3,6 +3,8 @@ package com.nexters.yetda.android.ui.price
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.appyvet.materialrangebar.RangeBar
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
@@ -15,6 +17,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class PriceActivity : BaseFragment<ActivityPriceBinding>() {
     override val layoutResourceId = R.layout.activity_price
     val viewModel: PriceViewModel by viewModel()
+    val args: PriceActivityArgs by navArgs()
 
     private val TAG = javaClass.simpleName
     var history = History()
@@ -24,7 +27,7 @@ class PriceActivity : BaseFragment<ActivityPriceBinding>() {
 
     override fun initViewStart() {
         binding.vm = viewModel
-        history = viewModel.getUserFromIntent(requireActivity().intent)
+        history = viewModel.getUserFromIntent(args)
     }
 
     override fun initDataBinding() {
@@ -38,7 +41,7 @@ class PriceActivity : BaseFragment<ActivityPriceBinding>() {
             startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            requireActivity().finish()
+            findNavController().popBackStack()
         })
     }
 

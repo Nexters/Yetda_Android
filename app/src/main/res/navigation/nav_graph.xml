@@ -72,6 +72,18 @@
         <action
             android:id="@+id/action_price_to_question"
             app:destination="@id/question" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="gender"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="birthday"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
     <fragment
         android:id="@+id/question"
