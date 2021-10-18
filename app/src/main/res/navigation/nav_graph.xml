@@ -3,6 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.nexters.yetda.android.ui.SplashActivity"
+        tools:layout="@layout/activity_splash">
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/birthday"
+        android:name="com.nexters.yetda.android.ui.birthday.BirthdayActivity"
+        tools:layout="@layout/activity_birthday">
+        <action
+            android:id="@+id/action_birthday_to_price"
+            app:destination="@id/price" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.nexters.yetda.android.ui.detail.DetailActivity"
+        tools:layout="@layout/activity_detail" />
+    <fragment
+        android:id="@+id/gender"
+        android:name="com.nexters.yetda.android.ui.gender.GenderActivity"
+        tools:layout="@layout/activity_gender">
+        <action
+            android:id="@+id/action_gender_to_birthday"
+            app:destination="@id/birthday" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="com.nexters.yetda.android.ui.home.HomeActivity"
+        tools:layout="@layout/activity_home">
+        <action
+            android:id="@+id/action_home_to_name"
+            app:destination="@id/name" />
+        <action
+            android:id="@+id/action_home_to_member"
+            app:destination="@id/member" />
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/member"
+        android:name="com.nexters.yetda.android.ui.member.MemberActivity"
+        tools:layout="@layout/activity_member" />
+    <fragment
+        android:id="@+id/name"
+        android:name="com.nexters.yetda.android.ui.name.NameActivity"
+        tools:layout="@layout/activity_name">
+        <action
+            android:id="@+id/action_name_to_gender"
+            app:destination="@id/gender" />
+    </fragment>
+    <fragment
+        android:id="@+id/price"
+        android:name="com.nexters.yetda.android.ui.price.PriceActivity"
+        tools:layout="@layout/activity_price">
+        <action
+            android:id="@+id/action_price_to_question"
+            app:destination="@id/question" />
+    </fragment>
+    <fragment
+        android:id="@+id/question"
+        android:name="com.nexters.yetda.android.ui.question.QuestionActivity"
+        tools:layout="@layout/activity_question">
+        <action
+            android:id="@+id/action_question_to_result"
+            app:destination="@id/result" />
+    </fragment>
+    <fragment
+        android:id="@+id/result"
+        android:name="com.nexters.yetda.android.ui.result.ResultActivity"
+        tools:layout="@layout/activity_result" />
 
 
 </navigation>
