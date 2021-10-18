@@ -1,19 +1,20 @@
 package com.nexters.yetda.android.ui.result
 
-import android.content.Intent
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.YetdaApplication
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityResultBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.home.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ResultActivity : BaseFragment<ActivityResultBinding>() {
     override val layoutResourceId = R.layout.activity_result
     val viewModel: ResultViewModel by viewModel()
+    val args: ResultActivityArgs by navArgs()
 
     private val TAG = javaClass.simpleName
     var history: History = History()
@@ -25,11 +26,10 @@ class ResultActivity : BaseFragment<ActivityResultBinding>() {
         //TODO: Sample Code
 //        val history = intent.getParcelableExtra<History>("ITEM")
 //        viewModel.name.value = history.name
-        var id = requireActivity().intent.getIntExtra("hitoryId", 0)
+        var id = args.historyId
         if (id == 0) {
             //오류
-            startActivity(Intent(context, HomeActivity::class.java))
-            requireActivity().finish()
+            findNavController().navigate(ResultActivityDirections.actionResultToHome())
         } else {
             history = viewModel.findHistoryById(id)
         }
@@ -37,8 +37,7 @@ class ResultActivity : BaseFragment<ActivityResultBinding>() {
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(context, HomeActivity::class.java))
-            requireActivity().finish()
+            findNavController().navigate(ResultActivityDirections.actionResultToHome())
         })
         setPresent()
         binding.btnResultRepeat.setOnClickListener {

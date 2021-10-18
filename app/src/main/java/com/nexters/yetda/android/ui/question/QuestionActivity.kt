@@ -1,7 +1,6 @@
 package com.nexters.yetda.android.ui.question
 
 import android.animation.Animator
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.util.DisplayMetrics
 import android.view.View
@@ -11,13 +10,13 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
 import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.domain.database.model.Question
-import com.nexters.yetda.android.ui.result.ResultActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
@@ -179,9 +178,11 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
             viewModel.addHistory()
 
             if (viewModel.historyId > 0) {
-                val intent = Intent(context, ResultActivity::class.java)
-                intent.putExtra("hitoryId", viewModel.historyId)
-                startActivity(intent)
+                findNavController().navigate(
+                    QuestionActivityDirections.actionQuestionToResult(
+                        viewModel.historyId
+                    )
+                )
             } else {
                 Toast.makeText(
                     context,
