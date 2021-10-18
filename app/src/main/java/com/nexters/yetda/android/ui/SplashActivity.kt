@@ -2,28 +2,28 @@ package com.nexters.yetda.android.ui
 
 import android.animation.Animator
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
+import com.nexters.yetda.android.base.BaseFragment
+import com.nexters.yetda.android.databinding.ActivitySplashBinding
 import com.nexters.yetda.android.ui.home.HomeActivity
-import kotlinx.android.synthetic.main.activity_splash.*
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseFragment<ActivitySplashBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+
+    override val layoutResourceId: Int = R.layout.activity_splash
+
+    override fun initViewStart() {
         // Hide the status bar.
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-        animation_view.addAnimatorListener(object : Animator.AnimatorListener {
+        binding.animationView.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
             }
 
             override fun onAnimationEnd(animation: Animator) {
-                startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
-                finish()
+                findNavController().navigate(SplashActivityDirections.actionSplashToHome())
             }
 
             override fun onAnimationCancel(animation: Animator) {
@@ -32,6 +32,11 @@ class SplashActivity : AppCompatActivity() {
             override fun onAnimationRepeat(animation: Animator) {
             }
         })
+    }
 
+    override fun initDataBinding() {
+    }
+
+    override fun initViewFinal() {
     }
 }
