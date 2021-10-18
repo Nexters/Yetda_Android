@@ -38,7 +38,7 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding>() {
 //        })
     }
 
-    override fun initViewFinal(view: View) {
+    override fun initViewFinal() {
         //
     }
 }
