@@ -2,11 +2,10 @@ package com.nexters.yetda.android.ui.member
 
 import android.widget.Toast
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.databinding.ActivityNameBinding
-import kotlinx.android.synthetic.main.activity_member.*
+import com.nexters.yetda.android.base.BaseFragment
+import com.nexters.yetda.android.databinding.ActivityMemberBinding
 
-class MemberActivity : BaseActivity<ActivityNameBinding>() {
+class MemberActivity : BaseFragment<ActivityMemberBinding>() {
     override val layoutResourceId = R.layout.activity_member
     private val TAG = javaClass.simpleName
 
@@ -21,9 +20,9 @@ class MemberActivity : BaseActivity<ActivityNameBinding>() {
     override fun initViewFinal() {
         // www.naver.com 웹뷰 + 터치 이벤트(클릭 이벤트)
 
-        imageMemberYena.setOnClickListener {
+        binding.imageMemberYena.setOnClickListener {
             Toast.makeText(
-                this,
+                context,
                 "예나 이미지를 터치 했다",
                 Toast.LENGTH_SHORT
             ).show()
