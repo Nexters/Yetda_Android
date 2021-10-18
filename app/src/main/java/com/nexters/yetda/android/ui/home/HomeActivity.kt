@@ -1,17 +1,13 @@
 package com.nexters.yetda.android.ui.home
 
 import android.content.Context.MODE_PRIVATE
-import android.content.Intent
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseActivity
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityHomeBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.member.MemberActivity
-import com.nexters.yetda.android.ui.name.NameActivity
 import com.nexters.yetda.android.ui.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -44,8 +40,7 @@ class HomeActivity : BaseFragment<ActivityHomeBinding>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(context, NameActivity::class.java))
-            Log.e(TAG, "click ${list}")
+            findNavController().navigate(HomeActivityDirections.actionHomeToName())
         })
 
         val adapter = HomeAdapter(list)
@@ -84,8 +79,7 @@ class HomeActivity : BaseFragment<ActivityHomeBinding>() {
         if (flagEast && flagEgg) {
             flagEast = false
             flagEgg = false
-            val intent = Intent(context, MemberActivity::class.java)
-            startActivity(intent)
+            findNavController().navigate(HomeActivityDirections.actionHomeToMember())
         }
     }
 
