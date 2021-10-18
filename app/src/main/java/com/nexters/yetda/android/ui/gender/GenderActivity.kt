@@ -21,7 +21,7 @@ class GenderActivity : BaseFragment<ActivityGenderBinding>() {
 
     override fun initViewStart() {
         binding.vm = viewModel
-        viewModel.setName(args.name)
+        viewModel.getUserFromIntent(args)
     }
 
     override fun initDataBinding() {
