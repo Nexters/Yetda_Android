@@ -2,7 +2,7 @@ package com.nexters.yetda.android.domain.database.model
 
 import android.os.Parcelable
 import io.realm.RealmObject
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 
 @Parcelize

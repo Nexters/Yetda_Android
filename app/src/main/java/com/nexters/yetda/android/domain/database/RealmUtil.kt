@@ -9,7 +9,7 @@ import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmModel
 import io.realm.RealmResults
-import kotlinx.android.parcel.Parceler
+import kotlinx.parcelize.Parceler
 
 class RealmUtil {
 

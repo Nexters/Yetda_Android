@@ -2,8 +2,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: "kotlin-kapt"
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
@@ -35,11 +35,7 @@ android {
 
     buildFeatures {
         dataBinding true
-    }
-
-    //use parcelize
-    androidExtensions {
-        experimental = true
+        viewBinding true //item list에서 사용중
     }
 
     //doAfterTextChanged jvm error fix
