@@ -1,13 +1,13 @@
 package com.nexters.yetda.android.ui.birthday
 
-import android.content.Intent
 import android.view.KeyEvent
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityBirthdayBinding
-import com.nexters.yetda.android.ui.price.PriceActivity
 import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -15,13 +15,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class BirthdayActivity : BaseFragment<ActivityBirthdayBinding>() {
     override val layoutResourceId = R.layout.activity_birthday
     val viewModel: BirthdayViewModel by viewModel()
+    val args: BirthdayActivityArgs by navArgs()
 
     private val TAG = javaClass.simpleName
 
 
     override fun initViewStart() {
         binding.vm = viewModel
-        viewModel.getUserFromIntent(requireActivity().intent)
+        viewModel.getUserFromIntent(args)
     }
 
     override fun initDataBinding() {
@@ -35,7 +36,7 @@ class BirthdayActivity : BaseFragment<ActivityBirthdayBinding>() {
             ControlKeyboard.hide(requireActivity())
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            requireActivity().finish()
+            findNavController().popBackStack()
         })
 
     }

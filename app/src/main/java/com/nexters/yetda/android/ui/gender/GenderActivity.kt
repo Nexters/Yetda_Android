@@ -1,13 +1,11 @@
 package com.nexters.yetda.android.ui.gender
 
-import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityGenderBinding
-import com.nexters.yetda.android.ui.birthday.BirthdayActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -27,10 +25,11 @@ class GenderActivity : BaseFragment<ActivityGenderBinding>() {
     override fun initDataBinding() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            val intent = Intent(context, BirthdayActivity::class.java)
-            intent.putExtra("NAME", viewModel.name.value)
-            intent.putExtra("GENDER", viewModel.getGender())
-            startActivity(intent)
+            findNavController().navigate(
+                GenderActivityDirections.actionGenderToBirthday(
+                    viewModel.name.value ?: "", viewModel.getGender()
+                )
+            )
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             findNavController().popBackStack()
