@@ -16,26 +16,6 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/birthday"
-        android:name="com.nexters.yetda.android.ui.birthday.BirthdayActivity"
-        tools:layout="@layout/activity_birthday">
-        <action
-            android:id="@+id/action_birthday_to_price"
-            app:destination="@id/price" />
-    </fragment>
-    <fragment
-        android:id="@+id/detail"
-        android:name="com.nexters.yetda.android.ui.detail.DetailActivity"
-        tools:layout="@layout/activity_detail" />
-    <fragment
-        android:id="@+id/gender"
-        android:name="com.nexters.yetda.android.ui.gender.GenderActivity"
-        tools:layout="@layout/activity_gender">
-        <action
-            android:id="@+id/action_gender_to_birthday"
-            app:destination="@id/birthday" />
-    </fragment>
-    <fragment
         android:id="@+id/home"
         android:name="com.nexters.yetda.android.ui.home.HomeActivity"
         tools:layout="@layout/activity_home">
@@ -50,16 +30,28 @@
             app:destination="@id/detail" />
     </fragment>
     <fragment
-        android:id="@+id/member"
-        android:name="com.nexters.yetda.android.ui.member.MemberActivity"
-        tools:layout="@layout/activity_member" />
-    <fragment
         android:id="@+id/name"
         android:name="com.nexters.yetda.android.ui.name.NameActivity"
         tools:layout="@layout/activity_name">
         <action
             android:id="@+id/action_name_to_gender"
             app:destination="@id/gender" />
+    </fragment>
+    <fragment
+        android:id="@+id/gender"
+        android:name="com.nexters.yetda.android.ui.gender.GenderActivity"
+        tools:layout="@layout/activity_gender">
+        <action
+            android:id="@+id/action_gender_to_birthday"
+            app:destination="@id/birthday" />
+    </fragment>
+    <fragment
+        android:id="@+id/birthday"
+        android:name="com.nexters.yetda.android.ui.birthday.BirthdayActivity"
+        tools:layout="@layout/activity_birthday">
+        <action
+            android:id="@+id/action_birthday_to_price"
+            app:destination="@id/price" />
     </fragment>
     <fragment
         android:id="@+id/price"
@@ -82,5 +74,13 @@
         android:name="com.nexters.yetda.android.ui.result.ResultActivity"
         tools:layout="@layout/activity_result" />
 
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.nexters.yetda.android.ui.detail.DetailActivity"
+        tools:layout="@layout/activity_detail" />
+    <fragment
+        android:id="@+id/member"
+        android:name="com.nexters.yetda.android.ui.member.MemberActivity"
+        tools:layout="@layout/activity_member" />
 
 </navigation>
