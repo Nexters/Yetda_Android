@@ -33,7 +33,7 @@ class PriceViewModel : ViewModel() {
         _backBeforeActivityEvent.call()
     }
 
-    fun getUserFromIntent(args: PriceActivityArgs): History {
+    fun getUserFromIntent(args: PriceFragmentArgs): History {
         // TODO: null처리
         gender = args.gender
         birthday = args.birthday

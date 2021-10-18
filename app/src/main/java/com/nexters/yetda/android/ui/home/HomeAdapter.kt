@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.yetda.android.databinding.ItemPresentListBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.detail.DetailActivity
+import com.nexters.yetda.android.ui.detail.DetailFragment
 import java.text.NumberFormat
 import java.time.MonthDay
 import java.time.format.DateTimeFormatter
@@ -95,7 +95,7 @@ class HomeAdapter(private val items: ArrayList<History>) :
             }
 
             itemView.setOnClickListener {
-                var intent = Intent(it.context, DetailActivity::class.java)
+                var intent = Intent(it.context, DetailFragment::class.java)
                 intent.putExtra("ITEM", item)
                 it.context.startActivity(intent)
 //            Toast.makeText(it.context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()

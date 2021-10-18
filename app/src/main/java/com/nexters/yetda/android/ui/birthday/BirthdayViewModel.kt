@@ -45,7 +45,7 @@ class BirthdayViewModel : ViewModel() {
 //        Log.e(TAG, "birthday is $birthday")
     }
 
-    fun getUserFromIntent(args: BirthdayActivityArgs) {
+    fun getUserFromIntent(args: BirthdayFragmentArgs) {
         name.value = args.name
         gender = args.gender
     }

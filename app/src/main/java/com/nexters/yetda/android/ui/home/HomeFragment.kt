@@ -6,14 +6,14 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
-import com.nexters.yetda.android.databinding.ActivityHomeBinding
+import com.nexters.yetda.android.databinding.FragmentHomeBinding
 import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.ui.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeActivity : BaseFragment<ActivityHomeBinding>() {
-    override val layoutResourceId = R.layout.activity_home
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+    override val layoutResourceId = R.layout.fragment_home
     val viewModel: HomeViewModel by viewModel()
 
     private val list: ArrayList<History> by lazy { arrayListOf<History>() }
@@ -40,7 +40,7 @@ class HomeActivity : BaseFragment<ActivityHomeBinding>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            findNavController().navigate(HomeActivityDirections.actionHomeToName())
+            findNavController().navigate(HomeFragmentDirections.actionHomeToName())
         })
 
         val adapter = HomeAdapter(list)
@@ -79,7 +79,7 @@ class HomeActivity : BaseFragment<ActivityHomeBinding>() {
         if (flagEast && flagEgg) {
             flagEast = false
             flagEgg = false
-            findNavController().navigate(HomeActivityDirections.actionHomeToMember())
+            findNavController().navigate(HomeFragmentDirections.actionHomeToMember())
         }
     }
 

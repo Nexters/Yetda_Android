@@ -7,15 +7,15 @@ import androidx.navigation.fragment.navArgs
 import com.appyvet.materialrangebar.RangeBar
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
-import com.nexters.yetda.android.databinding.ActivityPriceBinding
+import com.nexters.yetda.android.databinding.FragmentPriceBinding
 import com.nexters.yetda.android.domain.database.model.History
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class PriceActivity : BaseFragment<ActivityPriceBinding>() {
-    override val layoutResourceId = R.layout.activity_price
+class PriceFragment : BaseFragment<FragmentPriceBinding>() {
+    override val layoutResourceId = R.layout.fragment_price
     val viewModel: PriceViewModel by viewModel()
-    val args: PriceActivityArgs by navArgs()
+    val args: PriceFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
     var history = History()
@@ -33,7 +33,7 @@ class PriceActivity : BaseFragment<ActivityPriceBinding>() {
             history.startPrice = (leftValue * 10000).toLong()
             history.endPrice = (rightValue * 10000).toLong()
             findNavController().navigate(
-                PriceActivityDirections.actionPriceToQuestion(
+                PriceFragmentDirections.actionPriceToQuestion(
                     viewModel.getTags().toTypedArray(), history
                 )
             )

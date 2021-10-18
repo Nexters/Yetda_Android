@@ -7,14 +7,14 @@ import com.bumptech.glide.Glide
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.YetdaApplication
 import com.nexters.yetda.android.base.BaseFragment
-import com.nexters.yetda.android.databinding.ActivityResultBinding
+import com.nexters.yetda.android.databinding.FragmentResultBinding
 import com.nexters.yetda.android.domain.database.model.History
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ResultActivity : BaseFragment<ActivityResultBinding>() {
-    override val layoutResourceId = R.layout.activity_result
+class ResultFragment : BaseFragment<FragmentResultBinding>() {
+    override val layoutResourceId = R.layout.fragment_result
     val viewModel: ResultViewModel by viewModel()
-    val args: ResultActivityArgs by navArgs()
+    val args: ResultFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
     var history: History = History()
@@ -29,7 +29,7 @@ class ResultActivity : BaseFragment<ActivityResultBinding>() {
         var id = args.historyId
         if (id == 0) {
             //오류
-            findNavController().navigate(ResultActivityDirections.actionResultToHome())
+            findNavController().navigate(ResultFragmentDirections.actionResultToHome())
         } else {
             history = viewModel.findHistoryById(id)
         }
@@ -37,7 +37,7 @@ class ResultActivity : BaseFragment<ActivityResultBinding>() {
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            findNavController().navigate(ResultActivityDirections.actionResultToHome())
+            findNavController().navigate(ResultFragmentDirections.actionResultToHome())
         })
         setPresent()
         binding.btnResultRepeat.setOnClickListener {

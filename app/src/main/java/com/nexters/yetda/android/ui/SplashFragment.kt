@@ -1,18 +1,14 @@
 package com.nexters.yetda.android.ui
 
 import android.animation.Animator
-import android.content.Intent
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
-import com.nexters.yetda.android.databinding.ActivitySplashBinding
-import com.nexters.yetda.android.ui.home.HomeActivity
+import com.nexters.yetda.android.databinding.FragmentSplashBinding
 
-class SplashActivity : BaseFragment<ActivitySplashBinding>() {
-
-
-    override val layoutResourceId: Int = R.layout.activity_splash
+class SplashFragment : BaseFragment<FragmentSplashBinding>() {
+    override val layoutResourceId: Int = R.layout.fragment_splash
 
     override fun initViewStart() {
         // Hide the status bar.
@@ -23,7 +19,7 @@ class SplashActivity : BaseFragment<ActivitySplashBinding>() {
             }
 
             override fun onAnimationEnd(animation: Animator) {
-                findNavController().navigate(SplashActivityDirections.actionSplashToHome())
+                findNavController().navigate(SplashFragmentDirections.actionSplashToHome())
             }
 
             override fun onAnimationCancel(animation: Animator) {

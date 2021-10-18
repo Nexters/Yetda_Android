@@ -53,7 +53,7 @@ class GenderViewModel : ViewModel() {
         else "M"
     }
 
-    fun getUserFromIntent(args: GenderActivityArgs) {
+    fun getUserFromIntent(args: GenderFragmentArgs) {
         name.value = args.name
     }
 }

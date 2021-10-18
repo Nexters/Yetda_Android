@@ -7,15 +7,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
-import com.nexters.yetda.android.databinding.ActivityBirthdayBinding
+import com.nexters.yetda.android.databinding.FragmentBirthdayBinding
 import com.nexters.yetda.android.util.ControlKeyboard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BirthdayActivity : BaseFragment<ActivityBirthdayBinding>() {
-    override val layoutResourceId = R.layout.activity_birthday
+class BirthdayFragment : BaseFragment<FragmentBirthdayBinding>() {
+    override val layoutResourceId = R.layout.fragment_birthday
     val viewModel: BirthdayViewModel by viewModel()
-    val args: BirthdayActivityArgs by navArgs()
+    val args: BirthdayFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
 
@@ -29,7 +29,7 @@ class BirthdayActivity : BaseFragment<ActivityBirthdayBinding>() {
 
         viewModel.startNextActivityEvent.observe(this, Observer {
             findNavController().navigate(
-                BirthdayActivityDirections.actionBirthdayToPrice(
+                BirthdayFragmentDirections.actionBirthdayToPrice(
                     viewModel.name.value ?: "",
                     viewModel.gender,
                     viewModel.birthday
