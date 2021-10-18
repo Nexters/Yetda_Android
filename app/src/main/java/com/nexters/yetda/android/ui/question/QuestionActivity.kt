@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityQuestionBinding
@@ -23,6 +24,7 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
     override val layoutResourceId = R.layout.activity_question
     val viewModel: QuestionViewModel by viewModel()
     private val TAG = javaClass.simpleName
+    private val args: QuestionActivityArgs by navArgs()
 
     var question = Question()
     lateinit var tags: ArrayList<String>
@@ -44,8 +46,8 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
             }
         }
 
-        tags = requireActivity().intent.getStringArrayListExtra("TAGS")
-        history = requireActivity().intent.getParcelableExtra<History>("ITEM")
+        tags = args.tags.toCollection(ArrayList())
+        history = args.history
         viewModel.saveHistoryInfo(history)
         findQuestionAndPresents()
     }
@@ -59,7 +61,12 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
             binding.cardQuestion.setCardBackgroundColor(
                 ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
             )
-            binding.textQuestionCard.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            binding.textQuestionCard.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+            )
             question = it
             binding.textQuestionCard.text = it.question
             binding.cardQuestion.visibility = View.VISIBLE
@@ -78,7 +85,12 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
             binding.cardQuestion.setCardBackgroundColor(
                 ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.genderGrey))
             )
-            binding.textQuestionCard.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            binding.textQuestionCard.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
 
             binding.cardQuestion.animate()
                 .translationX(convertDpToPixel(-400f))
@@ -97,7 +109,12 @@ class QuestionActivity : BaseFragment<ActivityQuestionBinding>() {
             binding.cardQuestion.setCardBackgroundColor(
                 ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
             )
-            binding.textQuestionCard.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            binding.textQuestionCard.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
 
             binding.cardQuestion.animate()
                 .translationX(convertDpToPixel(400f))

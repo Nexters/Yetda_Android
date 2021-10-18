@@ -92,6 +92,12 @@
         <action
             android:id="@+id/action_question_to_result"
             app:destination="@id/result" />
+        <argument
+            android:name="tags"
+            app:argType="string[]" />
+        <argument
+            android:name="history"
+            app:argType="com.nexters.yetda.android.domain.database.model.History" />
     </fragment>
     <fragment
         android:id="@+id/result"

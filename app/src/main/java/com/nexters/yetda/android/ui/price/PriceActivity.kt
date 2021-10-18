@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.ui.price
 
-import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -10,7 +9,6 @@ import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityPriceBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.question.QuestionActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -34,11 +32,12 @@ class PriceActivity : BaseFragment<ActivityPriceBinding>() {
         viewModel.startNextActivityEvent.observe(this, Observer {
             history.startPrice = (leftValue * 10000).toLong()
             history.endPrice = (rightValue * 10000).toLong()
+            findNavController().navigate(
+                PriceActivityDirections.actionPriceToQuestion(
+                    viewModel.getTags().toTypedArray(), history
+                )
+            )
 
-            val intent = Intent(context, QuestionActivity::class.java)
-            intent.putExtra("TAGS", viewModel.getTags())
-            intent.putExtra("ITEM", history)
-            startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
             findNavController().popBackStack()
