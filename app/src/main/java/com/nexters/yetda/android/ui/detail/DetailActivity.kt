@@ -3,6 +3,7 @@ package com.nexters.yetda.android.ui.detail
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
 import com.nexters.yetda.android.databinding.ActivityDetailBinding
@@ -17,6 +18,7 @@ import java.util.*
 class DetailActivity : BaseFragment<ActivityDetailBinding>() {
     override val layoutResourceId = R.layout.activity_detail
     val viewModel: DetailViewModel by viewModel()
+    private val args: DetailActivityArgs by navArgs()
 
     private val TAG = javaClass.simpleName
 
@@ -24,7 +26,7 @@ class DetailActivity : BaseFragment<ActivityDetailBinding>() {
 
     override fun initViewStart() {
 
-        history = requireActivity().intent.getParcelableExtra("ITEM")
+        history = args.history
 
     }
 

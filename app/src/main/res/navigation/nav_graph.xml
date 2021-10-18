@@ -117,7 +117,11 @@
     <fragment
         android:id="@+id/detail"
         android:name="com.nexters.yetda.android.ui.detail.DetailActivity"
-        tools:layout="@layout/activity_detail" />
+        tools:layout="@layout/activity_detail" >
+        <argument
+            android:name="history"
+            app:argType="com.nexters.yetda.android.domain.database.model.History" />
+    </fragment>
     <fragment
         android:id="@+id/member"
         android:name="com.nexters.yetda.android.ui.member.MemberActivity"
