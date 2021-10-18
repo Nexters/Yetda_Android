@@ -44,6 +44,10 @@
         <action
             android:id="@+id/action_gender_to_birthday"
             app:destination="@id/birthday" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
     <fragment
         android:id="@+id/birthday"

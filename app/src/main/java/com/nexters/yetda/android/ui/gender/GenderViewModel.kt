@@ -54,6 +54,10 @@ class GenderViewModel : ViewModel() {
         else "M"
     }
 
+    fun setName(_name: String) {
+        name.value = _name
+    }
+
     fun getUserFromIntent(intent: Intent) {
         name.value = intent.getStringExtra("NAME")
     }
