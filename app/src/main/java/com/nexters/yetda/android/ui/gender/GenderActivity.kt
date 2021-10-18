@@ -2,6 +2,7 @@ package com.nexters.yetda.android.ui.gender
 
 import android.content.Intent
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
@@ -13,7 +14,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class GenderActivity : BaseFragment<ActivityGenderBinding>() {
     override val layoutResourceId = R.layout.activity_gender
     val viewModel: GenderViewModel by viewModel()
-    val args : GenderActivityArgs by navArgs()
+    val args: GenderActivityArgs by navArgs()
 
     private val TAG = javaClass.simpleName
 
@@ -32,7 +33,7 @@ class GenderActivity : BaseFragment<ActivityGenderBinding>() {
             startActivity(intent)
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            requireActivity().finish()
+            findNavController().popBackStack()
         })
     }
 
