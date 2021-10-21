@@ -16,206 +16,114 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="32dp"
+                app:srcCompat="@drawable/ic_birthday" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="54dp"
+                android:paddingTop="12dp"
                 android:paddingBottom="48dp"
                 android:text="Yetda를 만든 사람들"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-            <!--style 지정-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
 
-                <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:paddingBottom="24dp"
-                    app:srcCompat="@drawable/ic_member_1" />
+            <ImageView
+                android:id="@+id/imageMemberJisu"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="지수"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
+            <TextView
+                style="@style/memberTitle"
+                android:text="지수" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:paddingBottom="24dp"
-                    android:text="디자이너, 조용한 관종"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
+            <TextView
+                style="@style/memberDetail"
+                android:text="디자이너, 조용한 관종" />
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageMemberKook"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_4" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
+            <TextView
+                style="@style/memberTitle"
+                android:text="종국" />
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_2" />
+            <TextView
+                style="@style/memberDetail"
+                android:text="안드로이드 개발자, 맥주매니아" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="end"
-                    android:text="[희주]\n디자이너, 겜방BJ 꿈나무"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
+            <ImageView
+                android:id="@+id/imageMemberHeeju"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_2" />
 
-            </LinearLayout>
+            <TextView
+                style="@style/memberTitle"
+                android:text="희주" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
+            <TextView
+                style="@style/memberDetail"
+                android:text="디자이너, 겜방BJ 꿈나무" />
 
-                <ImageView
-                    android:id="@+id/imageMemberYena"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_3" />
+            <ImageView
+                android:id="@+id/imageMemberYena"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_3" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:text="[예나]\n디자이너, Yetda의 리더"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
+            <TextView
+                style="@style/memberTitle"
+                android:text="예나" />
 
-            </LinearLayout>
+            <TextView
+                style="@style/memberDetail"
+                android:text="디자이너, Yetda의 리더" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
+            <ImageView
+                android:id="@+id/imageMemberSuhyun"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_5" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="end"
-                    android:text="[종국]\n안드로이드 개발자, 맥주매니아"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
+            <TextView
+                style="@style/memberTitle"
+                android:text="수현" />
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_4" />
+            <TextView
+                style="@style/memberDetail"
+                android:text="iOS 개발자, Yetda 마스코트" />
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageMemberDohyun"
+                style="@style/memberImg"
+                android:layout_width="110dp"
+                app:srcCompat="@drawable/ic_member_6" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
+            <TextView
+                style="@style/memberTitle"
+                android:text="도현" />
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_5" />
+            <TextView
+                style="@style/memberDetail"
+                android:text="안드로이드 개발자, 희주 천적" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:text="[수현]\niOS 개발자, Yetda 마스코트"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
+            <ImageView
+                android:id="@+id/imageMemberGong"
+                style="@style/memberImg"
+                app:srcCompat="@drawable/ic_member_7" />
 
-            </LinearLayout>
+            <TextView
+                style="@style/memberTitle"
+                android:text="채원" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="50dp"
-                android:paddingBottom="12dp">
+            <TextView
+                style="@style/memberDetail"
+                android:text="iOS 개발자, 본업은 프론트엔드" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="end"
-                    android:text="[도현]\n안드로이드 개발자, 희주 천적"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_6" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="56dp"
-                android:paddingEnd="56dp"
-                android:paddingBottom="12dp">
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/ic_member_7" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:text="[채원]\niOS 개발자, 본업은 프론트엔드"
-                    android:textColor="@color/txtBlack"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
