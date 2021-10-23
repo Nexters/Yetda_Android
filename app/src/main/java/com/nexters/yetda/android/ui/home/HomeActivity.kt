@@ -44,8 +44,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         binding.vm = viewModel
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-//            startActivity(Intent(this, NameActivity::class.java))
-            startActivity(Intent(this, SurveyActivity::class.java))
+            startActivity(Intent(this, NameActivity::class.java))
             Log.e(TAG, "click ${list}")
         })
 
@@ -75,7 +74,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         }
 
         textHomeGiftListTitle.setOnClickListener {
-            startActivity(Intent(this, SampleActivity::class.java))
+//            startActivity(Intent(this, SampleActivity::class.java))
+            startActivity(Intent(this, SurveyActivity::class.java))
         }
 
         checkFirstRun()
