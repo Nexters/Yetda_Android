@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.ui.gender
 
-import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -54,7 +53,7 @@ class GenderViewModel : ViewModel() {
         else "M"
     }
 
-    fun getUserFromIntent(intent: Intent) {
-        name.value = intent.getStringExtra("NAME")
+    fun getUserFromIntent(args: GenderFragmentArgs) {
+        name.value = args.name
     }
 }

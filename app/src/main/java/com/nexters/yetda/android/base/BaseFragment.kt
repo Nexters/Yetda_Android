@@ -44,7 +44,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
      * 그 외에 설정할 것이 있으면 이곳에서 설정.
      * 클릭 리스너도 이곳에서 설정.
      */
-    abstract fun initViewFinal(view: View)
+    abstract fun initViewFinal()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +57,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
         initViewStart()
         initDataBinding()
-        initViewFinal(binding.root)
+        initViewFinal()
 
         return binding.root
     }

@@ -1,14 +1,13 @@
 package com.nexters.yetda.android.ui.detail
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.islamkhsh.CardSliderAdapter
 import com.nexters.yetda.android.R
+import com.nexters.yetda.android.databinding.ItemDetailListBinding
 import com.nexters.yetda.android.domain.database.model.Present
-import kotlinx.android.synthetic.main.item_detail_list.view.*
 
 class DetailAdapter(private val items: ArrayList<Present>) :
     CardSliderAdapter<DetailAdapter.ViewHolder>() {
@@ -25,21 +24,21 @@ class DetailAdapter(private val items: ArrayList<Present>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             DetailAdapter.ViewHolder {
-        val inflatedView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_detail_list, parent, false)
-        return DetailAdapter.ViewHolder(inflatedView)
+        val binding = ItemDetailListBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return ViewHolder(binding)
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        private var view: View = v
+    class ViewHolder(val binding: ItemDetailListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Present) {
-            view.tv_item_detail_name.text = item.name
+            binding.tvItemDetailName.text = item.name
             Glide
-                .with(view.context)
+                .with(itemView.context)
                 .load(item.image)
                 .fitCenter()
                 .placeholder(R.drawable.img_present_default)
-                .into(view.iv_item_detail)
+                .into(binding.ivItemDetail)
         }
     }
 

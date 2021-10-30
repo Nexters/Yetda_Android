@@ -1,6 +1,5 @@
 package com.nexters.yetda.android.ui.birthday
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,8 +45,8 @@ class BirthdayViewModel : ViewModel() {
 //        Log.e(TAG, "birthday is $birthday")
     }
 
-    fun getUserFromIntent(intent: Intent) {
-        name.value = intent.getStringExtra("NAME")
-        gender = intent.getStringExtra("GENDER")
+    fun getUserFromIntent(args: BirthdayFragmentArgs) {
+        name.value = args.name
+        gender = args.gender
     }
 }

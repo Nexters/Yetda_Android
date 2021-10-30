@@ -11,36 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.SampleActivity"></activity>
-        <activity android:name=".ui.member.MemberActivity" />
-        <activity android:name=".ui.SplashActivity">
+        <activity
+            android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustResize"> <!-- 키보드 올라올때 버튼을 키보드 위로 두기 위해 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.home.HomeActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.detail.DetailActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.price.PriceActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.question.QuestionActivity" />
-        <activity android:name=".ui.result.ResultActivity" />
-        <activity
-            android:name=".ui.birthday.BirthdayActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.name.NameActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.gender.GenderActivity"
-            android:windowSoftInputMode="adjustResize" /> <!-- Crashlytics Debug시 리포트 중지 -->
+
+        <!-- Crashlytics Debug시 리포트 중지 -->
         <meta-data
             android:name="firebase_crashlytics_collection_enabled"
             android:value="${enableAnalytics}" /> <!-- Analytics Debug시 수집 중지 -->

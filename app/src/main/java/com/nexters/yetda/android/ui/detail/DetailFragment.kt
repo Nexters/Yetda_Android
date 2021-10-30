@@ -3,9 +3,10 @@ package com.nexters.yetda.android.ui.detail
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.databinding.ActivityDetailBinding
+import com.nexters.yetda.android.base.BaseFragment
+import com.nexters.yetda.android.databinding.FragmentDetailBinding
 import com.nexters.yetda.android.domain.database.model.History
 import com.nexters.yetda.android.domain.database.model.Present
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -14,9 +15,10 @@ import java.time.MonthDay
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class DetailActivity : BaseActivity<ActivityDetailBinding>() {
-    override val layoutResourceId = R.layout.activity_detail
+class DetailFragment : BaseFragment<FragmentDetailBinding>() {
+    override val layoutResourceId = R.layout.fragment_detail
     val viewModel: DetailViewModel by viewModel()
+    private val args: DetailFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
 
@@ -24,7 +26,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
     override fun initViewStart() {
 
-        history = intent.getParcelableExtra("ITEM")
+        history = args.history
 
     }
 
@@ -79,7 +81,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             }"
 
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            finish()
+            requireActivity().finish()
         })
     }
 

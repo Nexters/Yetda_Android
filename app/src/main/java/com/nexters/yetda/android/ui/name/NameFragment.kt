@@ -1,16 +1,15 @@
 package com.nexters.yetda.android.ui.name
 
-import android.content.Intent
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
-import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.databinding.ActivityNameBinding
-import com.nexters.yetda.android.ui.gender.GenderActivity
+import com.nexters.yetda.android.base.BaseFragment
+import com.nexters.yetda.android.databinding.FragmentNameBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class NameActivity : BaseActivity<ActivityNameBinding>() {
-    override val layoutResourceId = R.layout.activity_name
+class NameFragment : BaseFragment<FragmentNameBinding>() {
+    override val layoutResourceId = R.layout.fragment_name
     val viewModel: NameViewModel by viewModel()
 
     private val TAG = javaClass.simpleName
@@ -26,12 +25,14 @@ class NameActivity : BaseActivity<ActivityNameBinding>() {
         //        Crashlytics.getInstance().crash() // Force a crash
 
         viewModel.startNextActivityEvent.observe(this, Observer {
-            val intent = Intent(this, GenderActivity::class.java)
-            intent.putExtra("NAME", viewModel.name.value)
-            startActivity(intent)
+            findNavController().navigate(
+                NameFragmentDirections.actionNameToGender(
+                    viewModel.name.value ?: ""
+                )
+            )
         })
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            finish()
+            findNavController().popBackStack()
         })
     }
 

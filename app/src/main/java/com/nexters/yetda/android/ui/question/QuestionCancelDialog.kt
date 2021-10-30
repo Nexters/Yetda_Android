@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.nexters.yetda.android.R
-import kotlinx.android.synthetic.main.dialog_question_cancel.view.*
+import com.nexters.yetda.android.databinding.DialogQuestionCancelBinding
 
 class QuestionCancelDialog : DialogFragment() {
 
@@ -33,24 +33,26 @@ class QuestionCancelDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.dialog_question_cancel, container)
+        val binding = DialogQuestionCancelBinding.inflate(
+            LayoutInflater.from(container?.context), container, false
+        )
 
         dialog?.window?.setBackgroundDrawableResource(R.drawable.bg_r10)
-        view.textQuestionCancelMessage.text = message
+        binding.textQuestionCancelMessage.text = message
 
         if (oneButtonStatus) {
-            view.textQuestionCancelCancel.visibility = View.GONE
+            binding.textQuestionCancelCancel.visibility = View.GONE
         }
 
-        view.textQuestionCancelProceed.setOnClickListener {
+        binding.textQuestionCancelProceed.setOnClickListener {
             callback.invoke(true)
             dismissAllowingStateLoss()
         }
-        view.textQuestionCancelCancel.setOnClickListener {
+        binding.textQuestionCancelCancel.setOnClickListener {
             callback.invoke(false)
             dismissAllowingStateLoss()
         }
 
-        return view
+        return binding.root
     }
 }

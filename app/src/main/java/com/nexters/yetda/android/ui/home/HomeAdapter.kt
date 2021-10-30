@@ -1,16 +1,14 @@
 package com.nexters.yetda.android.ui.home
 
-import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.nexters.yetda.android.R
+import com.nexters.yetda.android.databinding.ItemPresentListBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.detail.DetailActivity
-import kotlinx.android.synthetic.main.item_present_list.view.*
 import java.text.NumberFormat
 import java.time.MonthDay
 import java.time.format.DateTimeFormatter
@@ -24,31 +22,26 @@ class HomeAdapter(private val items: ArrayList<History>) :
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         //click시 토스트
         val item = items[position]
-        val listener = View.OnClickListener { it ->
-            var intent = Intent(it.context, DetailActivity::class.java)
-            intent.putExtra("ITEM", item)
-            it.context.startActivity(intent)
-
-//            Toast.makeText(it.context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()
-        }
         holder.apply {
-            bind(listener, item)
+            bind(item)
+            //todo: tag를 왜 사용했는지 확인 필요, 리스너 때문이었나 ??
             itemView.tag = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflatedView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_present_list, parent, false)
-        return ViewHolder(inflatedView)
+        val binding = ItemPresentListBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return ViewHolder(binding)
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ViewHolder(val binding: ItemPresentListBinding) : RecyclerView.ViewHolder(binding.root) {
         private val TAG = javaClass.simpleName
-        private var view: View = v
 
-        fun bind(listener: View.OnClickListener, item: History) {
-            view.tv_item_name.text = item.name
+        //todo: 코드정리
+        fun bind(item: History) {
+            binding.tvItemName.text = item.name
 
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -58,30 +51,30 @@ class HomeAdapter(private val items: ArrayList<History>) :
                             item.birthday.substring(0, 2).toInt(),
                             item.birthday.substring(2, 4).toInt()
                         )
-                        view.tv_item_birthday.text = date.format(newFormatter)
+                        binding.tvItemBirthday.text = date.format(newFormatter)
                     } else {
-                        view.tv_item_birthday.text = item.birthday
+                        binding.tvItemBirthday.text = item.birthday
                     }
                 } else {
                     if (item.birthday.length == 4) {
-                        view.tv_item_birthday.text =
+                        binding.tvItemBirthday.text =
                             "${item.birthday.substring(0, 2)}월 ${item.birthday.substring(2, 4)}일"
                     } else {
-                        view.tv_item_birthday.text = item.birthday
+                        binding.tvItemBirthday.text = item.birthday
                     }
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "* * * e ::: ${e.message}")
                 if (item.birthday.length == 4) {
-                    view.tv_item_birthday.text =
+                    binding.tvItemBirthday.text =
                         "${item.birthday.substring(0, 2)}월 ${item.birthday.substring(2, 4)}일"
                 } else {
-                    view.tv_item_birthday.text = item.birthday
+                    binding.tvItemBirthday.text = item.birthday
                 }
             }
 
 
-            view.tv_item_price.text =
+            binding.tvItemPrice.text =
                 "${NumberFormat.getCurrencyInstance(Locale.KOREA).format(item.startPrice)} ~ ${
                     NumberFormat.getCurrencyInstance(
                         Locale.KOREA
@@ -89,18 +82,24 @@ class HomeAdapter(private val items: ArrayList<History>) :
                 }"
 
             if (item.presents.size > 0) {
-                view.tv_item_tag1.text = item.presents.get(0)!!.name
+                binding.tvItemTag1.text = item.presents.get(0)!!.name
                 if (item.presents.size > 1) {
-                    view.tv_item_tag2.text = item.presents.get(1)!!.name
+                    binding.tvItemTag2.text = item.presents.get(1)!!.name
                 } else {
-                    view.tv_item_tag2.visibility = View.GONE
+                    binding.tvItemTag2.visibility = View.GONE
                 }
             } else {
-                view.tv_item_tag1.visibility = View.GONE
-                view.tv_item_tag2.visibility = View.GONE
+                binding.tvItemTag1.visibility = View.GONE
+                binding.tvItemTag2.visibility = View.GONE
             }
 
-            view.setOnClickListener(listener)
+            itemView.setOnClickListener {
+                itemView.findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeToDetail(item))
+//            Toast.makeText(it.context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()
+            }
+
+//            binding.setOnClickListener(listener)
         }
     }
 

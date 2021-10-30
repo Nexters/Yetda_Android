@@ -5,8 +5,8 @@ import com.nexters.yetda.android.domain.database.RealmUtil
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.WriteWith
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.WriteWith
 
 @Parcelize
 open class Present(

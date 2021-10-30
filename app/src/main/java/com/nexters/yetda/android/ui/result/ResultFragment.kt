@@ -1,19 +1,20 @@
 package com.nexters.yetda.android.ui.result
 
-import android.content.Intent
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.YetdaApplication
-import com.nexters.yetda.android.base.BaseActivity
-import com.nexters.yetda.android.databinding.ActivityResultBinding
+import com.nexters.yetda.android.base.BaseFragment
+import com.nexters.yetda.android.databinding.FragmentResultBinding
 import com.nexters.yetda.android.domain.database.model.History
-import com.nexters.yetda.android.ui.home.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ResultActivity : BaseActivity<ActivityResultBinding>() {
-    override val layoutResourceId = R.layout.activity_result
+class ResultFragment : BaseFragment<FragmentResultBinding>() {
+    override val layoutResourceId = R.layout.fragment_result
     val viewModel: ResultViewModel by viewModel()
+    val args: ResultFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
     var history: History = History()
@@ -25,11 +26,10 @@ class ResultActivity : BaseActivity<ActivityResultBinding>() {
         //TODO: Sample Code
 //        val history = intent.getParcelableExtra<History>("ITEM")
 //        viewModel.name.value = history.name
-        var id = intent.getIntExtra("hitoryId", 0)
+        var id = args.historyId
         if (id == 0) {
             //오류
-            startActivity(Intent(applicationContext, HomeActivity::class.java))
-            finish()
+            findNavController().navigate(ResultFragmentDirections.actionResultToHome())
         } else {
             history = viewModel.findHistoryById(id)
         }
@@ -37,12 +37,11 @@ class ResultActivity : BaseActivity<ActivityResultBinding>() {
 
     override fun initDataBinding() {
         viewModel.startNextActivityEvent.observe(this, Observer {
-            startActivity(Intent(applicationContext, HomeActivity::class.java))
-            finish()
+            findNavController().navigate(ResultFragmentDirections.actionResultToHome())
         })
         setPresent()
         binding.btnResultRepeat.setOnClickListener {
-            YetdaApplication.get().progressON(this)
+            YetdaApplication.get().progressON(requireActivity())
             setPresent()
         }
 
@@ -68,8 +67,9 @@ class ResultActivity : BaseActivity<ActivityResultBinding>() {
         YetdaApplication.get().progressOFF()
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(applicationContext, HomeActivity::class.java))
-        finish()
-    }
+    //todo: backpress 처리 필요
+//    override fun onBackPressed() {
+//        startActivity(Intent(applicationContext, HomeActivity::class.java))
+//        finish()
+//    }
 }
