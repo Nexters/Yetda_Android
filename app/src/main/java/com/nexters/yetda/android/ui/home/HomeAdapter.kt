@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.yetda.android.databinding.ItemPresentListBinding
@@ -91,6 +92,13 @@ class HomeAdapter(private val items: ArrayList<History>) :
             } else {
                 binding.tvItemTag1.visibility = View.GONE
                 binding.tvItemTag2.visibility = View.GONE
+            }
+
+            binding.delButton.setOnClickListener{
+                //여기서 뷰모델 호출?
+//                viewModel.deleteById(item.id)
+                Toast.makeText(it.context, "hi", Toast.LENGTH_SHORT).show()
+                //notifyDataSetChanged 대신 notifyItemRemoved
             }
 
             itemView.setOnClickListener {

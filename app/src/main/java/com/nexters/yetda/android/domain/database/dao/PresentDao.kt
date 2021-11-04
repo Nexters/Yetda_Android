@@ -43,15 +43,6 @@ class PresentDao(private val mRealm: Realm) {
             .findAll()
     }
 
-    fun deleteById(id: Int) {
-         val results = mRealm.where<Present>()
-            .equalTo("id", id)
-            .findFirst()
-        mRealm.executeTransaction {
-            results?.deleteFromRealm()
-        }
-    }
-
     fun deleteAll() {
         val result = mRealm.where<Present>().findAll()
         mRealm.executeTransaction {

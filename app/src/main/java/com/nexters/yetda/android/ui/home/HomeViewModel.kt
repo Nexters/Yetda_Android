@@ -65,6 +65,10 @@ class HomeViewModel : ViewModel() {
         return HistoryDao(realm).findAllHistory()
     }
 
+    fun deleteById(id: Int){
+        HistoryDao(realm).deleteById(id)
+    }
+
     fun sampleHistory() {
         //TODO: Present가 비어있을 경우 처리해야함.
 //        var presents = RealmList<Present>()
