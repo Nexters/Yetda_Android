@@ -43,7 +43,7 @@ class HistoryDao(private val mRealm: Realm) {
     }
 
     fun deleteById(id: Int) {
-        val results = mRealm.where<Present>()
+        val results = mRealm.where<History>()
             .equalTo("id", id)
             .findFirst()
         mRealm.executeTransaction {

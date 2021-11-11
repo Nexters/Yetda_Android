@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
     private var flagEast = false
     private var flagEgg = false
 
+   private val adapter by lazy{ HomeAdapter(list, this)}
 
     override fun initViewStart() {
 
@@ -44,7 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
             findNavController().navigate(HomeFragmentDirections.actionHomeToName())
         })
 
-        val adapter = HomeAdapter(list, this)
+
         binding.recyclerView.adapter = adapter
 
         viewModel.getAllHistory().observe(this, Observer {
@@ -89,8 +90,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
 //        backPressCloseHandler!!.onBackPressed()
 //    }
 
-    override fun onDelClick(id: Int) {
-        viewModel.deleteById(id);
+    override fun onDelClick(item:History) {
+        adapter.deleteHistory(item)
+        viewModel.deleteById(item.id);
     }
 
     fun checkFirstRun() {

@@ -1,5 +1,7 @@
 package com.nexters.yetda.android.ui.home
 
+import com.nexters.yetda.android.domain.database.model.History
+
 public interface HistoryLisner {
-    fun onDelClick(id: Int);
+    fun onDelClick(item: History);
 }
