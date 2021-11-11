@@ -54,6 +54,10 @@ class HomeViewModel : ViewModel() {
         fireInTheRealm.getUpdatesInfo(onSuccess = { getQuestionsList() })
     }
 
+    fun deleteById(id: Int){
+        HistoryDao(realm).deleteById(id)
+    }
+
     @SuppressLint("SimpleDateFormat")
     fun convertLongToTime(time: Long): String {
         val date = Date(time * 1000)
@@ -65,9 +69,6 @@ class HomeViewModel : ViewModel() {
         return HistoryDao(realm).findAllHistory()
     }
 
-    fun deleteById(id: Int){
-        HistoryDao(realm).deleteById(id)
-    }
 
     fun sampleHistory() {
         //TODO: Present가 비어있을 경우 처리해야함.

@@ -15,9 +15,8 @@ import java.time.MonthDay
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class HomeAdapter(private val items: ArrayList<History>) :
+class HomeAdapter(private val items: ArrayList<History>, HistoryLisner: HistoryLisner) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
@@ -37,7 +36,7 @@ class HomeAdapter(private val items: ArrayList<History>) :
         return ViewHolder(binding)
     }
 
-    class ViewHolder(val binding: ItemPresentListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: ItemPresentListBinding, HistoryLisner: HistoryLisner) : RecyclerView.ViewHolder(binding.root) {
         private val TAG = javaClass.simpleName
 
         //todo: 코드정리
@@ -94,11 +93,11 @@ class HomeAdapter(private val items: ArrayList<History>) :
                 binding.tvItemTag2.visibility = View.GONE
             }
 
-            binding.delButton.setOnClickListener{
-                //여기서 뷰모델 호출?
-//                viewModel.deleteById(item.id)
+            binding.delButton.setOnClickListener {
+              notifyItemRemoved(item.id) //이것도 왜 안됑,, 옵저버 개념?
+                HistoryLisner.onDelClick(item.id) //-> 왜 오류뜨나유..
+                //삭제
                 Toast.makeText(it.context, "hi", Toast.LENGTH_SHORT).show()
-                //notifyDataSetChanged 대신 notifyItemRemoved
             }
 
             itemView.setOnClickListener {
