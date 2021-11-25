@@ -31,7 +31,7 @@
                 android:layout_marginLeft="@dimen/side_interval"
                 android:layout_marginRight="@dimen/side_interval"
                 android:layout_weight="1"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/card"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="70dp">
