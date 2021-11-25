@@ -32,9 +32,9 @@ class QuestionCancelDialog : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DialogQuestionCancelBinding.inflate(
-            LayoutInflater.from(container?.context), container, false
+            LayoutInflater.from(context), container, false
         )
 
         dialog?.window?.setBackgroundDrawableResource(R.drawable.bg_r10)

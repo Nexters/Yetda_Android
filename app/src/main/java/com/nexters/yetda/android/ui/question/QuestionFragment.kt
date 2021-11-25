@@ -1,6 +1,7 @@
 package com.nexters.yetda.android.ui.question
 
 import android.animation.Animator
+import android.content.Context
 import android.content.res.ColorStateList
 import android.util.DisplayMetrics
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -29,21 +31,30 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding>() {
     lateinit var tags: ArrayList<String>
     lateinit var history: History
     lateinit var aniAlpha: Animation
-    lateinit var dialog: QuestionCancelDialog
+    private val dialog: QuestionCancelDialog by lazy {
+        QuestionCancelDialog.getInstance(getString(R.string.reset_alert), false) {
+            if (it) {
+                findNavController().popBackStack()
+            }
+        }
+    }
 
-    //todo: backpress  처리 필요
-//    override fun onBackPressed() {
-//        dialog.show(supportFragmentManager, "QuestionCancelDialog")
-//    }
+    private val callback: OnBackPressedCallback by lazy {
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                dialog.show(parentFragmentManager, "QuestionCancelDialog")
+            }
+        }
+    }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+    
     override fun initViewStart() {
         binding.vm = viewModel
         aniAlpha = AnimationUtils.loadAnimation(context, R.anim.ani_fade_in)
-        dialog = QuestionCancelDialog.getInstance(getString(R.string.reset_alert), false) {
-            if (it) {
-                requireActivity().finish()
-            }
-        }
 
         tags = args.tags.toCollection(ArrayList())
         history = args.history
