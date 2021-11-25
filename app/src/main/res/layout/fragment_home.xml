@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_card"
+                    android:background="@drawable/card"
                     android:gravity="center"
                     android:text="아직 준비된 선물이 없어요.."
                     android:textColor="@color/genderGrey"

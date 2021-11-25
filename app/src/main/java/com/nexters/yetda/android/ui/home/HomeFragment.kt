@@ -97,7 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             dialog = QuestionCancelDialog.getInstance(getString(R.string.app_remove_guide), true) {
                 // 작성할 필요 없음
             }
-            dialog.show(requireActivity().supportFragmentManager, "QuestionCancelDialog")
+            dialog.show(parentFragmentManager, "QuestionCancelDialog")
             prefs.edit().putBoolean("isFirstRun", false).apply()
         }
     }
