@@ -1,7 +1,10 @@
 package com.nexters.yetda.android.ui.home
 
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
@@ -13,21 +16,23 @@ import com.nexters.yetda.android.ui.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), HistoryLisner {
     override val layoutResourceId = R.layout.fragment_home
     val viewModel: HomeViewModel by viewModel()
+    private val TAG = javaClass.simpleName
 
     private val list: ArrayList<History> by lazy { arrayListOf<History>() }
-    private val TAG = javaClass.simpleName
-    private var backPressCloseHandler: BackPressCloseHandler? = null
 
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
+    private lateinit var callback: OnBackPressedCallback
     lateinit var dialog: QuestionCancelDialog
     lateinit var prefs: SharedPreferences
 
     private var flagEast = false
     private var flagEgg = false
 
-   private val adapter by lazy{ HomeAdapter(list, this)}
+    private val adapter by lazy { HomeAdapter(list, this) }
+
 
     override fun initViewStart() {
 
@@ -90,7 +95,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
 //        backPressCloseHandler!!.onBackPressed()
 //    }
 
-    override fun onDelClick(item:History) {
+    override fun onDelClick(item: History) {
         adapter.deleteHistory(item)
         viewModel.deleteById(item.id);
     }
@@ -104,5 +109,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
             dialog.show(parentFragmentManager, "QuestionCancelDialog")
             prefs.edit().putBoolean("isFirstRun", false).apply()
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                backPressCloseHandler.onBackPressed()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callback.remove()
     }
 }
