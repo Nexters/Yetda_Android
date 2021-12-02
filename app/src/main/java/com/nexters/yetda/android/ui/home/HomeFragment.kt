@@ -3,6 +3,7 @@ package com.nexters.yetda.android.ui.home
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
@@ -12,7 +13,7 @@ import com.nexters.yetda.android.ui.question.QuestionCancelDialog
 import com.nexters.yetda.android.util.BackPressCloseHandler
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(),HistoryLisner {
     override val layoutResourceId = R.layout.fragment_home
     val viewModel: HomeViewModel by viewModel()
 
@@ -26,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private var flagEast = false
     private var flagEgg = false
 
+   private val adapter by lazy{ HomeAdapter(list, this)}
 
     override fun initViewStart() {
 
@@ -43,7 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             findNavController().navigate(HomeFragmentDirections.actionHomeToName())
         })
 
-        val adapter = HomeAdapter(list)
+
         binding.recyclerView.adapter = adapter
 
         viewModel.getAllHistory().observe(this, Observer {
@@ -87,6 +89,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 //    override fun onBackPressed() {
 //        backPressCloseHandler!!.onBackPressed()
 //    }
+
+    override fun onDelClick(item:History) {
+        adapter.deleteHistory(item)
+        viewModel.deleteById(item.id);
+    }
 
     fun checkFirstRun() {
         val isFirstRun: Boolean = prefs.getBoolean("isFirstRun", true)
