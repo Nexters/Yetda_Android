@@ -54,11 +54,12 @@ class QuestionDao(private val mRealm: Realm) {
         val r = Random(System.nanoTime())
         // todo : error ::: Random range is empty: [0, 0).
         val id = r.nextInt(results.size)
+        val question = results[id]
 
         mRealm.executeTransaction {
             results[id]?.isAsked = true
         }
-        return results[id]
+        return question
     }
 
     fun deleteAll() {
