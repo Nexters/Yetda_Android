@@ -1,5 +1,7 @@
 package com.nexters.yetda.android.ui.result
 
+import android.content.Context
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,6 +18,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     val viewModel: ResultViewModel by viewModel()
     val args: ResultFragmentArgs by navArgs()
 
+    private lateinit var callback: OnBackPressedCallback
     private val TAG = javaClass.simpleName
     var history: History = History()
     var index: Int = 0
@@ -23,12 +26,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     override fun initViewStart() {
         binding.vm = viewModel
         Glide.with(this).load(R.raw.pung).into(binding.ivResultPung)
-        //TODO: Sample Code
-//        val history = intent.getParcelableExtra<History>("ITEM")
-//        viewModel.name.value = history.name
+
         var id = args.historyId
         if (id == 0) {
-            //오류
+            // id가 0일 수 없으므로 오류 처리용
             findNavController().navigate(ResultFragmentDirections.actionResultToHome())
         } else {
             history = viewModel.findHistoryById(id)
@@ -72,4 +73,19 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
 //        startActivity(Intent(applicationContext, HomeActivity::class.java))
 //        finish()
 //    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(ResultFragmentDirections.actionResultToHome())
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callback.remove()
+    }
 }

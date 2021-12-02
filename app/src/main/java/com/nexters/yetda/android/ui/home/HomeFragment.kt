@@ -3,7 +3,6 @@ package com.nexters.yetda.android.ui.home
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -85,11 +84,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             findNavController().navigate(HomeFragmentDirections.actionHomeToMember())
         }
     }
-
-    //todo: backpressed 처리
-//    override fun onBackPressed() {
-//        backPressCloseHandler!!.onBackPressed()
-//    }
 
     fun checkFirstRun() {
         val isFirstRun: Boolean = prefs.getBoolean("isFirstRun", true)
