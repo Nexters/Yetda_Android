@@ -2,7 +2,9 @@ package com.nexters.yetda.android.ui.detail
 
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nexters.yetda.android.R
 import com.nexters.yetda.android.base.BaseFragment
@@ -21,7 +23,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
     private val args: DetailFragmentArgs by navArgs()
 
     private val TAG = javaClass.simpleName
-
+    private var toast: Toast? = null
     var history: History = History()
 
     override fun initViewStart() {
@@ -39,6 +41,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         binding.cardDetail.adapter = adapter
 
         binding.tvDetailName.text = history.name + resources.getString(R.string.detail)
+
+        binding.tvDelete.setOnClickListener {
+            viewModel.clickDeleteButton(history.id)
+        }
 
 
         try {
@@ -81,7 +87,19 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
             }"
 
         viewModel.backBeforeActivityEvent.observe(this, Observer {
-            requireActivity().finish()
+            findNavController().popBackStack()
+        })
+
+        viewModel.toastBeforeActivityEvent.observe(this, Observer {
+            toast = Toast.makeText(
+                activity, "삭제 버튼을 한번 더 누르시면 삭제됩니다.",
+                Toast.LENGTH_SHORT
+            )
+            toast!!.show()
+        })
+
+        viewModel.deleteBeforeActivityEvent.observe(this, Observer {
+            findNavController().popBackStack()
         })
     }
 

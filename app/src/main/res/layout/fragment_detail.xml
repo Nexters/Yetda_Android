@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,11 +17,35 @@
         android:background="@color/backgroundColor"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->vm.clickBackButton()}"
-            app:srcCompat="@drawable/ic_arrow_left" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->vm.clickBackButton()}"
+                app:srcCompat="@drawable/ic_arrow_left"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="삭제"
+                android:textSize="15sp"
+                android:textColor="@color/red"
+                android:gravity="center"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:id="@+id/tv_detail_name"
@@ -30,7 +55,8 @@
             android:layout_marginTop="@dimen/interval"
             android:fontFamily="@font/noto_sans_bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/txt_big" />
+            android:textSize="@dimen/txt_big"
+            tools:text="sample"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

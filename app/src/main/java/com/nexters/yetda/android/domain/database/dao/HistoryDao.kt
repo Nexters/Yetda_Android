@@ -35,10 +35,12 @@ class HistoryDao(private val mRealm: Realm) {
             .findFirst()
     }
 
-    fun deleteAll() {
-        val result = mRealm.where<History>().findAll()
+    fun deleteHistory(id: Int) {
+        val result = mRealm.where<History>()
+            .equalTo("id", id)
+            .findFirst()
         mRealm.executeTransaction {
-            result.deleteAllFromRealm()
+            result?.deleteFromRealm()
         }
     }
 
