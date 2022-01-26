@@ -5,7 +5,9 @@ import io.realm.RealmModel
 import io.realm.annotations.Ignore
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
+import io.realm.internal.Keep
 
+@Keep
 @RealmClass
 open class Person : RealmModel {
     @PrimaryKey

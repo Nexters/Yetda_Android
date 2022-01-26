@@ -38,3 +38,6 @@
   **[] $VALUES;
   public *;
 }
+
+-keepnames class * extends android.os.Parcelable
+-keepnames class * extends java.io.Serializable

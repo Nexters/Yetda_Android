@@ -5,6 +5,7 @@ import com.nexters.yetda.android.domain.database.RealmUtil
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import io.realm.internal.Keep
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.WriteWith
 
@@ -18,6 +19,7 @@ import kotlinx.parcelize.WriteWith
 // Intent시 Realm객체를 넘기기 위해서는 parcelable 해야한다.
 // Realm에서 안내하는 Parcel 라이브러리가 있지만 코틀린 parcelize를 사용할 경우 더 간단하게 적용 가능하다.
 // 단 Parcelize에서 RealmList를 지원하지 않기 때문에 별도로 적용해 주어야 한다.(=@WriteWith)
+@Keep
 @Parcelize
 open class History(
     @PrimaryKey
